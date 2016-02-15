@@ -1,0 +1,680 @@
+Country
+Year
+Top 10% income share
+Top 10% income share-LAD
+Top 10% income share-married couples & single adults
+Top 10% income share-adults
+Top 10% income share-tax data
+Top 10% income share-IDS
+Top 5% income share
+Top 5% income share-LAD
+Top 5% income share-married couples & single adults
+Top 5% income share-adults
+Top 5% income share-tax data
+Top 5% income share-IDS
+Top 1% income share
+Top 1% income share-LAD
+Top 1% income share-married couples & single adults
+Top 1% income share-adults
+Top 1% income share-tax data
+Top 1% income share-IDS
+Top 0.5% income share
+Top 0.5% income share-LAD
+Top 0.5% income share-married couples & single adults
+Top 0.5% income share-adults
+Top 0.1% income share
+Top 0.1% income share-LAD
+Top 0.1% income share-married couples & single adults
+Top 0.1% income share-adults
+Top 0.05% income share
+Top 0.05% income share-married couples & single adults
+Top 0.05% income share-adults
+Top 0.01% income share
+Top 0.01% income share-LAD
+Top 0.01% income share-married couples & single adults
+Top 0.01% income share-adults
+Top 0.25% income share
+Top 0.15% income share
+Top 0.005% income share
+Top 10-5% income share
+Top 10-5% income share-LAD
+Top 10-5% income share-married couples & single adults
+Top 10-5% income share-adults
+Top 5-1% income share
+Top 5-1% income share-LAD
+Top 5-1% income share-married couples & single adults
+Top 5-1% income share-adults
+Top 1-0.5% income share
+Top 1-0.5% income share-LAD
+Top 1-0.5% income share-married couples & single adults
+Top 1-0.5% income share-adults
+Top 0.5-0.1% income share
+Top 0.5-0.1% income share-LAD
+Top 0.5-0.1% income share-married couples & single adults
+Top 0.5-0.1% income share-adults
+Top 0.1-0.05% income share
+Top 0.1-0.05% income share-married couples & single adults
+Top 0.1-0.05% income share-adults
+Top 0.05-0.01% income share
+Top 0.05-0.01% income share-married couples & single adults
+Top 0.05-0.01% income share-adults
+Top 0.1-0.01% income share
+Top 0.1-0.01% income share-LAD
+Top 0.1-0.01% income share-married couples & single adults
+Top 0.1-0.01% income share-adults
+Top 10% income share-including capital gains
+Top 10% income share-including capital gains-LAD
+Top 5% income share-including capital gains
+Top 5% income share-including capital gains-LAD
+Top 1% income share-including capital gains
+Top 1% income share-including capital gains-LAD
+Top 0.5% income share-including capital gains
+Top 0.5% income share-including capital gains-LAD
+Top 0.1% income share-including capital gains
+Top 0.1% income share-including capital gains-LAD
+Top 0.05% income share-including capital gains
+Top 0.01% income share-including capital gains
+Top 0.01% income share-including capital gains-LAD
+Top 10-5% income share-including capital gains
+Top 10-5% income share-including capital gains-LAD
+Top 5-1% income share-including capital gains
+Top 5-1% income share-including capital gains-LAD
+Top 1-0.5% income share-including capital gains
+Top 1-0.5% income share-including capital gains-LAD
+Top 0.5-0.1% income share-including capital gains
+Top 0.5-0.1% income share-including capital gains-LAD
+Top 0.1-0.05% income share-including capital gains
+Top 0.05-0.01% income share-including capital gains
+Top 0.1-0.01% income share-including capital gains
+Top 0.1-0.01% income share-including capital gains-LAD
+Top 10% income share-net of income tax-married couples & single adults
+Top 10% income share-net of income tax-adults
+Top 5% income share-net of income tax-married couples & single adults
+Top 5% income share-net of income tax-adults
+Top 1% income share-net of income tax-married couples & single adults
+Top 1% income share-net of income tax-adults
+Top 0.5% income share-net of income tax-married couples & single adults
+Top 0.5% income share-net of income tax-adults
+Top 0.1% income share-net of income tax-married couples & single adults
+Top 0.1% income share-net of income tax-adults
+Top 10% income share incl. K gains-net of income tax
+Top 5% income share incl. K gains-net of income tax
+Top 1% income share incl. K gains-net of income tax
+Top 0.5% income share incl. K gains-net of income tax
+Top 0.1% income share incl. K gains-net of income tax
+Top 0.01% income share incl. K gains-net of income tax
+Top 10% income composition-Wages, salaries and pensions
+Top 10% income composition-Non-wage income
+Top 10% income composition-Professional income
+Top 10% income composition-Business income
+Top 10% income composition-Dividends
+Top 10% income composition-Interest income
+Top 10% income composition-Investment income
+Top 10% income composition-Capital income
+Top 10% income composition-Farming income
+Top 10% income composition-Business income (industry, commerce)
+Top 10% income composition-Capital income
+Top 10% income composition-Non-commercial business income
+Top 10% income composition-Rents
+Top 10% income composition-Self-employment income
+Top 10% income composition-Entrepreneurial income
+Top 10% income composition-Rents
+Top 10% income composition-Entrepreneurial income
+Top 10% income composition-Property income
+Top 10% income composition-Other
+Top 10% income composition-Capital income
+Top 10% income composition-Capital gains
+Top 10% income composition-Dividends
+Top 10% income composition-Interest Income
+Top 5% income composition-Wages, salaries and pensions
+Top 5% income composition-Non-wage income
+Top 5% income composition-Professional income
+Top 5% income composition-Business income
+Top 5% income composition-Dividends
+Top 5% income composition-Interest income
+Top 5% income composition-Investment income
+Top 5% income composition-Capital income
+Top 5% income composition-Farming income
+Top 5% income composition-Business income (industry, commerce)
+Top 5% income composition-Capital income
+Top 5% income composition-Non-commercial business income
+Top 5% income composition-Rents
+Top 5% income composition-Self-employment income
+Top 5% income composition-Entrepreneurial income
+Top 5% income composition-Rents
+Top 5% income composition-Entrepreneurial income
+Top 5% income composition-Property income
+Top 5% income composition-Other
+Top 5% income composition-Capital income
+Top 5% income composition-Capital gains
+Top 5% income composition-Dividends
+Top 5% income composition-Interest Income
+Top 1% income composition-Wages, salaries and pensions
+Top 1% income composition-Non-wage income
+Top 1% income composition-Professional income
+Top 1% income composition-Business income
+Top 1% income composition-Dividends
+Top 1% income composition-Interest income
+Top 1% income composition-Investment income
+Top 1% income composition-Capital income
+Top 1% income composition-Farming income
+Top 1% income composition-Business income (industry, commerce)
+Top 1% income composition-Capital income
+Top 1% income composition-Non-commercial business income
+Top 1% income composition-Rents
+Top 1% income composition-Self-employment income
+Top 1% income composition-Entrepreneurial income
+Top 1% income composition-Rents
+Top 1% income composition-Business income
+Top 1% income composition-Dividends
+Top 1% income composition-Interest Income
+Top 1% income composition-Dividends
+Top 1% income composition-Interest income
+Top 1% income composition-Other
+Top 1% income composition-Entrepreneurial income
+Top 1% income composition-Property income
+Top 1% income composition-Capital income
+Top 1% income composition-Capital gains
+Top 1% income composition-Capital income
+Top 0.5% income composition-Wages, salaries and pensions
+Top 0.5% income composition-Non-wage income
+Top 0.5% income composition-Professional income
+Top 0.5% income composition-Business income
+Top 0.5% income composition-Dividends
+Top 0.5% income composition-Interest income
+Top 0.5% income composition-Investment income
+Top 0.5% income composition-Capital income
+Top 0.5% income composition-Farming income
+Top 0.5% income composition-Business income (industry, commerce)
+Top 0.5% income composition-Capital income
+Top 0.5% income composition-Non-commercial business income
+Top 0.5% income composition-Rents
+Top 0.5% income composition-Self-employment income
+Top 0.5% income composition-Entrepreneurial income
+Top 0.5% income composition-Rents
+Top 0.5% income composition-Entrepreneurial income
+Top 0.5% income composition-Property income
+Top 0.5% income composition-Other
+Top 0.5% income composition-Capital income
+Top 0.5% income composition-Capital gains
+Top 0.5% income composition-Dividends
+Top 0.5% income composition-Interest Income
+Top 0.1% income composition-Wages, salaries and pensions
+Top 0.1% income composition-Non-wage income
+Top 0.1% income composition-Professional income
+Top 0.1% income composition-Business income
+Top 0.1% income composition-Dividends
+Top 0.1% income composition-Interest income
+Top 0.1% income composition-Investment income
+Top 0.1% income composition-Capital income
+Top 0.1% income composition-Farming income
+Top 0.1% income composition-Business income (industry, commerce)
+Top 0.1% income composition-Capital income
+Top 0.1% income composition-Non-commercial business income
+Top 0.1% income composition-Rents
+Top 0.1% income composition-Self-employment income
+Top 0.1% income composition-Entrepreneurial income
+Top 0.1% income composition-Rents
+Top 0.1% income composition-Entrepreneurial income
+Top 0.1% income composition-Property income
+Top 0.1% income composition-Other
+Top 0.1% income composition-Capital income
+Top 0.1% income composition-Capital gains
+Top 0.1% income composition-Capital income
+Top 0.1% income composition-Dividends
+Top 0.1% income composition-Interest Income
+Top 0.01% income composition-Wages, salaries and pensions
+Top 0.01% income composition-Non-wage income
+Top 0.01% income composition-Professional income
+Top 0.01% income composition-Business income
+Top 0.01% income composition-Dividends
+Top 0.01% income composition-Interest income
+Top 0.01% income composition-Investment income
+Top 0.01% income composition-Capital income
+Top 0.01% income composition-Farming income
+Top 0.01% income composition-Business income (industry, commerce)
+Top 0.01% income composition-Capital income
+Top 0.01% income composition-Non-commercial business income
+Top 0.01% income composition-Rents
+Top 0.01% income composition-Self-employment income
+Top 0.01% income composition-Entrepreneurial income
+Top 0.01% income composition-Rents
+Top 0.01% income composition-Entrepreneurial income
+Top 0.01% income composition-Capital income
+Top 0.01% income composition-Capital gains
+Top 0.01% income composition-Capital income
+Top 0.01% income composition-Other
+Top 0.01% income composition-Dividends
+Top 0.01% income composition-Interest Income
+Top 10-5% income composition-Wages, salaries and pensions
+Top 10-5% income composition-Professional income
+Top 10-5% income composition-Business income
+Top 10-5% income composition-Dividends
+Top 10-5% income composition-Interest income
+Top 10-5% income composition-Investment income
+Top 10-5% income composition-Capital income
+Top 10-5% income composition-Farming income
+Top 10-5% income composition-Business income (industry, commerce)
+Top 10-5% income composition-Capital income
+Top 10-5% income composition-Non-commercial business income
+Top 10-5% income composition-Rents
+Top 10-5% income composition-Self-employment income
+Top 10-5% income composition-Entrepreneurial income
+Top 10-5% income composition-Rents
+Top 10-5% income composition-Entrepreneurial income
+Top 10-5% income composition-Capital income
+Top 10-5% income composition-Capital gains
+Top 10-5% income composition-Dividends
+Top 10-5% income composition-Interest Income
+Top 5-1% income composition-Wages, salaries and pensions
+Top 5-1% income composition-Professional income
+Top 5-1% income composition-Business income
+Top 5-1% income composition-Dividends
+Top 5-1% income composition-Interest income
+Top 5-1% income composition-Investment income
+Top 5-1% income composition-Capital income
+Top 5-1% income composition-Farming income
+Top 5-1% income composition-Business income (industry, commerce)
+Top 5-1% income composition-Capital income
+Top 5-1% income composition-Non-commercial business income
+Top 5-1% income composition-Rents
+Top 5-1% income composition-Self-employment income
+Top 5-1% income composition-Entrepreneurial income
+Top 5-1% income composition-Rents
+Top 5-1% income composition-Entrepreneurial income
+Top 5-1% income composition-Capital income
+Top 5-1% income composition-Capital gains
+Top 5-1% income composition-Dividends
+Top 5-1% income composition-Interest Income
+Top 1-0.5% income composition-Wages, salaries and pensions
+Top 1-0.5% income composition-Professional income
+Top 1-0.5% income composition-Business income
+Top 1-0.5% income composition-Dividends
+Top 1-0.5% income composition-Interest income
+Top 1-0.5% income composition-Investment income
+Top 1-0.5% income composition-Capital income
+Top 1-0.5% income composition-Farming income
+Top 1-0.5% income composition-Business income (industry, commerce)
+Top 1-0.5% income composition-Capital income
+Top 1-0.5% income composition-Non-commercial business income
+Top 1-0.5% income composition-Rents
+Top 1-0.5% income composition-Self-employment income
+Top 1-0.5% income composition-Entrepreneurial income
+Top 1-0.5% income composition-Rents
+Top 1-0.5% income composition-Entrepreneurial income
+Top 1-0.5% income composition-Capital income
+Top 1-0.5% income composition-Capital gains
+Top 1-0.5% income composition-Dividends
+Top 1-0.5% income composition-Interest Income
+Top 0.5-0.1% income composition-Wages, salaries and pensions
+Top 0.5-0.1% income composition-Professional income
+Top 0.5-0.1% income composition-Business income
+Top 0.5-0.1% income composition-Dividends
+Top 0.5-0.1% income composition-Interest income
+Top 0.5-0.1% income composition-Investment income
+Top 0.5-0.1% income composition-Capital income
+Top 0.5-0.1% income composition-Farming income
+Top 0.5-0.1% income composition-Business income (industry, commerce)
+Top 0.5-0.1% income composition-Capital income
+Top 0.5-0.1% income composition-Non-commercial business income
+Top 0.5-0.1% income composition-Rents
+Top 0.5-0.1% income composition-Self-employment income
+Top 0.5-0.1% income composition-Entrepreneurial income
+Top 0.5-0.1% income composition-Rents
+Top 0.5-0.1% income composition-Entrepreneurial income
+Top 0.5-0.1% income composition-Capital income
+Top 0.5-0.1% income composition-Capital gains
+Top 0.5-0.1% income composition-Dividends
+Top 0.5-0.1% income composition-Interest Income
+Top 0.1-0.01% income composition-Wages, salaries and pensions
+Top 0.1-0.01% income composition-Professional income
+Top 0.1-0.01% income composition-Business income
+Top 0.1-0.01% income composition-Dividends
+Top 0.1-0.01% income composition-Interest income
+Top 0.1-0.01% income composition-Investment income
+Top 0.1-0.01% income composition-Capital income
+Top 0.1-0.01% income composition-Farming income
+Top 0.1-0.01% income composition-Business income (industry, commerce)
+Top 0.1-0.01% income composition-Capital income
+Top 0.1-0.01% income composition-Non-commercial business income
+Top 0.1-0.01% income composition-Rents
+Top 0.1-0.01% income composition-Self-employment income
+Top 0.1-0.01% income composition-Entrepreneurial income
+Top 0.1-0.01% income composition-Rents
+Top 0.1-0.01% income composition-Entrepreneurial income
+Top 0.1-0.01% income composition-Capital income
+Top 0.1-0.01% income composition-Capital gains
+Top 0.1-0.01% income composition-Dividends
+Top 0.1-0.01% income composition-Interest Income
+Top 10% capital gains (a)
+Top 5% capital gains (a)
+Top 1% capital gains (a)
+Top 0.5% capital gains (a)
+Top 0.1% capital gains (a)
+Top 0.01% capital gains (a)
+Top 10-5% capital gains (a)
+Top 5-1% capital gains (a)
+Top 1-0.5% capital gains (a)
+Top 0.5-0.1% capital gains (a)
+Top 0.1-0.01% capital gains (a)
+Top 10% capital gains (b)
+Top 5% capital gains (b)
+Top 1% capital gains (b)
+Top 0.5% capital gains (b)
+Top 0.1% capital gains (b)
+Top 0.01% capital gains (b)
+Top 10-5% capital gains (b)
+Top 5-1% capital gains (b)
+Top 1-0.5% capital gains (b)
+Top 0.5-0.1% capital gains (b)
+Top 0.1-0.01% capital gains (b)
+National income
+National income
+National income
+National income
+National income
+National income
+Income control
+Income control-break in 1999
+Income control
+Income control-including capital gains
+Average income per tax unit
+Average income per tax unit-married couples & single adults
+Average income per tax unit-adults
+Average income per tax unit-break in 1999/2000
+Average income per tax unit
+Average income per tax unit-including capital gains
+Average income per adult
+Top 10% average income
+Top 10% average income-LAD
+Top 10% average income-married couples & single adults
+Top 10% average income-adults
+Top 5% average income
+Top 5% average income-LAD
+Top 5% average income-married couples & single adults
+Top 5% average income-adults
+Top 1% average income
+Top 1% average income-LAD
+Top 1% average income-married couples & single adults
+Top 1% average income-adults
+Top 0.5% average income
+Top 0.5% average income-LAD
+Top 0.5% average income-married couples & single adults
+Top 0.5% average income-adults
+Top 0.1% average income
+Top 0.1% average income-LAD
+Top 0.1% average income-married couples & single adults
+Top 0.1% average income-adults
+Top 0.05% average income
+Top 0.01% average income
+Top 0.01% average income-LAD
+Top 0.01% average income-married couples & single adults
+Top 0.01% average income-adults
+Bottom 90% average income
+Bottom 90% average income-LAD
+Bottom 90% average income-married couples & single adults
+Bottom 90% average income-adults
+Top 0.25% average income
+Top 0.15% average income
+Top 10-5% average income
+Top 10-5% average income-LAD
+Top 10-5% average income-married couples & single adults
+Top 10-5% average income-adults
+Top 5-1% average income
+Top 5-1% average income-LAD
+Top 5-1% average income-married couples & single adults
+Top 5-1% average income-adults
+Top 1-0.5% average income
+Top 1-0.5% average income-LAD
+Top 1-0.5% average income-married couples & single adults
+Top 1-0.5% average income-adults
+Top 0.5-0.1% average income
+Top 0.5-0.1% average income-LAD
+Top 0.5-0.1% average income-married couples & single adults
+Top 0.5-0.1% average income-adults
+Top 0.1-0.05% average income
+Top 0.05-0.01% average income
+Top 0.1-0.01% average income
+Top 0.1-0.01% average income-LAD
+Top 0.1-0.01% average income-married couples & single adults
+Top 0.1-0.01% average income-adults
+P90 income threshold
+P90 income threshold-LAD
+P90 income threshold-married couples & single adults
+P90 income threshold-adults
+P95 income threshold
+P95 income threshold-LAD
+P95 income threshold-married couples & single adults
+P95 income threshold-adults
+P99 income threshold
+P99 income threshold-LAD
+P99 income threshold-married couples & single adults
+P99 income threshold-adults
+P99.5 income threshold
+P99.5 income threshold-LAD
+P99.5 income threshold-married couples & single adults
+P99.5 income threshold-adults
+P99.9 income threshold
+P99.9 income threshold-LAD
+P99.9 income threshold-married couples & single adults
+P99.9 income threshold-adults
+P99.95 income threshold
+P99.99 income threshold
+P99.99 income threshold-LAD
+P99.99 income threshold-married couples & single adults
+P99.99 income threshold-adults
+Pareto-Lorenz coefficient
+Inverted Pareto-Lorenz coefficient
+Private wealth. Net private wealth
+Private wealth. Net private wealth
+Private wealth. Net private wealth
+Private wealth. Net private wealth
+Private wealth. Net private wealth
+Private wealth. Net private wealth
+Private wealth. Net private wealth
+Private wealth. Non-financial assets
+Private wealth. Non-financial assets
+Private wealth. Non-financial assets. Housing assets
+Private wealth. Non-financial assets. Housing assets
+Private wealth. Non-financial assets. Housing assets. Dwellings
+Private wealth. Non-financial assets. Housing assets. Dwellings
+Private wealth. Non-financial assets. Land underlying dwellings
+Private wealth. Non-financial assets. Land underlying dwellings
+Private wealth. Non-financial assets. Business assets and other non-financial assets
+Private wealth. Non-financial assets. Business assets and other non-financial assets
+Private wealth. Non-financial assets. Agricultural land
+Private wealth. Non-financial assets. Agricultural land
+Private wealth. Non-financial assets. Other domestic capital
+Private wealth. Non-financial assets. Other domestic capital
+Private wealth. Financial assets
+Private wealth. Financial assets
+Private wealth. Financial assets. Currency, deposits, bonds & loans
+Private wealth. Financial assets. Currency, deposits, bonds & loans
+Private wealth. Financial assets. Equities & fund shares
+Private wealth. Financial assets. Equities & fund shares
+Private wealth. Financial assets. Life insurance & pension funds
+Private wealth. Financial assets. Life insurance & pension funds
+Private wealth. Liabilities
+Private wealth. Liabilities
+Private wealth. Personal wealth. Net personal wealth
+Private wealth. Personal wealth. Net personal wealth
+Private wealth. Personal wealth. Non-financial assets
+Private wealth. Personal wealth. Non-financial assets
+Private wealth. Personal wealth. Non-financial assets. Housing assets
+Private wealth. Personal wealth. Non-financial assets. Housing assets
+Private wealth. Personal wealth. Non-financial assets. Housing assets. Dwellings
+Private wealth. Personal wealth. Non-financial assets. Housing assets. Dwellings
+Private wealth. Personal wealth. Non-financial assets. Housing assets. Land underlying dwellings
+Private wealth. Personal wealth. Non-financial assets. Housing assets. Land underlying dwellings
+Private wealth. Personal wealth. Non-financial assets. Business assets and other non-financial assets
+Private wealth. Personal wealth. Non-financial assets. Business assets and other non-financial assets
+Private wealth. Personal wealth. Non-financial assets. Agricultural land
+Private wealth. Personal wealth. Non-financial assets. Agricultural land
+Private wealth. Personal wealth. Non-financial assets. Other domestic capital
+Private wealth. Personal wealth. Non-financial assets. Other domestic capital
+Private wealth. Personal wealth. Financial assets
+Private wealth. Personal wealth. Financial assets
+Private wealth. Personal wealth. Financial assets. Currency, deposits, bonds & loans
+Private wealth. Personal wealth. Financial assets. Currency, deposits, bonds & loans
+Private wealth. Personal wealth. Financial assets. Equities & fund shares
+Private wealth. Personal wealth. Financial assets. Equities & fund shares
+Private wealth. Personal wealth. Financial assets. Life insurance & pension funds
+Private wealth. Personal wealth. Financial assets. Life insurance & pension funds
+Private wealth. Personal wealth. Liabilities
+Private wealth. Personal wealth. Liabilities
+Private wealth. Non-profit wealth. Net non-profit wealth
+Private wealth. Non-profit wealth. Net non-profit wealth
+Private wealth. Non-profit wealth. Non-financial assets
+Private wealth. Non-profit wealth. Non-financial assets
+Private wealth. Non-profit wealth. Non-financial assets. Housing assets
+Private wealth. Non-profit wealth. Non-financial assets. Housing assets
+Private wealth. Non-profit wealth. Non-financial assets. Housing assets. Dwellings
+Private wealth. Non-profit wealth. Non-financial assets. Housing assets. Dwellings
+Private wealth. Non-profit wealth. Non-financial assets. Housing assets. Land underlying dwellings
+Private wealth. Non-profit wealth. Non-financial assets. Housing assets. Land underlying dwellings
+Private wealth. Non-profit wealth. Non-financial assets. Business assets and other non-financial assets
+Private wealth. Non-profit wealth. Non-financial assets. Business assets and other non-financial assets
+Private wealth. Non-profit wealth. Non-financial assets. Agricultural land
+Private wealth. Non-profit wealth. Non-financial assets. Agricultural land
+Private wealth. Non-profit wealth. Non-financial assets. Other domestic capital
+Private wealth. Non-profit wealth. Non-financial assets. Other domestic capital
+Private wealth. Non-profit wealth. Financial assets
+Private wealth. Non-profit wealth. Financial assets
+Private wealth. Non-profit wealth. Financial assets. Currency, deposits, bonds & loans
+Private wealth. Non-profit wealth. Financial assets. Currency, deposits, bonds & loans
+Private wealth. Non-profit wealth. Financial assets. Equities & fund shares
+Private wealth. Non-profit wealth. Financial assets. Equities & fund shares
+Private wealth. Non-profit wealth. Financial assets. Life insurance & pension funds
+Private wealth. Non-profit wealth. Financial assets. Life insurance & pension funds
+Private wealth. Non-profit wealth. Liabilities
+Private wealth. Non-profit wealth. Liabilities
+Corporate wealth. Net corporate wealth
+Corporate wealth. Net corporate wealth
+Corporate wealth. Non-financial assets
+Corporate wealth. Non-financial assets
+Corporate wealth. Non-financial assets. Housing assets
+Corporate wealth. Non-financial assets. Housing assets
+Corporate wealth. Non-financial assets. Housing assets. Dwellings
+Corporate wealth. Non-financial assets. Housing assets. Dwellings
+Corporate wealth. Non-financial assets. Housing assets. Land underlying dwellings
+Corporate wealth. Non-financial assets. Housing assets. Land underlying dwellings
+Corporate wealth. Non-financial assets. Business assets and other non-financial assets
+Corporate wealth. Non-financial assets. Business assets and other non-financial assets
+Corporate wealth. Non-financial assets. Agricultural land
+Corporate wealth. Non-financial assets. Agricultural land
+Corporate wealth. Non-financial assets. Other domestic capital
+Corporate wealth. Non-financial assets. Other domestic capital
+Corporate wealth. Financial assets
+Corporate wealth. Financial assets
+Corporate wealth. Financial assets. Currency, deposits, bonds & loans
+Corporate wealth. Financial assets. Currency, deposits, bonds & loans
+Corporate wealth. Financial assets. Equities & fund shares
+Corporate wealth. Financial assets. Equities & fund shares
+Corporate wealth. Financial assets. Life insurance & pension funds
+Corporate wealth. Financial assets. Life insurance & pension funds
+Corporate wealth. Liabilities
+Corporate wealth. Liabilities
+Corporate wealth. Liabilities. Equity liabilities
+Corporate wealth. Liabilities. Equity liabilities
+Corporate wealth. Tobin's q
+Public wealth. Net public wealth
+Public wealth. Net public wealth
+Public wealth. Non-financial assets
+Public wealth. Non-financial assets
+Public wealth. Non-financial assets. Housing assets
+Public wealth. Non-financial assets. Housing assets
+Public wealth. Non-financial assets. Housing assets. Dwellings
+Public wealth. Non-financial assets. Housing assets. Dwellings
+Public wealth. Non-financial assets. Housing assets. Land underlying dwellings
+Public wealth. Non-financial assets. Housing assets. Land underlying dwellings
+Public wealth. Non-financial assets. Business assets and other non-financial assets
+Public wealth. Non-financial assets. Business assets and other non-financial assets
+Public wealth. Non-financial assets. Agricultural land
+Public wealth. Non-financial assets. Agricultural land
+Public wealth. Non-financial assets. Other domestic capital
+Public wealth. Non-financial assets. Other domestic capital
+Public wealth. Financial assets
+Public wealth. Financial assets
+Public wealth. Financial assets. Currency, deposits, bonds & loans
+Public wealth. Financial assets. Currency, deposits, bonds & loans
+Public wealth. Financial assets. Equities & fund shares
+Public wealth. Financial assets. Equities & fund shares
+Public wealth. Financial assets. Life insurance & pension funds
+Public wealth. Financial assets. Life insurance & pension funds
+Public wealth. Liabilities
+Public wealth. Liabilities
+National wealth. Net national wealth
+National wealth. Net national wealth
+National wealth. Agricultural land
+National wealth. Agricultural land
+National wealth. Housing
+National wealth. Housing
+National wealth. Housing. Dwellings
+National wealth. Housing. Dwellings
+National wealth. Housing. Land underlying dwellings
+National wealth. Housing. Land underlying dwellings
+National wealth. Other domestic capital
+National wealth. Other domestic capital
+National wealth. Residual wealth
+National wealth. Residual wealth
+National wealth. Net foreign assets
+National wealth. Net foreign assets
+National wealth. Gross foreign assets
+National wealth. Gross foreign assets
+National wealth. Gross foreign liabilities
+National wealth. Gross foreign liabilities
+Private saving. Net private saving
+Private saving. Net private saving
+Private saving. Gross private saving
+Private saving. Gross private saving
+Private saving. Private capital depreciation
+Private saving. Private capital depreciation
+Private saving. Personal and non profit saving. Net personal and non-profit saving
+Private saving. Personal and non profit saving. Net personal and non-profit saving
+Private saving. Personal and non profit saving. Gross personal and non-profit saving
+Private saving. Personal and non profit saving. Gross personal and non-profit saving
+Private saving. Personal and non profit saving. Personal and non-profit capital depreciation
+Private saving. Personal and non profit saving. Personal and non-profit capital depreciation
+Private saving. Personal saving. Net personal saving
+Private saving. Personal saving. Net personal saving
+Private saving. Personal saving. Gross personal saving
+Private saving. Personal saving. Gross personal saving
+Private saving. Personal saving. Personal capital depreciation
+Private saving. Personal saving. Personal capital depreciation
+Private saving. Non-profit saving. Net non-profit saving
+Private saving. Non-profit saving. Net non-profit saving
+Private saving. Non-profit saving. Gross non-profit saving
+Private saving. Non-profit saving. Gross non-profit saving
+Private saving. Non-profit saving. Non-profit capital depreciation
+Private saving. Non-profit saving. Non-profit capital depreciation
+Private saving. Corporate saving. Net corporate saving
+Private saving. Corporate saving. Net corporate saving
+Private saving. Corporate saving. Gross corporate saving
+Private saving. Corporate saving. Gross corporate saving
+Private saving. Corporate saving. Corporate capital depreciation
+Private saving. Corporate saving. Corporate capital depreciation
+Public saving. Net public saving
+Public saving. Net public saving
+Public saving. Gross public saving
+Public saving. Gross public saving
+Public saving. Public capital depreciation
+Public saving. Public capital depreciation
+National saving. Net national saving
+National saving. Net national saving
+National saving. Gross national saving
+National saving. Gross national saving
+National saving. National capital depreciation
+National saving. National capital depreciation
+National saving. Domestic investment
+National saving. Domestic investment
+National saving. Net foreign saving
+National saving. Net foreign saving
+Consumer price index
+National income price index
+Total population
+Number of adults
+Number of tax units
+Number of tax units-married couples & single adults
+Number of tax units-adults
+Number of tax returns
+Employed population

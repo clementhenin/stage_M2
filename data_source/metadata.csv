@@ -1,0 +1,12 @@
+Nom du fichier,Contenu,annees,nombre de pays ,commentaire
+GDP_OCDE_countries.csv,GDP par annee et par pays ,1961 – 2014,36,normalement propre
+inequalities_OCDE.csv,diverse mesures d'inegalites,1974 – 2014,35,complexe besoin d'investigation
+income_inequality_Deininger_Squire.csv,mesure d inegalites,1950 – 1994,38,utilisees par BARRO sorte de reference
+10_highest_percent_income_share.csv,part des revenus detenus par les 10 p les plus riches,1986 – 2014,247,donnees a traiter issues de data.worldbank.org
+20_highest_percent_income_share.csv,part des revenus detenus par les 20 p les plus riches,1986 – 2014,247,donnees a traiter issues de data.worldbank.org
+GDP_at_market_price.csv,PIB des pays,1960 – 2014,247,quelques pays manquants. Issues de data.worldbank.org
+fourth_20_percent_income_share.csv,part des revenus detenus par les 4ieme 20 p les plus riches,1986 – 2014,247,donnees a traiter issues de data.worldbank.org
+10_lowest_percent_share,part des revenus detenus par les 10 p les moins riches,1986 – 2014,247,donnees a traiter issues de data.worldbank.org
+20_lowest_percent_share,part des revenus detenus par les 20 p les moins riches,1986 – 2014,247,donnees a traiter issues de data.worldbank.org
+second_20_percent_income_share.csv,part des revenus detenus par les 2ieme 20 p les plus riches,1986 – 2014,247,donnees a traiter issues de data.worldbank.org
+third_20_percent_income_share.csv,part des revenus detenus par les 3ieme 20 p les plus riches,1986 – 2014,247,donnees a traiter issues de data.worldbank.org
