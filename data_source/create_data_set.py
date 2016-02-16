@@ -19,7 +19,7 @@ D_S = pd.read_csv("income_inequality_Deininger_Squire.csv")
 data_frame = D_S[['Country', 'Code', 'Year', 'Gini', 'Quntile 1',
                   'Quntile 2', 'Quntile 3', 'Quntile 4']]
 data_frame.columns = [
-    'country', 'code', 'year', 'gini_DS', 'Q1_DS', 'Q2_DS', 'Q3_DS', 'Q4_DS']
+    'country', 'code', 'year', 'gini_DS', 'Q4_DS', 'Q3_DS', 'Q2_DS', 'Q1_DS']
 
 data_frame['country'] = data_frame['country'].astype(str)
 data_frame['code'] = data_frame['code'].astype(str)
@@ -231,6 +231,59 @@ data_frame = result
 
 del P_20, result
 
+"""Adding the GDP growth from data.worldbank.org
+"""
+
+# Importing the data from the csv file
+P_20 = pd.read_csv("GDP_growth_WB.csv",
+                   skiprows=4, index_col=['Country Name', 'Country Code'])
+
+# selects the data and transpose it to the good format
+P_20 = P_20[[str(item) for item in range(1960, 2016)]].stack().reset_index()
+P_20.columns = ['country', 'code', 'year', 'GDP_growth_WB']
+
+# Makes sure the types of the columns are good
+P_20['country'] = P_20['country'].astype(str)
+P_20['code'] = P_20['code'].astype(str)
+P_20['year'] = P_20['year'].astype(int)
+P_20['GDP_growth_WB'] = P_20['GDP_growth_WB'].astype(float)
+
+result = pd.merge(data_frame, P_20, how='outer', on=['code', 'year'])
+result['country'] = [country_harmonize(X[0], X[1]) for X in
+                     zip(result['country_x'], result['country_y'])]
+
+del result['country_x'], result['country_y']
+data_frame = result
+
+del P_20, result
+
+
+"""Adding the GDP growth from data.worldbank.org
+"""
+
+# Importing the data from the csv file
+P_20 = pd.read_csv("GDP_PC_WB.csv",
+                   skiprows=4, index_col=['Country Name', 'Country Code'])
+
+# selects the data and transpose it to the good format
+P_20 = P_20[[str(item) for item in range(1960, 2016)]].stack().reset_index()
+P_20.columns = ['country', 'code', 'year', 'GDP_PC_WB']
+
+# Makes sure the types of the columns are good
+P_20['country'] = P_20['country'].astype(str)
+P_20['code'] = P_20['code'].astype(str)
+P_20['year'] = P_20['year'].astype(int)
+P_20['GDP_PC_WB'] = P_20['GDP_PC_WB'].astype(float)
+
+result = pd.merge(data_frame, P_20, how='outer', on=['code', 'year'])
+result['country'] = [country_harmonize(X[0], X[1]) for X in
+                     zip(result['country_x'], result['country_y'])]
+
+del result['country_x'], result['country_y']
+data_frame = result
+
+del P_20, result
+
 """Adding the GDP from OECD measures
 """
 data = pd.read_csv("GDP_OCDE_countries.csv")
@@ -301,17 +354,19 @@ selected_cols = ["Country",
                  "Top 0.1% income share-including capital gains",
                  "Top 0.05% income share-including capital gains",
                  "Top 0.01% income share-including capital gains",
-                 "National income",
-                 "Top 10% average income",
-                 "Top 5% average income",
-                 "Top 1% average income",
-                 "Top 0.5% average income",
-                 "Top 0.1% average income",
-                 "Top 0.05% average income",
-                 "Top 0.01% average income",
-                 "Bottom 90% average income",
-                 "Top 0.25% average income",
-                 "Top 0.15% average income"]
+                 "National income"
+                #  ,
+                #  "Top 10% average income",
+                #  "Top 5% average income",
+                #  "Top 1% average income",
+                #  "Top 0.5% average income",
+                #  "Top 0.1% average income",
+                #  "Top 0.05% average income",
+                #  "Top 0.01% average income",
+                #  "Bottom 90% average income",
+                #  "Top 0.25% average income",
+                #  "Top 0.15% average income"
+                 ]
 
 data = df.parse("Series-layout A", skiprows=1)
 data = data[selected_cols]
@@ -324,17 +379,19 @@ data.columns = ["country",
                 "Pr1_WID",
                 "top_0.05_income_share_WID",
                 "top_0.01_income_share_WID",
-                "national_income_WID",
-                "D1_average_WID",
-                "V1_average_WID",
-                "P1_average_WID",
-                "top_0.5_average_income_WID",
-                "Pr_average_WID",
-                "top_0.05_average_WID",
-                "top_0.01_average_WID",
-                "bottom90_average_income_WID",
-                "top_0.25_average_WID",
-                "top_0.15_average_WID"]
+                "national_income_WID"
+                # ,
+                # "D1_average_WID",
+                # "V1_average_WID",
+                # "P1_average_WID",
+                # "top_0.5_average_income_WID",
+                # "Pr_average_WID",
+                # "top_0.05_average_WID",
+                # "top_0.01_average_WID",
+                # "bottom90_average_income_WID",
+                # "top_0.25_average_WID",
+                # "top_0.15_average_WID"
+                ]
 
 data = pd.merge(data, code_country_dict, how='left', on='country')
 
