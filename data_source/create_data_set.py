@@ -405,3 +405,27 @@ del data_frame['country_x'], data_frame['country_y']
 # del data
 
 data_frame.sort(['code', 'year']).to_csv("income_GDP_data.csv", index=False)
+
+"""Adding the data from Penn World Table
+"""
+df = pd.ExcelFile('GDPs_PWT.xlsx')
+selected_cols = ["countrycode",
+                 "year",
+                 "rgdpe",
+                 "pop"]
+
+data = df.parse("Data")
+data = data[selected_cols]
+
+data["pop"] = data['rgdpe'] / data['pop']
+
+data.columns = ["code",
+                "year",
+                "GDP_PWT",
+                "GDP_PC_PWT"]
+
+data_frame = pd.merge(data_frame, data, how='outer', on=['code', 'year'])
+
+del data
+
+data_frame.sort(['code', 'year']).to_csv("income_GDP_data.csv", index=False)

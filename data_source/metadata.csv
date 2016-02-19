@@ -13,3 +13,10 @@ third_20_percent_income_share.csv,part des revenus detenus par les 3ieme 20 p le
 GDP_growth_WB,taux de croissance annuel en % ,,,donnees a traiter issues de data.worldbank.org
 WID-report,données largement utilisées dans Piketty,0-2010,,http://www.wid.world/#Database:
 GDP_PC_WB,GDP par habitant ,1960 – 2014,247,donnees a traiter issues de data.worldbank.org
+GDPs_PWT,données sur les PIB et les monnaies,1950 – 2014,pleins,http://www.rug.nl/research/ggdc/data/pwt/pwt-8.1
+governments_consumption_over_GDP,Dépenses du gouvernement en % du PIB,??,pleins,http://data.worldbank.org/indicator/NE.CON.GOVT.ZS
+inflation_consumer_price_WB,Consumer price inflation en % annuel,??,pleins,http://data.worldbank.org/indicator/FP.CPI.TOTL.ZG
+fertility_rate,taux de fertilité,??,??,http://data.worldbank.org/indicator/SP.DYN.TFRT.IN
+trade_percentage_GDP,trade en pourcentage du PIB,?? ,??,http://data.worldbank.org/indicator/NE.TRD.GNFS.ZS
+barro_lee_education_data,données sur l'éducation issues de l'étude faite par Barro et Lee,??,??,http://www.barrolee.com/data/BL_v2.1/BL2013_MF1599_v2.1.csv
+democracy_index,Indice de democracy,1900-2000,~150,https://www.prio.org/Data/Governance/Vanhanens-index-of-democracy/Polyarchy-Dataset-Downloads/

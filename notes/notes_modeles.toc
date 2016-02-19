@@ -1,0 +1,7 @@
+\select@language {french}
+\contentsline {section}{\numberline {1}Quelques mod\IeC {\`e}les liant croissance et in\IeC {\'e}galit\IeC {\'e}s dans les revues \IeC {\'e}conomiques}{1}{section.1}
+\contentsline {subsection}{\numberline {1.1}Les grands types de mod\IeC {\`e}les}{1}{subsection.1.1}
+\contentsline {subsection}{\numberline {1.2}La courbe de Kuznets - 1955}{2}{subsection.1.2}
+\contentsline {subsection}{\numberline {1.3}Inequality and growth in a Panel of Countries}{3}{subsection.1.3}
+\contentsline {subsection}{\numberline {1.4}The determinants of Economic Growth in European Regions}{4}{subsection.1.4}
+\contentsline {subsection}{\numberline {1.5}A Reassessment of the Relationship Between Inequality and Growth}{4}{subsection.1.5}
