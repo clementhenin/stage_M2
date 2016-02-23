@@ -46,6 +46,7 @@ CHN,China
 CIV,Ivory Coast
 CMR,Cameroon
 COD,Congo
+COG,Congo-Brazzaville
 COK,Cook Islands
 COL,Colombia
 COM,Comoros
@@ -56,6 +57,7 @@ CUW,Curaçao
 CXR,Christmas Island
 CYM,Cayman Islands
 CYP,Cyprus
+CSK,Czechoslovakia
 CZE,Czech Republic
 DEU,Germany
 DJI,Djibouti
@@ -75,7 +77,7 @@ FJI,Fiji
 FLK,Falkland Islands (Malvinas)
 FRA,France
 FRO,Faroe Islands
-FSM,Micronesia
+FSM,Federated States of Micronesia
 GAB,Gabon
 GBR,United Kingdom
 GEO,Georgia
@@ -120,9 +122,10 @@ KGZ,Kyrgyzstan
 KHM,Cambodia
 KIR,Kiribati
 KNA,Saint Kitts and Nevis
-KOR,Korea
+KOR,South Korea
+KSV,Kosovo
 KWT,Kuwait
-LAO,Lao People's Democratic Republic
+LAO,Laos
 LBN,Lebanon
 LBR,Liberia
 LBY,Libya
@@ -137,7 +140,7 @@ MAC,Macao
 MAF,Saint Martin (French part)
 MAR,Morocco
 MCO,Monaco
-MDA,Moldova
+MDA,Republic of Moldova
 MDG,Madagascar
 MDV,Maldives
 MEX,Mexico
@@ -179,7 +182,7 @@ PLW,Palau
 PNG,Papua New Guinea
 POL,Poland
 PRI,Puerto Rico
-PRK,Korea
+PRK,North Korea
 PRT,Portugal
 PRY,Paraguay
 PSE,Palestine
@@ -232,18 +235,19 @@ UGA,Uganda
 UKR,Ukraine
 UMI,United States Minor Outlying Islands
 URY,Uruguay
-USA,United States
+USA,United States of America
 UZB,Uzbekistan
 VAT,Holy See (Vatican City State)
 VCT,Saint Vincent and the Grenadines
 VEN,Venezuela
 VGB,Virgin Islands
 VIR,Virgin Islands
-VNM,Viet Nam
+VNM,Socialist Republic of Vietnam
 VUT,Vanuatu
 WLF,Wallis and Futuna
 WSM,Samoa
-YEM,Yemen
+YEM,Republic of Yemen
+YUG,Yugoslavia
 ZAF,South Africa
 ZMB,Zambia
 ZWE,Zimbabwe

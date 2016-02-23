@@ -1,22 +1,26 @@
 Nom du fichier,Contenu,annees,nombre de pays ,commentaire
 GDP_OCDE_countries.csv,GDP par annee et par pays ,1961 – 2014,36,normalement propre
 inequalities_OCDE.csv,diverse mesures d'inegalites,1974 – 2014,35,complexe besoin d'investigation
-income_inequality_Deininger_Squire.csv,mesure d inegalites,1950 – 1994,38,utilisees par BARRO sorte de reference
+income_inequality_Deininger_Squire.csv,mesure d inegalites (gini et quantiles). Changements de certains codes erron�s. ,1950 – 1994,38,utilisees par BARRO sorte de reference
 10_highest_percent_income_share.csv,part des revenus detenus par les 10 p les plus riches,1986 – 2014,247,donnees a traiter issues de data.worldbank.org
 20_highest_percent_income_share.csv,part des revenus detenus par les 20 p les plus riches,1986 – 2014,247,donnees a traiter issues de data.worldbank.org
-GDP_at_market_price.csv,PIB des pays (assez complet),1960 – 2014,247,quelques pays manquants. Issues de data.worldbank.org
+GDP_at_market_price.csv,"PIB des pays (assez complet), données sur les channels island removed",1960 – 2014,247,quelques pays manquants. Issues de data.worldbank.org
 fourth_20_percent_income_share.csv,part des revenus detenus par les 4ieme 20 p les plus riches,1986 – 2014,247,donnees a traiter issues de data.worldbank.org
 10_lowest_percent_share,part des revenus detenus par les 10 p les moins riches,1986 – 2014,247,donnees a traiter issues de data.worldbank.org
 20_lowest_percent_share,part des revenus detenus par les 20 p les moins riches,1986 – 2014,247,donnees a traiter issues de data.worldbank.org
 second_20_percent_income_share.csv,part des revenus detenus par les 2ieme 20 p les plus riches,1986 – 2014,247,donnees a traiter issues de data.worldbank.org
 third_20_percent_income_share.csv,part des revenus detenus par les 3ieme 20 p les plus riches,1986 – 2014,247,donnees a traiter issues de data.worldbank.org
-GDP_growth_WB,taux de croissance annuel en % ,,,donnees a traiter issues de data.worldbank.org
+GDP_growth_WB,"taux de croissance annuel en % , données sur les channels island removed",,,donnees a traiter issues de data.worldbank.org
 WID-report,données largement utilisées dans Piketty,0-2010,,http://www.wid.world/#Database:
 GDP_PC_WB,GDP par habitant ,1960 – 2014,247,donnees a traiter issues de data.worldbank.org
 GDPs_PWT,données sur les PIB et les monnaies,1950 – 2014,pleins,http://www.rug.nl/research/ggdc/data/pwt/pwt-8.1
 governments_consumption_over_GDP,Dépenses du gouvernement en % du PIB,??,pleins,http://data.worldbank.org/indicator/NE.CON.GOVT.ZS
 inflation_consumer_price_WB,Consumer price inflation en % annuel,??,pleins,http://data.worldbank.org/indicator/FP.CPI.TOTL.ZG
-fertility_rate,taux de fertilité,??,??,http://data.worldbank.org/indicator/SP.DYN.TFRT.IN
+fertility_rate,"taux de fertilité, données sur les channels island removed",??,??,http://data.worldbank.org/indicator/SP.DYN.TFRT.IN
 trade_percentage_GDP,trade en pourcentage du PIB,?? ,??,http://data.worldbank.org/indicator/NE.TRD.GNFS.ZS
 barro_lee_education_data,données sur l'éducation issues de l'étude faite par Barro et Lee,??,??,http://www.barrolee.com/data/BL_v2.1/BL2013_MF1599_v2.1.csv
-democracy_index,Indice de democracy,1900-2000,~150,https://www.prio.org/Data/Governance/Vanhanens-index-of-democracy/Polyarchy-Dataset-Downloads/
+democracy_index,"Indice de democracy, modifiﾎ pour coller avec les autres donnﾎes (tous les pays n'existant plus ont ﾎtﾎ supprimﾎs de la base)",1900-2000,~150,https://www.prio.org/Data/Governance/Vanhanens-index-of-democracy/Polyarchy-Dataset-Downloads/
+country_continent_code.csv,Liste des pays contenant les codes ISO 3166 alpha-2/3 et numerique le nom en anglais et le nom complet en anglais ainsi que le code du continent auquel le pays appartient,,,http://www.geekality.net/2011/08/21/country-names-continent-names-and-iso-3166-codes-for-mysql/
+known_invalid_codes,Liste des codes apparaissant (notamment) dans les bases de données issues de worlddatabase et ne correspondant pas à des pays (ARB : Arab world),,,
+imports_good_service_%GDP,Part des imports dans le PIB (en%),1960 – 2010,? ,http://data.worldbank.org/indicator/NE.IMP.GNFS.ZS
+exports_good_service_%GDP,Part des export dans le PIB (en%),,,http://data.worldbank.org/indicator/NE.EXP.GNFS.ZS

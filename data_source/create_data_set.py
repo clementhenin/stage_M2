@@ -3,6 +3,10 @@ import pdb
 
 code_country_dict = pd.read_csv("country_code_list.csv")
 
+valid_codes = code_country_dict['code'].tolist()
+known_invalid_codes = pd.read_csv("known_invalid_codes.csv",
+                                  names=['code'])['code'].tolist()
+
 
 def country_harmonize(x, y):
     if type(x) == str:
@@ -16,273 +20,289 @@ data_frame = pd.DataFrame()
 """Adding the data from Deininger and Squire
 """
 D_S = pd.read_csv("income_inequality_Deininger_Squire.csv")
-data_frame = D_S[['Country', 'Code', 'Year', 'Gini', 'Quntile 1',
+data_frame = D_S[['Code', 'Year', 'Gini', 'Quntile 1',
                   'Quntile 2', 'Quntile 3', 'Quntile 4']]
 data_frame.columns = [
-    'country', 'code', 'year', 'gini_DS', 'Q4_DS', 'Q3_DS', 'Q2_DS', 'Q1_DS']
+    'code', 'year', 'gini_DS', 'Q4_DS', 'Q3_DS', 'Q2_DS', 'Q1_DS']
 
-data_frame['country'] = data_frame['country'].astype(str)
-data_frame['code'] = data_frame['code'].astype(str)
-data_frame['year'] = data_frame['year'].astype(int)
-data_frame['gini_DS'] = data_frame['gini_DS'].astype(float)
-data_frame['Q1_DS'] = data_frame['Q1_DS'].astype(float)
-data_frame['Q2_DS'] = data_frame['Q2_DS'].astype(float)
-data_frame['Q3_DS'] = data_frame['Q3_DS'].astype(float)
-data_frame['Q4_DS'] = data_frame['Q4_DS'].astype(float)
+data_frame.loc[:, 'code'] = data_frame['code'].astype(str)
+data_frame.loc[:, 'year'] = data_frame['year'].astype(int)
+data_frame.loc[:, 'gini_DS'] = data_frame['gini_DS'].astype(float)
+data_frame.loc[:, 'Q1_DS'] = data_frame['Q1_DS'].astype(float)
+data_frame.loc[:, 'Q2_DS'] = data_frame['Q2_DS'].astype(float)
+data_frame.loc[:, 'Q3_DS'] = data_frame['Q3_DS'].astype(float)
+data_frame.loc[:, 'Q4_DS'] = data_frame['Q4_DS'].astype(float)
 
+error = data_frame.query(
+    "code not in " + str(valid_codes + known_invalid_codes))
+if len(error) > 0:
+    print("Warning data from Deininger and Squire removed with country codes : ",
+          set(error['code']))
+data_frame = data_frame.query("code in " + str(valid_codes))
 
 """ Adding the 10 highest % from data.worldbank.org
 """
 # Importing the data from the csv file
 P_10 = pd.read_csv("10_highest_percent_income_share.csv",
-                   skiprows=4, index_col=['Country Name', 'Country Code'])
+                   skiprows=4, index_col=['Country Code'])
 
 # selects the data and transpose it to the good format
 P_10 = P_10[[str(item) for item in range(1960, 2016)]].stack().reset_index()
-P_10.columns = ['country', 'code', 'year', 'D1_WB']
+P_10.columns = ['code', 'year', 'D1_WB']
 
 # Makes sure the types of the columns are good
-P_10['country'] = P_10['country'].astype(str)
 P_10['code'] = P_10['code'].astype(str)
 P_10['year'] = P_10['year'].astype(int)
 P_10['D1_WB'] = P_10['D1_WB'].astype(float)
 
-result = pd.merge(data_frame, P_10, how='outer', on=['code', 'year'])
-result['country'] = [country_harmonize(X[0], X[1]) for X in
-                     zip(result['country_x'], result['country_y'])]
+data_frame = pd.merge(data_frame, P_10, how='outer', on=['code', 'year'])
 
-del result['country_x'], result['country_y']
-data_frame = result
+error = data_frame.query(
+    "code not in " + str(valid_codes + known_invalid_codes))
+if len(error) > 0:
+    print("Warning data from 10_highest_percent_income_share removed with country codes : ",
+          set(error['code']))
+data_frame = data_frame.query("code in " + str(valid_codes))
 
-del P_10, result
+del P_10
 
 """ Adding the 10 lowest % from data.worldbank.org
 """
 # Importing the data from the csv file
 P_10 = pd.read_csv("10_lowest_percent_income_share.csv",
-                   skiprows=4, index_col=['Country Name', 'Country Code'])
+                   skiprows=4, index_col=['Country Code'])
 
 # selects the data and transpose it to the good format
 P_10 = P_10[[str(item) for item in range(1960, 2016)]].stack().reset_index()
-P_10.columns = ['country', 'code', 'year', 'D9_WB']
+P_10.columns = ['code', 'year', 'D9_WB']
 
 # Makes sure the types of the columns are good
-P_10['country'] = P_10['country'].astype(str)
 P_10['code'] = P_10['code'].astype(str)
 P_10['year'] = P_10['year'].astype(int)
 P_10['D9_WB'] = P_10['D9_WB'].astype(float)
 
-result = pd.merge(data_frame, P_10, how='outer', on=['code', 'year'])
-result['country'] = [country_harmonize(X[0], X[1]) for X in
-                     zip(result['country_x'], result['country_y'])]
+data_frame = pd.merge(data_frame, P_10, how='outer', on=['code', 'year'])
 
-del result['country_x'], result['country_y']
-data_frame = result
+del P_10
 
-del P_10, result
+error = data_frame.query(
+    "code not in " + str(valid_codes + known_invalid_codes))
+if len(error) > 0:
+    print("Warning data from 10_lowest_percent_income_share removed with country codes : ",
+          set(error['code']))
+data_frame = data_frame.query("code in " + str(valid_codes))
+
 
 """ Adding the 20 highest % from data.worldbank.org
 """
 # Importing the data from the csv file
 P_20 = pd.read_csv("first_20_percent_income_share.csv",
-                   skiprows=4, index_col=['Country Name', 'Country Code'])
+                   skiprows=4, index_col=['Country Code'])
 
 # selects the data and transpose it to the good format
 P_20 = P_20[[str(item) for item in range(1960, 2016)]].stack().reset_index()
-P_20.columns = ['country', 'code', 'year', 'QU1_WB']
+P_20.columns = ['code', 'year', 'QU1_WB']
 
 # Makes sure the types of the columns are good
-P_20['country'] = P_20['country'].astype(str)
 P_20['code'] = P_20['code'].astype(str)
 P_20['year'] = P_20['year'].astype(int)
 P_20['QU1_WB'] = P_20['QU1_WB'].astype(float)
 
-result = pd.merge(data_frame, P_20, how='outer', on=['code', 'year'])
-result['country'] = [country_harmonize(X[0], X[1]) for X in
-                     zip(result['country_x'], result['country_y'])]
+data_frame = pd.merge(data_frame, P_20, how='outer', on=['code', 'year'])
 
-del result['country_x'], result['country_y']
-data_frame = result
+del P_20
 
-del P_20, result
+error = data_frame.query(
+    "code not in " + str(valid_codes + known_invalid_codes))
+if len(error) > 0:
+    print("Warning data from first_20_percent_income_share removed with country codes : ",
+          set(error['code']))
+data_frame = data_frame.query("code in " + str(valid_codes))
 
 """ Adding the second 20 highest % from data.worldbank.org
 """
 # Importing the data from the csv file
 P_20 = pd.read_csv("second_20_percent_income_share.csv",
-                   skiprows=4, index_col=['Country Name', 'Country Code'])
+                   skiprows=4, index_col=['Country Code'])
 
 # selects the data and transpose it to the good format
 P_20 = P_20[[str(item) for item in range(1960, 2016)]].stack().reset_index()
-P_20.columns = ['country', 'code', 'year', 'QU2_WB']
+P_20.columns = ['code', 'year', 'QU2_WB']
 
 # Makes sure the types of the columns are good
-P_20['country'] = P_20['country'].astype(str)
 P_20['code'] = P_20['code'].astype(str)
 P_20['year'] = P_20['year'].astype(int)
 P_20['QU2_WB'] = P_20['QU2_WB'].astype(float)
 
-result = pd.merge(data_frame, P_20, how='outer', on=['code', 'year'])
-result['country'] = [country_harmonize(X[0], X[1]) for X in
-                     zip(result['country_x'], result['country_y'])]
+data_frame = pd.merge(data_frame, P_20, how='outer', on=['code', 'year'])
 
-del result['country_x'], result['country_y']
-data_frame = result
+del P_20
 
-del P_20, result
+error = data_frame.query(
+    "code not in " + str(valid_codes + known_invalid_codes))
+if len(error) > 0:
+    print("Warning data from second_20_percent_income_share removed with country codes : ",
+          set(error['code']))
+data_frame = data_frame.query("code in " + str(valid_codes))
 
 """ Adding the third 20 highest % from data.worldbank.org
 """
 # Importing the data from the csv file
 P_20 = pd.read_csv("third_20_percent_income_share.csv",
-                   skiprows=4, index_col=['Country Name', 'Country Code'])
+                   skiprows=4, index_col=['Country Code'])
 
 # selects the data and transpose it to the good format
 P_20 = P_20[[str(item) for item in range(1960, 2016)]].stack().reset_index()
-P_20.columns = ['country', 'code', 'year', 'QU3_WB']
+P_20.columns = ['code', 'year', 'QU3_WB']
 
 # Makes sure the types of the columns are good
-P_20['country'] = P_20['country'].astype(str)
 P_20['code'] = P_20['code'].astype(str)
 P_20['year'] = P_20['year'].astype(int)
 P_20['QU3_WB'] = P_20['QU3_WB'].astype(float)
 
-result = pd.merge(data_frame, P_20, how='outer', on=['code', 'year'])
-result['country'] = [country_harmonize(X[0], X[1]) for X in
-                     zip(result['country_x'], result['country_y'])]
+data_frame = pd.merge(data_frame, P_20, how='outer', on=['code', 'year'])
 
-del result['country_x'], result['country_y']
-data_frame = result
+del P_20
 
-del P_20, result
+error = data_frame.query(
+    "code not in " + str(valid_codes + known_invalid_codes))
+if len(error) > 0:
+    print("Warning data from third_20_percent_income_share removed with country codes : ",
+          set(error['code']))
+data_frame = data_frame.query("code in " + str(valid_codes))
 
 """ Adding the fourth 20 highest % from data.worldbank.org
 """
 # Importing the data from the csv file
 P_20 = pd.read_csv("fourth_20_percent_income_share.csv",
-                   skiprows=4, index_col=['Country Name', 'Country Code'])
+                   skiprows=4, index_col=['Country Code'])
 
 # selects the data and transpose it to the good format
 P_20 = P_20[[str(item) for item in range(1960, 2016)]].stack().reset_index()
-P_20.columns = ['country', 'code', 'year', 'QU4_WB']
+P_20.columns = ['code', 'year', 'QU4_WB']
 
 # Makes sure the types of the columns are good
-P_20['country'] = P_20['country'].astype(str)
 P_20['code'] = P_20['code'].astype(str)
 P_20['year'] = P_20['year'].astype(int)
 P_20['QU4_WB'] = P_20['QU4_WB'].astype(float)
 
-result = pd.merge(data_frame, P_20, how='outer', on=['code', 'year'])
-result['country'] = [country_harmonize(X[0], X[1]) for X in
-                     zip(result['country_x'], result['country_y'])]
+data_frame = pd.merge(data_frame, P_20, how='outer', on=['code', 'year'])
 
-del result['country_x'], result['country_y']
-data_frame = result
+del P_20
 
-del P_20, result
+error = data_frame.query(
+    "code not in " + str(valid_codes + known_invalid_codes))
+if len(error) > 0:
+    print("Warning data from fourth_20_percent_income_share removed with country codes : ",
+          set(error['code']))
+data_frame = data_frame.query("code in " + str(valid_codes))
 
 """ Adding the fifth 20 highest % from data.worldbank.org
 """
 # Importing the data from the csv file
 P_20 = pd.read_csv("fifth_20_percent_income_share.csv",
-                   skiprows=4, index_col=['Country Name', 'Country Code'])
+                   skiprows=4, index_col=['Country Code'])
 
 # selects the data and transpose it to the good format
 P_20 = P_20[[str(item) for item in range(1960, 2016)]].stack().reset_index()
-P_20.columns = ['country', 'code', 'year', 'QU5_WB']
+P_20.columns = ['code', 'year', 'QU5_WB']
 
 # Makes sure the types of the columns are good
-P_20['country'] = P_20['country'].astype(str)
 P_20['code'] = P_20['code'].astype(str)
 P_20['year'] = P_20['year'].astype(int)
 P_20['QU5_WB'] = P_20['QU5_WB'].astype(float)
 
-result = pd.merge(data_frame, P_20, how='outer', on=['code', 'year'])
-result['country'] = [country_harmonize(X[0], X[1]) for X in
-                     zip(result['country_x'], result['country_y'])]
+data_frame = pd.merge(data_frame, P_20, how='outer', on=['code', 'year'])
 
-del result['country_x'], result['country_y']
-data_frame = result
+del P_20
 
-del P_20, result
+error = data_frame.query(
+    "code not in " + str(valid_codes + known_invalid_codes))
+if len(error) > 0:
+    print("Warning data from fifth_20_percent_income_share removed with country codes : ",
+          set(error['code']))
+data_frame = data_frame.query("code in " + str(valid_codes))
 
 """ Adding the GDP at market price from data.worldbank.org
 """
 # Importing the data from the csv file
 P_20 = pd.read_csv("GDP_at_market_prices.csv",
-                   skiprows=4, index_col=['Country Name', 'Country Code'])
+                   skiprows=4, index_col=['Country Code'])
 
 # selects the data and transpose it to the good format
 P_20 = P_20[[str(item) for item in range(1960, 2016)]].stack().reset_index()
-P_20.columns = ['country', 'code', 'year', 'GDP_MP_WB']
+P_20.columns = ['code', 'year', 'GDP_MP_WB']
 
 # Makes sure the types of the columns are good
-P_20['country'] = P_20['country'].astype(str)
 P_20['code'] = P_20['code'].astype(str)
 P_20['year'] = P_20['year'].astype(int)
 P_20['GDP_MP_WB'] = P_20['GDP_MP_WB'].astype(float)
 
-result = pd.merge(data_frame, P_20, how='outer', on=['code', 'year'])
-result['country'] = [country_harmonize(X[0], X[1]) for X in
-                     zip(result['country_x'], result['country_y'])]
+data_frame = pd.merge(data_frame, P_20, how='outer', on=['code', 'year'])
 
-del result['country_x'], result['country_y']
-data_frame = result
+del P_20
 
-del P_20, result
+error = data_frame.query(
+    "code not in " + str(valid_codes + known_invalid_codes))
+if len(error) > 0:
+    print("Warning data from GDP_at_market_prices removed with country codes : ",
+          set(error['code']))
+data_frame = data_frame.query("code in " + str(valid_codes))
 
 """Adding the GDP growth from data.worldbank.org
 """
 
 # Importing the data from the csv file
 P_20 = pd.read_csv("GDP_growth_WB.csv",
-                   skiprows=4, index_col=['Country Name', 'Country Code'])
+                   skiprows=4, index_col=['Country Code'])
 
 # selects the data and transpose it to the good format
 P_20 = P_20[[str(item) for item in range(1960, 2016)]].stack().reset_index()
-P_20.columns = ['country', 'code', 'year', 'GDP_growth_WB']
+P_20.columns = ['code', 'year', 'GDP_growth_WB']
 
 # Makes sure the types of the columns are good
-P_20['country'] = P_20['country'].astype(str)
 P_20['code'] = P_20['code'].astype(str)
 P_20['year'] = P_20['year'].astype(int)
 P_20['GDP_growth_WB'] = P_20['GDP_growth_WB'].astype(float)
 
-result = pd.merge(data_frame, P_20, how='outer', on=['code', 'year'])
-result['country'] = [country_harmonize(X[0], X[1]) for X in
-                     zip(result['country_x'], result['country_y'])]
+data_frame = pd.merge(data_frame, P_20, how='outer', on=['code', 'year'])
 
-del result['country_x'], result['country_y']
-data_frame = result
+del P_20
 
-del P_20, result
-
+error = data_frame.query(
+    "code not in " + str(valid_codes + known_invalid_codes))
+if len(error) > 0:
+    print("Warning data from GDP_growth_WB removed with country codes : ",
+          set(error['code']))
+data_frame = data_frame.query("code in " + str(valid_codes))
 
 """Adding the GDP growth from data.worldbank.org
 """
 
 # Importing the data from the csv file
 P_20 = pd.read_csv("GDP_PC_WB.csv",
-                   skiprows=4, index_col=['Country Name', 'Country Code'])
+                   skiprows=4, index_col=['Country Code'])
 
 # selects the data and transpose it to the good format
 P_20 = P_20[[str(item) for item in range(1960, 2016)]].stack().reset_index()
-P_20.columns = ['country', 'code', 'year', 'GDP_PC_WB']
+P_20.columns = ['code', 'year', 'GDP_PC_WB']
 
 # Makes sure the types of the columns are good
-P_20['country'] = P_20['country'].astype(str)
 P_20['code'] = P_20['code'].astype(str)
 P_20['year'] = P_20['year'].astype(int)
 P_20['GDP_PC_WB'] = P_20['GDP_PC_WB'].astype(float)
 
-result = pd.merge(data_frame, P_20, how='outer', on=['code', 'year'])
-result['country'] = [country_harmonize(X[0], X[1]) for X in
-                     zip(result['country_x'], result['country_y'])]
+data_frame = pd.merge(data_frame, P_20, how='outer', on=['code', 'year'])
 
-del result['country_x'], result['country_y']
-data_frame = result
+del P_20
 
-del P_20, result
+error = data_frame.query(
+    "code not in " + str(valid_codes + known_invalid_codes))
+if len(error) > 0:
+    print("Warning data from GDP_PC_WB removed with country codes : ",
+          set(error['code']))
+data_frame = data_frame.query("code in " + str(valid_codes))
+
 
 """Adding the GDP from OECD measures
 """
@@ -302,6 +322,13 @@ selected["GDP_CAP_OECD"] = selected["GDP_CAP_OECD"].astype(float)
 data_frame = pd.merge(data_frame, selected, how='outer', on=['code', 'year'])
 
 del selected, data
+
+error = data_frame.query(
+    "code not in " + str(valid_codes + known_invalid_codes))
+if len(error) > 0:
+    print("Warning data from GDP_OCDE_countries removed with country codes : ",
+          set(error['code']))
+data_frame = data_frame.query("code in " + str(valid_codes))
 
 """Adding the GDP from OECD measures
 """
@@ -341,10 +368,16 @@ data_frame = pd.merge(data_frame, selected, how='outer', on=['code', 'year'])
 
 del selected, data
 
+error = data_frame.query(
+    "code not in " + str(valid_codes + known_invalid_codes))
+if len(error) > 0:
+    print("Warning data from inequalities_OCDE removed with country codes : ",
+          set(error['code']))
+data_frame = data_frame.query("code in " + str(valid_codes))
 
 """Adding the data of World Income database
 """
-df = pd.ExcelFile('WID-report.xlsx')
+data = pd.read_csv('WID_extract.csv', skiprows=1)
 selected_cols = ["Country",
                  "Year",
                  "Top 10% income share-including capital gains",
@@ -368,7 +401,6 @@ selected_cols = ["Country",
                 #  "Top 0.15% average income"
                  ]
 
-data = df.parse("Series-layout A", skiprows=1)
 data = data[selected_cols]
 data.columns = ["country",
                 "year",
@@ -393,18 +425,28 @@ data.columns = ["country",
                 # "top_0.15_average_WID"
                 ]
 
-data = pd.merge(data, code_country_dict, how='left', on='country')
+data["country"] = data["country"].astype(str)
+data["year"] = data["year"].astype(int)
+data["D1_WID"] = data["D1_WID"].astype(float)
+data["V1_WID"] = data["V1_WID"].astype(float)
+data["P1_WID"] = data["P1_WID"].astype(float)
+data["top_0.5_income_share_WID"] = data["top_0.5_income_share_WID"].astype(float)
+data["Pr1_WID"] = data["Pr1_WID"].astype(float)
+data["top_0.05_income_share_WID"] = data["top_0.05_income_share_WID"].astype(float)
+data["top_0.01_income_share_WID"] = data["top_0.01_income_share_WID"].astype(float)
+data["national_income_WID"] = data["national_income_WID"].astype(float)
 
+data = pd.merge(data, code_country_dict, how='left', on='country')
 data_frame = pd.merge(
     data_frame, data, how='outer', on=['code', 'year'])
 
-data_frame['country'] = [country_harmonize(X[0], X[1]) for X in
-                     zip(data_frame['country_x'], data_frame['country_y'])]
+error = data_frame.query(
+    "code not in " + str(valid_codes + known_invalid_codes))
+if len(error) > 0:
+    print("Warning data from WID-report removed with country codes : ",
+          set(error['code']))
+data_frame = data_frame.query("code in " + str(valid_codes))
 
-del data_frame['country_x'], data_frame['country_y']
-# del data
-
-data_frame.sort(['code', 'year']).to_csv("income_GDP_data.csv", index=False)
 
 """Adding the data from Penn World Table
 """
@@ -427,5 +469,12 @@ data.columns = ["code",
 data_frame = pd.merge(data_frame, data, how='outer', on=['code', 'year'])
 
 del data
+
+error = data_frame.query(
+    "code not in " + str(valid_codes + known_invalid_codes))
+if len(error) > 0:
+    print("Warning data from GDPs_PWT removed with country codes : ",
+          set(error['code']))
+data_frame = data_frame.query("code in " + str(valid_codes))
 
 data_frame.sort(['code', 'year']).to_csv("income_GDP_data.csv", index=False)

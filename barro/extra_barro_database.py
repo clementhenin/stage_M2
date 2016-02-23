@@ -1,5 +1,7 @@
 import pandas as pd
 import pdb
+from scipy.integrate import trapz
+import numpy as np
 
 PATH_TO_DATA = "/home/clement/Documents/stage_M2/data_source/"
 
@@ -296,9 +298,11 @@ exports = pd.read_csv(PATH_TO_DATA + "exports_good_service_%GDP.csv",
                       skiprows=4, index_col=['Country Code'])
 
 # selects the data and transpose it to the good format
-imports = imports[[str(item) for item in range(1960, 2016)]].stack().reset_index()
+imports = imports[[str(item)
+                   for item in range(1960, 2016)]].stack().reset_index()
 imports.columns = ['code', 'year', 'imports_%GDP']
-exports = exports[[str(item) for item in range(1960, 2016)]].stack().reset_index()
+exports = exports[[str(item)
+                   for item in range(1960, 2016)]].stack().reset_index()
 exports.columns = ['code', 'year', 'exports_%GDP']
 
 # Makes sure the types of the columns are good
@@ -331,4 +335,279 @@ if len(error) > 0:
 data_frame = data_frame.query("code in " + str(valid_codes))
 
 
-data_frame.sort(['code', 'year']).to_csv("barro_data.csv", index=False)
+"""Computing a new gini coefficient from other data
+"""
+
+# Adding the data of World Income database
+
+data = pd.read_csv(PATH_TO_DATA + 'WID_extract.csv', skiprows=1)
+selected_cols = ["Country",
+                 "Year",
+                 "Top 10% income share-including capital gains",
+                 "Top 5% income share-including capital gains",
+                 "Top 1% income share-including capital gains",
+                 "Top 0.5% income share-including capital gains",
+                 "Top 0.1% income share-including capital gains",
+                 "Top 0.05% income share-including capital gains",
+                 "Top 0.01% income share-including capital gains"]
+
+data = data[selected_cols]
+data.columns = ["country",
+                "year",
+                "D1_WID",
+                "V1_WID",
+                "P1_WID",
+                "top_0.5_income_share_WID",
+                "Pr1_WID",
+                "top_0.05_income_share_WID",
+                "top_0.01_income_share_WID"]
+
+data["country"] = data["country"].astype(str)
+data["year"] = data["year"].astype(int)
+data["D1_WID"] = data["D1_WID"].astype(float)
+data["V1_WID"] = data["V1_WID"].astype(float)
+data["P1_WID"] = data["P1_WID"].astype(float)
+data["top_0.5_income_share_WID"] = data[
+    "top_0.5_income_share_WID"].astype(float)
+data["Pr1_WID"] = data["Pr1_WID"].astype(float)
+data["top_0.05_income_share_WID"] = data[
+    "top_0.05_income_share_WID"].astype(float)
+data["top_0.01_income_share_WID"] = data[
+    "top_0.01_income_share_WID"].astype(float)
+
+data['code'] = data['country'].apply(
+    lambda x: code_country_dict.loc[x]['code'])
+data_frame = pd.merge(
+    data_frame, data, how='outer', on=['code', 'year'])
+
+del data
+
+error = data_frame.query(
+    "code not in " + str(valid_codes + known_invalid_codes))
+if len(error) > 0:
+    print("Warning data from WID-report removed with country codes : ",
+          set(error['code']))
+data_frame = data_frame.query("code in " + str(valid_codes))
+
+""" Adding the 10 highest % from data.worldbank.org
+"""
+# Importing the data from the csv file
+P_10 = pd.read_csv(PATH_TO_DATA + "10_highest_percent_income_share.csv",
+                   skiprows=4, index_col=['Country Code'])
+
+# selects the data and transpose it to the good format
+P_10 = P_10[[str(item) for item in range(1960, 2016)]].stack().reset_index()
+P_10.columns = ['code', 'year', 'D1_WB']
+
+# Makes sure the types of the columns are good
+P_10['code'] = P_10['code'].astype(str)
+P_10['year'] = P_10['year'].astype(int)
+P_10['D1_WB'] = P_10['D1_WB'].astype(float)
+
+data_frame = pd.merge(data_frame, P_10, how='outer', on=['code', 'year'])
+
+error = data_frame.query(
+    "code not in " + str(valid_codes + known_invalid_codes))
+if len(error) > 0:
+    print("Warning data from 10_highest_percent_income_share removed with country codes : ",
+          set(error['code']))
+data_frame = data_frame.query("code in " + str(valid_codes))
+
+del P_10
+
+""" Adding the 10 lowest % from data.worldbank.org
+"""
+# Importing the data from the csv file
+P_10 = pd.read_csv(PATH_TO_DATA + "10_lowest_percent_income_share.csv",
+                   skiprows=4, index_col=['Country Code'])
+
+# selects the data and transpose it to the good format
+P_10 = P_10[[str(item) for item in range(1960, 2016)]].stack().reset_index()
+P_10.columns = ['code', 'year', 'D9_WB']
+
+# Makes sure the types of the columns are good
+P_10['code'] = P_10['code'].astype(str)
+P_10['year'] = P_10['year'].astype(int)
+P_10['D9_WB'] = P_10['D9_WB'].astype(float)
+
+data_frame = pd.merge(data_frame, P_10, how='outer', on=['code', 'year'])
+
+del P_10
+
+error = data_frame.query(
+    "code not in " + str(valid_codes + known_invalid_codes))
+if len(error) > 0:
+    print("Warning data from 10_lowest_percent_income_share removed with country codes : ",
+          set(error['code']))
+data_frame = data_frame.query("code in " + str(valid_codes))
+
+
+""" Adding the 20 highest % from data.worldbank.org
+"""
+# Importing the data from the csv file
+P_20 = pd.read_csv(PATH_TO_DATA + "first_20_percent_income_share.csv",
+                   skiprows=4, index_col=['Country Code'])
+
+# selects the data and transpose it to the good format
+P_20 = P_20[[str(item) for item in range(1960, 2016)]].stack().reset_index()
+P_20.columns = ['code', 'year', 'QU1_WB']
+
+# Makes sure the types of the columns are good
+P_20['code'] = P_20['code'].astype(str)
+P_20['year'] = P_20['year'].astype(int)
+P_20['QU1_WB'] = P_20['QU1_WB'].astype(float)
+
+data_frame = pd.merge(data_frame, P_20, how='outer', on=['code', 'year'])
+
+del P_20
+
+error = data_frame.query(
+    "code not in " + str(valid_codes + known_invalid_codes))
+if len(error) > 0:
+    print("Warning data from first_20_percent_income_share removed with country codes : ",
+          set(error['code']))
+data_frame = data_frame.query("code in " + str(valid_codes))
+
+""" Adding the second 20 highest % from data.worldbank.org
+"""
+# Importing the data from the csv file
+P_20 = pd.read_csv(PATH_TO_DATA + "second_20_percent_income_share.csv",
+                   skiprows=4, index_col=['Country Code'])
+
+# selects the data and transpose it to the good format
+P_20 = P_20[[str(item) for item in range(1960, 2016)]].stack().reset_index()
+P_20.columns = ['code', 'year', 'QU2_WB']
+
+# Makes sure the types of the columns are good
+P_20['code'] = P_20['code'].astype(str)
+P_20['year'] = P_20['year'].astype(int)
+P_20['QU2_WB'] = P_20['QU2_WB'].astype(float)
+
+data_frame = pd.merge(data_frame, P_20, how='outer', on=['code', 'year'])
+
+del P_20
+
+error = data_frame.query(
+    "code not in " + str(valid_codes + known_invalid_codes))
+if len(error) > 0:
+    print("Warning data from second_20_percent_income_share removed with country codes : ",
+          set(error['code']))
+data_frame = data_frame.query("code in " + str(valid_codes))
+
+""" Adding the third 20 highest % from data.worldbank.org
+"""
+# Importing the data from the csv file
+P_20 = pd.read_csv(PATH_TO_DATA + "third_20_percent_income_share.csv",
+                   skiprows=4, index_col=['Country Code'])
+
+# selects the data and transpose it to the good format
+P_20 = P_20[[str(item) for item in range(1960, 2016)]].stack().reset_index()
+P_20.columns = ['code', 'year', 'QU3_WB']
+
+# Makes sure the types of the columns are good
+P_20['code'] = P_20['code'].astype(str)
+P_20['year'] = P_20['year'].astype(int)
+P_20['QU3_WB'] = P_20['QU3_WB'].astype(float)
+
+data_frame = pd.merge(data_frame, P_20, how='outer', on=['code', 'year'])
+
+del P_20
+
+error = data_frame.query(
+    "code not in " + str(valid_codes + known_invalid_codes))
+if len(error) > 0:
+    print("Warning data from third_20_percent_income_share removed with country codes : ",
+          set(error['code']))
+data_frame = data_frame.query("code in " + str(valid_codes))
+
+""" Adding the fourth 20 highest % from data.worldbank.org
+"""
+# Importing the data from the csv file
+P_20 = pd.read_csv(PATH_TO_DATA + "fourth_20_percent_income_share.csv",
+                   skiprows=4, index_col=['Country Code'])
+
+# selects the data and transpose it to the good format
+P_20 = P_20[[str(item) for item in range(1960, 2016)]].stack().reset_index()
+P_20.columns = ['code', 'year', 'QU4_WB']
+
+# Makes sure the types of the columns are good
+P_20['code'] = P_20['code'].astype(str)
+P_20['year'] = P_20['year'].astype(int)
+P_20['QU4_WB'] = P_20['QU4_WB'].astype(float)
+
+data_frame = pd.merge(data_frame, P_20, how='outer', on=['code', 'year'])
+
+del P_20
+
+error = data_frame.query(
+    "code not in " + str(valid_codes + known_invalid_codes))
+if len(error) > 0:
+    print("Warning data from fourth_20_percent_income_share removed with country codes : ",
+          set(error['code']))
+data_frame = data_frame.query("code in " + str(valid_codes))
+
+""" Adding the fifth 20 highest % from data.worldbank.org
+"""
+# Importing the data from the csv file
+P_20 = pd.read_csv(PATH_TO_DATA + "fifth_20_percent_income_share.csv",
+                   skiprows=4, index_col=['Country Code'])
+
+# selects the data and transpose it to the good format
+P_20 = P_20[[str(item) for item in range(1960, 2016)]].stack().reset_index()
+P_20.columns = ['code', 'year', 'QU5_WB']
+
+# Makes sure the types of the columns are good
+P_20['code'] = P_20['code'].astype(str)
+P_20['year'] = P_20['year'].astype(int)
+P_20['QU5_WB'] = P_20['QU5_WB'].astype(float)
+
+data_frame = pd.merge(data_frame, P_20, how='outer', on=['code', 'year'])
+
+del P_20
+
+error = data_frame.query(
+    "code not in " + str(valid_codes + known_invalid_codes))
+if len(error) > 0:
+    print("Warning data from fifth_20_percent_income_share removed with country codes : ",
+          set(error['code']))
+data_frame = data_frame.query("code in " + str(valid_codes))
+
+share_dict_WID = {"D1_WID": 0.1, "V1_WID": 0.05, "P1_WID": 0.01, "top_0.5_income_share_WID": 0.005,
+                  "Pr1_WID": 0.001, "top_0.05_income_share_WID": 0.0005, "top_0.01_income_share_WID": 0.0001}
+
+data_frame.set_index(["year", "code"], inplace=True)
+data_frame['gini_WID'] = float('nan')
+for row in data_frame[share_dict_WID.keys()].dropna(how="all").iterrows():
+    actual_share_list = row[1][~row[1].isnull()].keys().values
+    actual_share_dict = dict((k, share_dict_WID[k]) for k in actual_share_list)
+    lorentz = pd.DataFrame({"x-%_poorest": (1 - np.array(actual_share_dict.values())),
+                            "share": [100 - row[1][var_name] for var_name in actual_share_dict.keys()]})
+    lorentz.loc[len(lorentz) + 1] = {"share": 0, "x-%_poorest": 0}
+    lorentz.loc[len(lorentz) + 1] = {"share": 100, "x-%_poorest": 1}
+    lorentz = lorentz.sort("x-%_poorest")
+    G_trapz = 1 - 2 * \
+        trapz(lorentz["share"].values / 100., lorentz["x-%_poorest"].values)
+    data_frame.set_value((row[0][0], row[0][1]), 'gini_WID', G_trapz)
+
+
+share_dict_WB = {'D1_WB': 0.1, 'cum_QU1_WB': 0.2, 'cum_QU2_WB': 0.4,
+                 'cum_QU3_WB': 0.6, 'cum_QU4_WB': 0.8, 'cum_QU5_WB': 1}
+
+for i in range(1, 6):
+    data_frame["cum_QU" + str(i) + "_WB"] = sum(data_frame["QU" + str(k) + "_WB"]
+                                          for k in range(1, i + 1))
+
+data_frame['gini_WB'] = float('nan')
+for row in data_frame[share_dict_WB.keys()].dropna(how="all").iterrows():
+    actual_share_list = row[1][~row[1].isnull()].keys().values
+    actual_share_dict = dict((k, share_dict_WB[k]) for k in actual_share_list)
+    lorentz = pd.DataFrame({"x-%_poorest": (1 - np.array(actual_share_dict.values())),
+                            "share": [100 - row[1][var_name] for var_name in actual_share_dict.keys()]})
+    lorentz.loc[len(lorentz) + 1] = {"share": 0, "x-%_poorest": 0}
+    lorentz = lorentz.sort("x-%_poorest")
+    G_trapz = 1 - 2 * \
+        trapz(lorentz["share"].values / 100., lorentz["x-%_poorest"].values)
+    data_frame.set_value((row[0][0], row[0][1]), 'gini_WB', G_trapz)
+
+data_frame = data_frame.reset_index()
+data_frame.sort(['code', 'year']).to_csv("extra_barro_data.csv", index=False)

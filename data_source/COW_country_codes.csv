@@ -1,0 +1,217 @@
+StateAbb,CCode,StateNme
+AAB,58,Antigua and Barbuda
+AFG,700,Afghanistan
+ALB,339,Albania
+ALG,615,Algeria
+AND,232,Andorra
+ANG,540,Angola
+ARG,160,Argentina
+ARM,371,Armenia
+AUH,300,Austria-Hungary
+AUL,900,Australia
+AUS,305,Austria
+AZE,373,Azerbaijan
+BAD,267,Baden
+BAH,692,Bahrain
+BAR,53,Barbados
+BAV,245,Bavaria
+BEL,211,Belgium
+BEN,434,Benin
+BFO,439,Burkina Faso
+BHM,31,Bahamas
+BHU,760,Bhutan
+BLR,370,Belarus
+BLZ,80,Belize
+BNG,771,Bangladesh
+BOL,145,Bolivia
+BOS,346,Bosnia and Herzegovina
+BOT,571,Botswana
+BRA,140,Brazil
+BRU,835,Brunei Darussalam
+BUI,516,Burundi
+BUL,355,Bulgaria
+CAM,811,Cambodia
+CAN,20,Canada
+CAO,471,Cameroon
+CAP,402,Cabo Verde
+CDI,437,Ivory Coast
+CEN,482,Central African Republic
+CHA,483,Chad
+CHL,155,Chile
+CHN,710,China
+COL,100,Colombia
+COM,581,Comoros
+CON,484,Congo-Brazzaville
+COS,94,Costa Rica
+CRO,344,Croatia
+CUB,40,Cuba
+CYP,352,Cyprus
+CZE,315,Czechoslovakia
+CZR,316,Czech Republic
+DEN,390,Denmark
+DJI,522,Djibouti
+DMA,54,Dominica
+DOM,42,Dominican Republic
+DRC,490,Congo
+DRV,816,Socialist Republic of Vietnam
+ECU,130,Ecuador
+EGY,651,Egypt
+EQG,411,Equatorial Guinea
+ERI,531,Eritrea
+EST,366,Estonia
+ETH,530,Ethiopia
+ETM,860,East Timor
+FIJ,950,Fiji
+FIN,375,Finland
+FRN,220,France
+FSM,987,Federated States of Micronesia
+GAB,481,Gabon
+GAM,420,Gambia
+GDR,265,German Democratic Republic
+GHA,452,Ghana
+GMY,255,Germany
+GNB,404,Guinea-Bissau
+GRC,350,Greece
+GRG,372,Georgia
+GRN,55,Grenada
+GUA,90,Guatemala
+GUI,438,Guinea
+GUY,110,Guyana
+HAI,41,Haiti
+HAN,240,Hanover
+HON,91,Honduras
+HSE,273,Hesse Electoral
+HSG,275,Hesse Grand Ducal
+HUN,310,Hungary
+ICE,395,Iceland
+IND,750,India
+INS,850,Indonesia
+IRE,205,Ireland
+IRN,630,Iran
+IRQ,645,Iraq
+ISR,666,Israel
+ITA,325,Italy
+JAM,51,Jamaica
+JOR,663,Jordan
+JPN,740,Japan
+KEN,501,Kenya
+KIR,946,Kiribati
+KOR,730,Korea
+KOS,347,Kosovo
+KUW,690,Kuwait
+KYR,703,Kyrgyzstan
+KZK,705,Kazakhstan
+LAO,812,Laos
+LAT,367,Latvia
+LBR,450,Liberia
+LEB,660,Lebanon
+LES,570,Lesotho
+LIB,620,Libya
+LIE,223,Liechtenstein
+LIT,368,Lithuania
+LUX,212,Luxembourg
+MAA,435,Mauritania
+MAC,343,Macedonia
+MAD,781,Maldives
+MAG,580,Madagascar
+MAL,820,Malaysia
+MAS,590,Mauritius
+MAW,553,Malawi
+MEC,280,Mecklenburg Schwerin
+MEX,70,Mexico
+MLD,359,Republic of Moldova
+MLI,432,Mali
+MLT,338,Malta
+MNC,221,Monaco
+MNG,341,Montenegro
+MOD,332,Modena
+MON,712,Mongolia
+MOR,600,Morocco
+MSI,983,Marshall Islands
+MYA,775,Myanmar
+MZM,541,Mozambique
+NAM,565,Namibia
+NAU,970,Nauru
+NEP,790,Nepal
+NEW,920,New Zealand
+NIC,93,Nicaragua
+NIG,475,Nigeria
+NIR,436,Niger
+NOR,385,Norway
+NTH,210,Netherlands
+OMA,698,Oman
+PAK,770,Pakistan
+PAL,986,Palau
+PAN,95,Panama
+PAP,327,Papal States
+PAR,150,Paraguay
+PER,135,Peru
+PHI,840,Philippines
+PMA,335,Parma
+PNG,910,Papua New Guinea
+POL,290,Poland
+POR,235,Portugal
+PRK,731,North Korea
+QAT,694,Qatar
+ROK,732,South Korea
+ROM,360,Romania
+RUS,365,Russian Federation
+RVN,817,Republic of Vietnam
+RWA,517,Rwanda
+SAF,560,South Africa
+SAL,92,El Salvador
+SAU,670,Saudi Arabia
+SAX,269,Saxony
+SEN,433,Senegal
+SEY,591,Seychelles
+SIC,329,Two Sicilies
+SIE,451,Sierra Leone
+SIN,830,Singapore
+SKN,60,Saint Kitts and Nevis
+SLO,317,Slovakia
+SLU,56,Saint Lucia
+SLV,349,Slovenia
+SNM,331,San Marino
+SOL,940,Solomon Islands
+SOM,520,Somalia
+SPN,230,Spain
+SRI,780,Sri Lanka
+SSD,626,South Sudan
+STP,403,Sao Tome and Principe
+SUD,625,Sudan
+SUR,115,Suriname
+SVG,57,Saint Vincent and the Grenadines
+SWA,572,Swaziland
+SWD,380,Sweden
+SWZ,225,Switzerland
+SYR,652,Syrian Arab Republic
+TAJ,702,Tajikistan
+TAW,713,Taiwan
+TAZ,510,Tanzania
+THI,800,Thailand
+TKM,701,Turkmenistan
+TOG,461,Togo
+TON,955,Tonga
+TRI,52,Trinidad and Tobago
+TUN,616,Tunisia
+TUR,640,Turkey
+TUS,337,Tuscany
+TUV,947,Tuvalu
+UAE,696,United Arab Emirates
+UGA,500,Uganda
+UKG,200,United Kingdom
+UKR,369,Ukraine
+URU,165,Uruguay
+USA,2,United States of America
+UZB,704,Uzbekistan
+VAN,935,Vanuatu
+VEN,101,Venezuela
+WRT,271,Wuerttemburg
+WSM,990,Samoa
+YAR,678,Yemen Arab Republic
+YEM,679,Republic of Yemen
+YPR,680,Yemen People's Republic
+YUG,345,Yugoslavia
+ZAM,551,Zambia
+ZAN,511,Zanzibar
+ZIM,552,Zimbabwe
