@@ -24,3 +24,6 @@ country_continent_code.csv,Liste des pays contenant les codes ISO 3166 alpha-2/3
 known_invalid_codes,Liste des codes apparaissant (notamment) dans les bases de données issues de worlddatabase et ne correspondant pas à des pays (ARB : Arab world),,,
 imports_good_service_%GDP,Part des imports dans le PIB (en%),1960 – 2010,? ,http://data.worldbank.org/indicator/NE.IMP.GNFS.ZS
 exports_good_service_%GDP,Part des export dans le PIB (en%),,,http://data.worldbank.org/indicator/NE.EXP.GNFS.ZS
+inequality_WIID,Données sur les inégalités : gini plus repartition des richesses (D1 : D9 ; Q1 : Q5 ; P5 ; P95),??,? ,http://www4.wider.unu.edu/
+all_gini.csv,"Regroupement de données gini de plusieurs bases différentes, à regarder",??,??,"http://econ.worldbank.org/WBSITE/EXTERNAL/EXTDEC/EXTRESEARCH/0,,contentMDK:22301380~pagePK:64214825~piPK:64214943~theSitePK:469382,00.html"
+income_shares_data.csv,Données sur la répartition des revenus dans le monde : à explorer (étude sur les effets de la globalisation sur les inégalités),??,??,"http://econ.worldbank.org/WBSITE/EXTERNAL/EXTDEC/EXTRESEARCH/0,,contentMDK:22261749~pagePK:64214825~piPK:64214943~theSitePK:469382,00.html"
