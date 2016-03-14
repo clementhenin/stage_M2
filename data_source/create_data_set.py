@@ -3,6 +3,7 @@ import pdb
 from scipy.integrate import trapz
 import numpy as np
 import sys
+import math
 
 code_country_dict = pd.read_csv("country_code_list.csv",
                                 index_col="country")
@@ -13,15 +14,15 @@ VALID_CODES = code_country_dict['code'].tolist()
 KNOWN_INVALID_CODES = pd.read_csv("known_invalid_codes.csv",
                                   names=['code'])['code'].tolist()
 
-# if __name__ == "__main__":
-#     try:
-#         final_file_name = sys.argv[1]
-#     except IndexError:
-#         final_file_name = "all_data.csv"
-#     try:
-#         barro_option = sys.argv[2]
-#     except IndexError:
-#         barro_option = False
+if __name__ == "__main__":
+    try:
+        final_file_name = sys.argv[1]
+    except IndexError:
+        final_file_name = "all_data.csv"
+    try:
+        barro_option = sys.argv[2]
+    except IndexError:
+        barro_option = False
 
 
 def import_from_WB(file_name, var_name, current_frame):
@@ -84,11 +85,13 @@ files_list = ["10_highest_percent_income_share.csv",
               "fifth_20_percent_income_share.csv", "GDP_at_market_prices.csv",
               "GDP_growth_WB.csv", "GDP_PC_WB.csv",
               "governments_consumption_over_GDP.csv",
-              "inflation_consumer_price_WB.csv", "fertility_rate.csv"]
+              "inflation_consumer_price_WB.csv", "fertility_rate.csv",
+              "gross_savings_WB.csv", "gross_capital_formation_WB.csv"]
 
 var_list = ["D1_WB", "D9_WB", "QU1_WB", "QU2_WB", "QU3_WB", "QU4_WB",
             "QU5_WB", "GDP_MP_WB", "GDP_growth_WB", "GDP_PC_WB",
-            'gov_consumption_WB', 'inflation_WB', 'fertility_WB']
+            'gov_consumption_WB', 'inflation_WB', 'fertility_WB', "savings_WB",
+            "investments_WB"]
 
 for i in range(len(files_list)):
     data_frame = import_from_WB(file_name=files_list[i],
@@ -265,8 +268,6 @@ data["year"] = data["year"].astype(int)
 data["GDP_PWT"] = data["GDP_PWT"].astype(float)
 data["GDP_PC_PWT"] = data["GDP_PC_PWT"].astype(float)
 
-data.groupby(['year', 'code']).std() / \
-    data.groupby(['year', 'code']).mean()
 
 data = remove_duplicates_visibly(data, "GDPs_PWT")
 
@@ -495,6 +496,80 @@ data_frame = pd.merge(data_frame, data, how='outer', on=['code', 'year'])
 del data
 
 data_frame = remove_unknown_country(data_frame, "PWT_71.csv")
+
+"""Adding total investment and gross national saving from IMF
+"""
+
+# import in a pandas frame
+data = pd.read_csv("investment_saving_IMF.aspx", delimiter='\t'
+                   ).replace('n/a', float('nan')).replace(',', '')
+
+# removing the estimations from IMF
+for country in data.iterrows():
+    begin_estim = country[1]['Estimates Start After']
+    if not math.isnan(begin_estim):
+        if begin_estim == 0:
+            begin_estim = 1980
+        for year in range(int(begin_estim), 2017):
+            data.loc[country[0], str(year)] = float('nan')
+
+cols = ['1980', '1981', '1982', '1983', '1984', '1985', '1986',
+        '1987', '1988',
+        '1989', '1990', '1991', '1992', '1993', '1994', '1995', '1996',
+        '1997', '1998', '1999', '2000', '2001', '2002', '2003', '2004',
+        '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012',
+        '2013', '2014', '2015', '2016']
+
+data.set_index(u'ISO', inplace=True)
+savings = data[data["Subject Descriptor"] == 'Gross national savings'][cols]
+invest = data[data["Subject Descriptor"] == 'Total investment'][cols]
+
+savings = savings.stack()
+invest = invest.stack()
+
+savings = savings.reset_index()
+invest = invest.reset_index()
+
+savings.columns = ['code', 'year', 'savings_IMF']
+invest.columns = ['code', 'year', 'invest_IMF']
+
+
+savings['code'] = savings['code'].astype(str)
+savings['year'] = savings['year'].astype(int)
+savings['savings_IMF'] = savings['savings_IMF'].apply(
+    lambda x: x.replace(',', '')).astype(float)
+
+invest['code'] = invest['code'].astype(str)
+invest['year'] = invest['year'].astype(int)
+invest['invest_IMF'] = invest['invest_IMF'].apply(
+    lambda x: x.replace(',', '')).astype(float)
+
+
+data_frame = pd.merge(data_frame, savings, how='outer', on=['code', 'year'])
+data_frame = pd.merge(data_frame, invest, how='outer', on=['code', 'year'])
+
+del data, invest, savings
+
+data_frame = remove_unknown_country(data_frame, "investment_saving_IMF.csv")
+
+"""Adding the savings rate from OECD measures
+"""
+data = pd.read_csv("national_savings_rate_OECD.csv", usecols=[0, 5, 6])
+data.columns = ["code", 'year', 'savings_OECD']
+
+data['code'] = data["code"].astype(str)
+data["year"] = data["year"].astype(int)
+data["savings_OECD"] = data["savings_OECD"].astype(float)
+
+selected = remove_duplicates_visibly(data, "national_savings_rate_OECD")
+
+data_frame = pd.merge(data_frame, data, how='outer', on=['code', 'year'])
+
+del data
+
+data_frame = remove_unknown_country(
+    data_frame, "national_savings_rate_OECD.csv")
+
 
 ##########################################################################
 #######################  CREATING NEW VARIABLES ##########################
