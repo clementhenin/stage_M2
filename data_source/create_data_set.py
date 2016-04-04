@@ -86,12 +86,13 @@ files_list = ["10_highest_percent_income_share.csv",
               "GDP_growth_WB.csv", "GDP_PC_WB.csv",
               "governments_consumption_over_GDP.csv",
               "inflation_consumer_price_WB.csv", "fertility_rate.csv",
-              "gross_savings_WB.csv", "gross_capital_formation_WB.csv"]
+              "gross_savings_WB.csv", "gross_capital_formation_WB.csv",
+              "GNI_PC_WB.csv"]
 
 var_list = ["D1_WB", "D9_WB", "QU1_WB", "QU2_WB", "QU3_WB", "QU4_WB",
             "QU5_WB", "GDP_MP_WB", "GDP_growth_WB", "GDP_PC_WB",
             'gov_consumption_WB', 'inflation_WB', 'fertility_WB', "savings_WB",
-            "investments_WB"]
+            "investments_WB", "GNI_PC_WB"]
 
 for i in range(len(files_list)):
     data_frame = import_from_WB(file_name=files_list[i],
@@ -569,6 +570,54 @@ del data
 
 data_frame = remove_unknown_country(
     data_frame, "national_savings_rate_OECD.csv")
+
+
+"""Adding the data of SWIID 5.0 data
+"""
+data = pd.read_csv('SWIID_5_0.csv')
+
+data = data.replace('Cape Verde', 'Cabo Verde')
+data = data.replace('Congo, Democratic Republic of', 'Congo')
+data = data.replace('Congo, Republic of', 'Congo-Brazzaville')
+data = data.replace("Korea, Republic of", 'South Korea')
+data = data.replace("Kyrgyz Republic", 'Kyrgyzstan')
+data = data.replace("Lao", 'Laos')
+data = data.replace("Macedonia, FYR", 'Macedonia')
+data = data.replace("Cote d'Ivoire", 'Ivory Coast')
+data = data.replace("Moldova", 'Republic of Moldova')
+data = data.replace("Slovak Republic", 'Slovakia')
+data = data.replace("St. Lucia", 'Saint Lucia')
+data = data.replace("St. Vincent and the Grenadines", 'Saint Vincent and the Grenadines')
+data = data.replace("Syria", 'Syrian Arab Republic')
+data = data.replace("Turks and Caicos", 'Turks and Caicos Islands')
+data = data.replace("USSR", 'Russian Federation')
+data = data.replace("United States", 'United States of America')
+data = data.replace("Viet Nam", 'Socialist Republic of Vietnam')
+data = data.replace("Yemen, Republic of", 'Republic of Yemen')
+
+data.columns = ["country", "year", "gini_net_SWIID",
+                 "gini_market_SWIID", "rel_red_SWIID", "abs_red_SWIID"]
+
+data["country"] = data["country"].astype(str)
+data["year"] = data["year"].astype(int)
+data["gini_net_SWIID"] = data["gini_net_SWIID"].astype(float) / 100.
+data["gini_market_SWIID"] = data["gini_market_SWIID"].astype(float) / 100.
+data["rel_red_SWIID"] = data["rel_red_SWIID"].astype(float)
+data["abs_red_SWIID"] = data["abs_red_SWIID"].astype(float)
+
+data['code'] = data['country'].apply(
+    lambda x: code_country_dict.loc[x]['code'])
+
+del data['country']
+
+data = remove_duplicates_visibly(data, "SWIID_5_0")
+
+data_frame = pd.merge(
+    data_frame, data, how='outer', on=['code', 'year'])
+
+del data
+
+data_frame = remove_unknown_country(data_frame, "SWIID_5_0.csv")
 
 
 ##########################################################################

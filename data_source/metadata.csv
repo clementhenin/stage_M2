@@ -12,7 +12,7 @@ second_20_percent_income_share.csv,part des revenus detenus par les 2ieme 20 p l
 third_20_percent_income_share.csv,part des revenus detenus par les 3ieme 20 p les plus riches,1986 – 2014,247,donnees a traiter issues de data.worldbank.org
 GDP_growth_WB,"taux de croissance annuel en % , données sur les channels island removed",,,donnees a traiter issues de data.worldbank.org
 WID-report,données largement utilisées dans Piketty,0-2010,,http://www.wid.world/#Database:
-GDP_PC_WB,GDP par habitant ,1960 – 2014,247,donnees a traiter issues de data.worldbank.org
+GDP_PC_WB,GDP par habitant ,1960 – 2014,247,http://data.worldbank.org/indicator/NY.GDP.PCAP.CD?page=6
 GDPs_PWT,données sur les PIB et les monnaies,1950 – 2014,pleins,http://www.rug.nl/research/ggdc/data/pwt/pwt-8.1
 governments_consumption_over_GDP,Dépenses du gouvernement en % du PIB,??,pleins,http://data.worldbank.org/indicator/NE.CON.GOVT.ZS
 inflation_consumer_price_WB,Consumer price inflation en % annuel,??,pleins,http://data.worldbank.org/indicator/FP.CPI.TOTL.ZG
@@ -31,3 +31,5 @@ investment_saving_IMF,Total des investissements en pourcentage du PIB et Gross N
 national_savings_rate_OECD,National saving rate expressed as the percentage of GDP in OECD countries,1970 – 2014,45 ?,https://data.oecd.org/natincome/saving-rate.htm
 gross_savings_WB,Gross savings ( % of the GDP),1970 – 2014,pleins,http://data.worldbank.org/indicator/NY.GNS.ICTR.ZS?page=6
 gross_capital_formation_WB.csv,Gross capital formation : total des investissements physique en pourcentage du PIB,1960-2014,pleins,http://data.worldbank.org/indicator/NE.GDI.TOTL.ZS
+GNI_PC_WB,Gross National Income per capita from worldbank,1960-2014,,http://data.worldbank.org/indicator/NY.GNP.PCAP.CD
+SWIID_5_0,Big database on gini and redistribution,??,pleins,https://dataverse.harvard.edu/dataset.xhtml?persistentId=hdl:1902.1/11992
