@@ -86,13 +86,14 @@ files_list = ["10_highest_percent_income_share.csv",
               "GDP_growth_WB.csv", "GDP_PC_WB.csv",
               "governments_consumption_over_GDP.csv",
               "inflation_consumer_price_WB.csv", "fertility_rate.csv",
-              "gross_savings_WB.csv", "gross_capital_formation_WB.csv",
-              "GNI_PC_WB.csv"]
+              "gross_savings_WB.csv", "gross_fixed_capital_formation_WB.csv",
+              "GNI_PC_WB.csv",
+              "natural_ressources_rent_WB.csv"]
 
 var_list = ["D1_WB", "D9_WB", "QU1_WB", "QU2_WB", "QU3_WB", "QU4_WB",
             "QU5_WB", "GDP_MP_WB", "GDP_growth_WB", "GDP_PC_WB",
             'gov_consumption_WB', 'inflation_WB', 'fertility_WB', "savings_WB",
-            "investments_WB", "GNI_PC_WB"]
+            "investments_WB", "GNI_PC_WB", "nat_ress_WB"]
 
 for i in range(len(files_list)):
     data_frame = import_from_WB(file_name=files_list[i],
@@ -210,7 +211,8 @@ selected_cols = ["Country",
                  "Top 0.1% income share-including capital gains",
                  "Top 0.05% income share-including capital gains",
                  "Top 0.01% income share-including capital gains",
-                 "National income"]
+                 "National income",
+                 'Private wealth. Net private wealth.6']
 
 data = data[selected_cols]
 data.columns = ["country",
@@ -222,7 +224,8 @@ data.columns = ["country",
                 "Pr1_WID",
                 "top_0.05_income_share_WID",
                 "top_0.01_income_share_WID",
-                "national_income_WID"]
+                "national_income_WID",
+                "K_over_PIB"]
 
 data["country"] = data["country"].astype(str)
 data["year"] = data["year"].astype(int)
@@ -237,6 +240,7 @@ data["top_0.05_income_share_WID"] = data[
 data["top_0.01_income_share_WID"] = data[
     "top_0.01_income_share_WID"].astype(float)
 data["national_income_WID"] = data["national_income_WID"].astype(float)
+data["K_over_PIB"] = data["K_over_PIB"].astype(float)
 
 data['code'] = data['country'].apply(
     lambda x: code_country_dict.loc[x]['code'])
@@ -620,62 +624,102 @@ del data
 data_frame = remove_unknown_country(data_frame, "SWIID_5_0.csv")
 
 
-##########################################################################
-#######################  CREATING NEW VARIABLES ##########################
-##########################################################################
-
-"""Creating a gini variable from the World Income Database data
+"""Adding capital income share from TP data
 """
-share_dict_WID = {"D1_WID": 0.1, "V1_WID": 0.05, "P1_WID": 0.01,
-                  "top_0.5_income_share_WID": 0.005, "Pr1_WID": 0.001,
-                  "top_0.05_income_share_WID": 0.0005,
-                  "top_0.01_income_share_WID": 0.0001}
+data = pd.read_csv("share_capital_income.csv")
+data.columns = ["code", 'year', 'cap_share_income']
 
-data_frame.set_index(["year", "code"], inplace=True)
-data_frame['gini_WID'] = float('nan')
-for row in data_frame[share_dict_WID.keys()].dropna(how="all").iterrows():
-    actual_share_list = row[1][~row[1].isnull()].keys().values
-    actual_share_dict = dict(
-        (k, share_dict_WID[k]) for k in actual_share_list)
-    lorentz = pd.DataFrame({"x-%_poorest": (1 - np.array(actual_share_dict.values())),
-                            "share": [100 - row[1][var_name] for var_name in actual_share_dict.keys()]})
-    lorentz.loc[len(lorentz) + 1] = {"share": 0, "x-%_poorest": 0}
-    lorentz.loc[len(lorentz) + 1] = {"share": 100, "x-%_poorest": 1}
-    lorentz = lorentz.sort_values(by="x-%_poorest")
-    G_trapz = 1 - 2 * \
-        trapz(lorentz["share"].values / 100.,
-              lorentz["x-%_poorest"].values)
-    data_frame.set_value((row[0][0], row[0][1]), 'gini_WID', G_trapz)
+data['code'] = data["code"].astype(str)
+data["year"] = data["year"].astype(int)
+data["cap_share_income"] = data["cap_share_income"].astype(float)
 
-"""Creating a gini variable from the World Bank data
+selected = remove_duplicates_visibly(data, "share_capital_income")
+
+data_frame = pd.merge(data_frame, data, how='outer', on=['code', 'year'])
+
+del data
+
+data_frame = remove_unknown_country(
+    data_frame, "share_capital_income.csv")
+
+
+"""Interpolate scholling data from 5 years data to yearly data
 """
-share_dict_WB = {'D1_WB': 0.1, 'cum_QU1_WB': 0.2, 'cum_QU2_WB': 0.4,
-                 'cum_QU3_WB': 0.6, 'cum_QU4_WB': 0.8, 'cum_QU5_WB': 1}
+data_frame.sort_values(['code', 'year'], inplace=True)
+data_frame.set_index(['code'], inplace=True)
+new_frame = pd.DataFrame()
 
-for i in range(1, 6):
-    data_frame["cum_QU" + str(i) + "_WB"] = sum(data_frame["QU" + str(k) + "_WB"]
-                                                for k in range(1, i + 1))
+# extrapolating years of schooling to yearly data
+for country in set(data_frame.index.values):
+    sel = data_frame.loc[country]
+    if sel.shape != (len(data_frame.keys()),):
+        try:
+            sel.loc[:, 'years_schooling'] = sel[
+                'years_schooling'].interpolate()
+        except TypeError:
+            None
+        new_frame = pd.concat([new_frame, sel])
+data_frame = new_frame.reset_index().dropna(how='all')
 
-data_frame['gini_WB'] = float('nan')
-for row in data_frame[share_dict_WB.keys()].dropna(how="all").iterrows():
-    actual_share_list = row[1][~row[1].isnull()].keys().values
-    actual_share_dict = dict(
-        (k, share_dict_WB[k]) for k in actual_share_list)
-    lorentz = pd.DataFrame({"x-%_poorest": (1 - np.array(actual_share_dict.values())),
-                            "share": [100 - row[1][var_name] for var_name in actual_share_dict.keys()]})
-    lorentz.loc[len(lorentz) + 1] = {"share": 0, "x-%_poorest": 0}
-    lorentz = lorentz.sort_values(by="x-%_poorest")
-    G_trapz = 1 - 2 * \
-        trapz(lorentz["share"].values / 100.,
-              lorentz["x-%_poorest"].values)
-    data_frame.set_value((row[0][0], row[0][1]), 'gini_WB', G_trapz)
 
-data_frame = data_frame.reset_index()
-
-for i in range(1, 6):
-    del data_frame["cum_QU" + str(i) + "_WB"]
-
-"""Sorting and saving the data
-"""
 data_frame.sort_values(by=['code', 'year']).to_csv(
     final_file_name, index=False)
+
+
+# ##########################################################################
+# #######################  CREATING NEW VARIABLES ##########################
+# ##########################################################################
+#
+# """Creating a gini variable from the World Income Database data
+# """
+# share_dict_WID = {"D1_WID": 0.1, "V1_WID": 0.05, "P1_WID": 0.01,
+#                   "top_0.5_income_share_WID": 0.005, "Pr1_WID": 0.001,
+#                   "top_0.05_income_share_WID": 0.0005,
+#                   "top_0.01_income_share_WID": 0.0001}
+#
+# data_frame.set_index(["year", "code"], inplace=True)
+# data_frame['gini_WID'] = float('nan')
+# for row in data_frame[share_dict_WID.keys()].dropna(how="all").iterrows():
+#     actual_share_list = row[1][~row[1].isnull()].keys().values
+#     actual_share_dict = dict(
+#         (k, share_dict_WID[k]) for k in actual_share_list)
+#     lorentz = pd.DataFrame({"x-%_poorest": (1 - np.array(actual_share_dict.values())),
+#                             "share": [100 - row[1][var_name] for var_name in actual_share_dict.keys()]})
+#     lorentz.loc[len(lorentz) + 1] = {"share": 0, "x-%_poorest": 0}
+#     lorentz.loc[len(lorentz) + 1] = {"share": 100, "x-%_poorest": 1}
+#     lorentz = lorentz.sort_values(by="x-%_poorest")
+#     G_trapz = 1 - 2 * \
+#         trapz(lorentz["share"].values / 100.,
+#               lorentz["x-%_poorest"].values)
+#     data_frame.set_value((row[0][0], row[0][1]), 'gini_WID', G_trapz)
+#
+# """Creating a gini variable from the World Bank data
+# """
+# share_dict_WB = {'D1_WB': 0.1, 'cum_QU1_WB': 0.2, 'cum_QU2_WB': 0.4,
+#                  'cum_QU3_WB': 0.6, 'cum_QU4_WB': 0.8, 'cum_QU5_WB': 1}
+#
+# for i in range(1, 6):
+#     data_frame["cum_QU" + str(i) + "_WB"] = sum(data_frame["QU" + str(k) + "_WB"]
+#                                                 for k in range(1, i + 1))
+#
+# data_frame['gini_WB'] = float('nan')
+# for row in data_frame[share_dict_WB.keys()].dropna(how="all").iterrows():
+#     actual_share_list = row[1][~row[1].isnull()].keys().values
+#     actual_share_dict = dict(
+#         (k, share_dict_WB[k]) for k in actual_share_list)
+#     lorentz = pd.DataFrame({"x-%_poorest": (1 - np.array(actual_share_dict.values())),
+#                             "share": [100 - row[1][var_name] for var_name in actual_share_dict.keys()]})
+#     lorentz.loc[len(lorentz) + 1] = {"share": 0, "x-%_poorest": 0}
+#     lorentz = lorentz.sort_values(by="x-%_poorest")
+#     G_trapz = 1 - 2 * \
+#         trapz(lorentz["share"].values / 100.,
+#               lorentz["x-%_poorest"].values)
+#     data_frame.set_value((row[0][0], row[0][1]), 'gini_WB', G_trapz)
+#
+# data_frame = data_frame.reset_index()
+#
+# for i in range(1, 6):
+#     del data_frame["cum_QU" + str(i) + "_WB"]
+#
+# """Sorting and saving the data
+# """

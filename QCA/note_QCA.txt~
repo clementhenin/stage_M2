@@ -1,0 +1,65 @@
+
+
+##########################################################################
+#################### Gini, PIB, ressources naturelles ####################
+##########################################################################
+
+
+Output = 1 lorsque le pays.décennie appratient au QUART le plus FORT
+
+Var1 = Gini , Var 2 =  nat_ress Output = growth
+                        0         1          2        all
+gini nat_ress                                            
+0    mean       0.38596**   0.34375    0.20833  0.33628**
+     size              57        32         24        113
+1    mean      0.51282***   0.14285   0.13513*    0.27027
+     size              39        35         37        111
+2    mean         0.27777  0.13953*  0.13461**  0.15929**
+     size              18        43         52        113
+all  mean      0.41228***       0.2  0.15044**   0.255193
+     size             114       110        113        337 
+
+Var1 = Gini , Var 2 =  gdp Output = growth
+                    0        1           2        all
+gini gdp                                             
+0    mean     0.13333  0.38888   0.36144**  0.33620**
+     size          15       18          83        116
+1    mean   0.12244**  0.29268     0.52***    0.26956
+     size          49       41          25        115
+2    mean  0.09433***  0.23636     0.11111  0.16239**
+     size          53       55           9        117
+all  mean  0.11111***  0.28070  0.37606***   0.255747
+     size         117      114         117        348 
+
+On semble voir sur les colones 1 et 3 des tableaux ci-dessus qu'il existe 
+une corrélation forte en les pays dont l'économie est basée sur l'utilisation
+des ressources naturelles et la richesse des pays. 
+
+Nous pouvons le vérifier grâce au tableau ci-dessous : 
+
+                             0           1         all
+nat_ress gini gdp                                     
+0        0    mean     0.33333  0.41111***      0.4***
+              size          15          90         105
+         1    mean     0.21428     0.32352     0.27419
+              size          28          34          62
+         all  mean     0.25581  0.38709***    0.353293
+              size          43         124         167
+1        0    mean    0.13636*     0.33333     0.19354
+              size          44          18          62
+         1    mean    0.125***     0.17857  0.13888***
+              size          80          28         108
+         all  mean  0.12903***     0.23913    0.158824
+              size         124          46         170
+all      0    mean     0.18644  0.39814***   0.32335**
+              size          59         108         167
+         1    mean   0.14814**     0.25806   0.18823**
+              size         108          62         170
+         all  mean  0.16167***  0.34705***    0.255193
+              size         167         170         337
+
+
+
+##########################################################################
+##########################################################################
+##########################################################################

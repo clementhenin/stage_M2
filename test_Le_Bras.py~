@@ -1,0 +1,45 @@
+from sklearn import tree
+import pandas as pd
+from sklearn.externals.six import StringIO
+import pydot
+
+
+var_list = ['age', 'educ', 'csp', 'immi', 'sexe', 'urbain']
+
+data = pd.read_csv("bigdatarep.csv", index_col=[0])
+
+# verification du nouveau codage 
+#data['sexe'] = (data['menage'] > 8).apply(int)
+#data['menage'] -= data['sexe'] * 8
+
+#data['urbain'] = (data['region'] > 8).apply(int)
+#data['region'] -= data['urbain'] * 8
+
+
+"""
+clf = tree.DecisionTreeClassifier(min_samples_leaf=600000)
+clf = clf.fit(data[var_list], data['chom'])
+
+dot_data = StringIO()
+tree.export_graphviz(clf,
+              out_file=dot_data,
+              proportion=True,
+              feature_names=var_list,
+              filled=True, rounded=True,
+              special_characters=True)
+
+graph = pydot.graph_from_dot_data(dot_data.getvalue())
+graph.write_pdf("DT_chom.pdf")
+"""
+
+
+# verification du nouveau codage 
+data['sexe'] = (data['menage'] > 8).apply(int)
+data['new_menage'] = data['menage'] - data['sexe'] * 8
+
+data['urbain'] = (data['region'] > 8).apply(int)
+data['new_region'] = data['region'] - data['urbain'] * 8
+
+proof = data[['menage', 'sexe', 'new_menage', 'region', 'urbain', 'new_region']].drop_duplicates()
+
+

@@ -1,0 +1,39 @@
+
+################################## Gini, PIB ##############################################
+Output = 1 lorsque le pays.decade a sa croissance dans le QUART le plus FORT de la décénie 
+Var1 = Gini , Var 2 =  GDP_PC_WB Output = growth
+                                  0           1        2        all
+gini_net_SWIID GDP_PC_WB                                           
+0              mean            0.25  0.57142***  0.23655    0.30656
+               size              16          28       93        137
+1              mean         0.22033     0.29545    0.375    0.28148
+               size              59          44       32        135
+2              mean       0.11111**     0.22580     0.25  0.17518**
+               size              63          62       12        137
+all            mean       0.17391**    0.32089*  0.27007           
+               size             138         134      137    
+
+
+Output = 1 lorsque le pays.decade a sa croissance dans le QUART le plus FAIBLE de la décénie 
+Var1 = Gini , Var 2 =  GDP_PC_WB Output = growth
+                                   0        1           2         all
+gini_net_SWIID GDP_PC_WB                                             
+0              mean             0.25     0.25  0.09677***  0.14598***
+               size               16       28          93         137
+1              mean          0.28813  0.22727     0.21875     0.25185
+               size               59       44          32         135
+2              mean       0.49206***  0.20967     0.41666  0.35766***
+               size               63       62          12         137
+all            mean       0.37681***  0.22388  0.15328***            
+               size              138      134         137             
+
+Les résultats du second tableau sont frappants. En étant pauvre et inégalitaire, on a deux
+plus de chance d'avoir l'une des pires croissance que la moyenne. Inversement en étant riche
+et égalitaire on divise par 2,5 les chances de se retrouver dans ce groupe. 
+
+L'évolution de la dépendance en PIB en fonction du Gini du tableau 1 est également éclairant. 
+Chez les pays égalitaires, les croissances les plus fortes se trouvent dans les pays 
+moyennement riches (en developpement peut-être ?). Alors que pour les inégalitaires, 
+on ne peut mesurer qu'un effet négatif chez les pays très pauvres. 
+############################################################################################
+

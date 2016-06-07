@@ -1,0 +1,5 @@
+- rapport en 3 parties : 1 revue de l'OCDE, 2 critique de Forbes, méthodes de compléxité
+- influence du Gini dans des zones de l'espace des phases : utiliser plutôt le découpage en tableau
+- faire qq slides pour le rdv avec Yves retraçant les principales étapes du rapport
+- regarder données recenssement
+- anormal correlations en laissant tomber les tableaux : on cherche, pour toutes les combinaisons possibles, les écarts les plus forts dans les taux de chomage. Le script renvoie les cases ayant le t test de Welch les plus forts. 

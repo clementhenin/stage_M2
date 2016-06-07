@@ -2,3 +2,4 @@ infant_death_WHO_urban_health,proba of dying before 1,bof,http://apps.who.int/gh
 infant_death_WHO_global_health_estimates,proba of dying before 1,tout sur 1990 – 2015,http://apps.who.int/gho/data/view.main.CM1320R
 wiid_quintiles,First and last quintiles of income share ,pas mal entre 1970 – 2013,https://www4.wider.unu.edu/
 infant_mortality_rate_OECD,Infant mortality rate ,pays OECD 1960 – 2013 : bien,https://data.oecd.org/healthstat/infant-mortality-rates.htm
+homicide_rate_UN,Homicide rate,17 années 200 pays,http://data.un.org/Data.aspx?d=UNODC&f=tableCode%3a1

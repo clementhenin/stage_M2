@@ -1,0 +1,483 @@
+> ineg = read.csv(file = "QCA_all_years.csv", row.names = "code")
+> library(QCA)
+> tt <- truthTable(ineg, outcome = "g", conditions = c("gini", 
++ "gdp", "nat_re", "invst"), incl.cut1 = 0.6, sort.by = "n", 
++ show.cases = T)
+> tt
+
+  OUT: outcome value
+    n: number of cases in configuration
+ incl: sufficiency inclusion score
+
+    GINI GDP NAT_RE INVST OUT n  incl  PRI  
+ 6   0    1    0      1    1  25 0.800 0.800
+11   1    0    1      0    0  20 0.150 0.150
+ 5   0    1    0      0    1   9 1.000 1.000
+12   1    0    1      1    1   9 0.667 0.667
+ 3   0    0    1      0    0   8 0.125 0.125
+ 9   1    0    0      0    0   8 0.375 0.375
+ 4   0    0    1      1    0   7 0.143 0.143
+15   1    1    1      0    0   7 0.286 0.286
+ 8   0    1    1      1    1   5 0.800 0.800
+13   1    1    0      0    0   5 0.400 0.400
+14   1    1    0      1    1   5 1.000 1.000
+16   1    1    1      1    0   4 0.500 0.500
+ 1   0    0    0      0    0   3 0.000 0.000
+ 2   0    0    0      1    0   3 0.333 0.333
+10   1    0    0      1    0   3 0.333 0.333
+ 7   0    1    1      0    1   1 1.000 1.000
+    cases                                                                                              
+ 6  AUT,BEL,BGR,CHE,CYP,CZE,DEU,ESP,EST,FIN,FRA,GRC,HRV,HUN,IRL,ISL,ISR,JPN,KOR,LVA,NZL,PRT,SVK,SVN,SWE
+11  BOL,CAF,CIV,CMR,COL,ECU,KEN,KHM,MLI,MWI,NER,NIC,NPL,PNG,PRY,RWA,SLE,UGA,ZMB,ZWE                    
+ 5  DNK,GBR,ITA,LTU,LUX,MLT,NLD,POL,USA                                                                
+12  CHN,GUY,HND,IND,LSO,MOZ,PER,TUN,TZA                                                                
+ 3  BDI,EGY,GHA,KGZ,LAO,PAK,SYR,YEM                                                                    
+ 9  DOM,GMB,GTM,LKA,PHL,SEN,SLV,SWZ                                                                    
+ 4  ALB,DZA,IDN,MNG,MRT,UKR,VNM                                                                        
+15  ARG,BRA,CHL,MEX,NAM,TTO,ZAF                                                                        
+ 8  AUS,KAZ,NOR,ROU,RUS                                                                                
+13  BRB,CRI,PAN,TUR,URY                                                                                
+14  BWA,HKG,MDV,MUS,SGP                                                                                
+16  IRN,JAM,MYS,VEN                                                                                    
+ 1  BGD,FJI,TJK                                                                                        
+ 2  ARM,JOR,MDA                                                                                        
+10  HTI,MAR,THA                                                                                        
+ 7  CAN                                                                                                
+
+> eqmcc(tt, details = T, show.cases = T)
+
+n OUT = 1/0/C: 54/68/0 
+  Total      : 122 
+
+Number of multiple-covered cases: 25 
+
+M1: gini*GDP + GDP*nat_re*INVST + GINI*gdp*NAT_RE*INVST <=> G
+
+                          incl   PRI    cov.r  cov.u 
+---------------------------------------------------- 
+1  gini*GDP               0.850  0.850  0.557  0.230 
+2  GDP*nat_re*INVST       0.833  0.833  0.410  0.082 
+3  GINI*gdp*NAT_RE*INVST  0.667  0.667  0.098  0.098 
+---------------------------------------------------- 
+   M1                     0.833  0.833  0.738 
+
+                          cases 
+------------------------------- 
+1  gini*GDP               DNK,GBR,ITA,LTU,LUX,MLT,NLD,POL,USA; AUT,BEL,BGR,CHE,CYP,CZE,DEU,ESP,EST,FIN,FRA,GRC,HRV,HUN,IRL,ISL,ISR,JPN,KOR,LVA,NZL,PRT,SVK,SVN,SWE;
+                          CAN; AUS,KAZ,NOR,ROU,RUS
+2  GDP*nat_re*INVST       AUT,BEL,BGR,CHE,CYP,CZE,DEU,ESP,EST,FIN,FRA,GRC,HRV,HUN,IRL,ISL,ISR,JPN,KOR,LVA,NZL,PRT,SVK,SVN,SWE;
+                          BWA,HKG,MDV,MUS,SGP
+3  GINI*gdp*NAT_RE*INVST  CHN,GUY,HND,IND,LSO,MOZ,PER,TUN,TZA
+------------------------------- 
+
+> ineg = read.csv(file = "QCA_10y.csv", row.names = "index")
+> library(QCA)
+> tt <- truthTable(ineg, outcome = "g", conditions = c("gini", 
++ "gdp", "nat_re", "invst"), incl.cut1 = 0.6, sort.by = "n", 
++ show.cases = T)
+> tt
+
+  OUT: outcome value
+    n: number of cases in configuration
+ incl: sufficiency inclusion score
+
+    GINI GDP NAT_RE INVST OUT n  incl  PRI  
+ 6   0    1    0      1    1  62 0.677 0.677
+11   1    0    1      0    0  55 0.309 0.309
+ 5   0    1    0      0    0  29 0.483 0.483
+12   1    0    1      1    0  27 0.519 0.519
+ 3   0    0    1      0    0  22 0.409 0.409
+ 4   0    0    1      1    0  18 0.556 0.556
+13   1    1    0      0    0  16 0.375 0.375
+14   1    1    0      1    1  15 0.600 0.600
+15   1    1    1      0    0  14 0.571 0.571
+10   1    0    0      1    0  13 0.538 0.538
+ 9   1    0    0      0    0  12 0.167 0.167
+ 8   0    1    1      1    1  10 0.800 0.800
+16   1    1    1      1    1  10 0.700 0.700
+ 2   0    0    0      1    1   7 0.714 0.714
+ 7   0    1    1      0    0   6 0.333 0.333
+ 1   0    0    0      0    0   4 0.500 0.500
+    cases                                                                                                                                                                                                                                                                                                                                                                              
+ 6  AUS95,AUT85,AUT95,AUT05,BEL05,BGR85,BGR05,CHE95,CHE05,CYP95,CYP05,CZE95,CZE05,DEU75,DEU85,DEU95,DNK75,ESP75,ESP95,ESP05,EST05,FIN75,FIN85,FIN95,FIN05,FRA75,GRC85,GRC95,GRC05,HKG85,HRV05,HUN95,HUN05,IRL05,ISL05,ISR95,JPN75,JPN85,JPN95,JPN05,KOR85,KOR95,KOR05,LTU05,LVA05,MUS95,NLD95,NZL75,NZL85,NZL05,PRT85,PRT95,PRT05,SGP95,SVK95,SVK05,SVN05,SWE75,SWE85,SWE95,SWE05,USA85
+11  ARG75,BOL85,BOL95,BOL05,BRA85,CAF95,CAF05,CHL85,CIV85,CIV95,CIV05,CMR05,COL75,COL85,COL05,ECU95,EGY75,GTM95,IDN75,IND75,IND85,JAM75,JAM85,KEN75,KEN95,KEN05,KHM95,KHM05,MAR75,MEX75,MLI95,MLI05,MOZ05,MWI85,MWI95,MWI05,MYS75,NER95,NER05,PER95,PER05,PNG95,PNG05,PRY95,PRY05,RWA95,RWA05,SEN95,SLE95,SLE05,SWZ95,UGA85,UGA05,ZWE95,ZWE05                                          
+ 5  DEU05,DNK85,DNK95,DNK05,ESP85,FJI95,FRA85,FRA95,FRA05,GBR75,GBR95,GBR05,IRL85,IRL95,ISR85,ISR05,ITA85,ITA95,ITA05,LUX05,MLT05,NLD75,NLD05,NZL95,POL95,POL05,USA75,USA95,USA05                                                                                                                                                                                                      
+12  BGD05,BWA85,CHN05,ECU05,GHA05,GUY95,HND95,HND05,IND95,IND05,IRN75,IRN95,IRN05,KEN85,LSO95,MYS85,NIC95,NIC05,NPL95,NPL05,PER85,PHL75,THA05,TUN85,TUN05,TZA05,ZAF75                                                                                                                                                                                                                  
+ 3  BDI95,BDI05,BGD75,BGD85,EGY95,EGY05,GHA95,GUY05,KAZ95,KGZ05,MRT95,PAK75,PAK85,PAK95,PAK05,RWA85,SYR05,TGO05,UGA95,UKR05,YEM95,YEM05                                                                                                                                                                                                                                                
+ 4  CHN75,CHN85,CHN95,DZA95,DZA05,EGY85,IDN85,IDN95,IDN05,LAO05,MNG95,MNG05,MRT05,ROU95,TZA95,UKR95,VNM95,VNM05                                                                                                                                                                                                                                                                        
+13  ARG95,BRA95,BRB05,CRI95,CRI05,DOM95,DOM05,HKG75,ITA75,NAM95,PAN05,TUR05,URY85,URY95,URY05,ZAF95                                                                                                                                                                                                                                                                                    
+14  BLZ95,BWA95,GRC75,HKG95,HKG05,IRL75,JAM05,MDV05,MUS05,PAN95,SGP75,SGP85,SGP05,THA95,TUR95                                                                                                                                                                                                                                                                                          
+15  ARG85,ARG05,BRA05,CHL05,COL95,MEX85,MEX95,MEX05,RUS05,TTO95,TTO05,VEN85,VEN95,ZAF05                                                                                                                                                                                                                                                                                                
+10  HTI95,JOR85,JOR95,JOR05,LKA85,LKA05,MAR85,MAR95,MAR05,MUS85,PHL95,SEN05,THA85                                                                                                                                                                                                                                                                                                      
+ 9  CRI85,GMB95,GTM05,NAM05,PAN85,PHL85,PHL05,SLV95,SLV05,SWZ05,THA75,TUR85                                                                                                                                                                                                                                                                                                            
+ 8  AUS75,AUS85,AUS05,KAZ05,NOR75,NOR85,NOR95,NOR05,ROU05,RUS95                                                                                                                                                                                                                                                                                                                        
+16  BWA05,CHL95,IRN85,JAM95,MYS95,MYS05,TUN95,VEN75,VEN05,ZAF85                                                                                                                                                                                                                                                                                                                        
+ 2  ALB05,ARM05,KOR75,LKA95,MDA95,MDA05,PRT75                                                                                                                                                                                                                                                                                                                                          
+ 7  CAN75,CAN85,CAN95,CAN05,GBR85,NLD85                                                                                                                                                                                                                                                                                                                                                
+ 1  BGD95,BGR95,FJI05,TJK05                                                                                                                                                                                                                                                                                                                                                            
+
+> eqmcc(tt, details = T, show.cases = T)
+
+n OUT = 1/0/C: 104/216/0 
+  Total      : 320 
+
+Number of multiple-covered cases: 62 
+
+M1: GDP*INVST + gini*nat_re*INVST => G
+
+                      incl   PRI    cov.r  cov.u 
+------------------------------------------------ 
+1  GDP*INVST          0.680  0.680  0.407  0.148 
+2  gini*nat_re*INVST  0.681  0.681  0.290  0.031 
+------------------------------------------------ 
+   M1                 0.683  0.683  0.438 
+
+                      cases 
+--------------------------- 
+1  GDP*INVST          AUS95,AUT85,AUT95,AUT05,BEL05,BGR85,BGR05,CHE95,CHE05,CYP95,CYP05,CZE95,CZE05,DEU75,DEU85,DEU95,DNK75,ESP75,ESP95,ESP05,EST05,FIN75,FIN85,FIN95,FIN05,FRA75,GRC85,GRC95,GRC05,HKG85,HRV05,HUN95,HUN05,IRL05,ISL05,ISR95,JPN75,JPN85,JPN95,JPN05,KOR85,KOR95,KOR05,LTU05,LVA05,MUS95,NLD95,NZL75,NZL85,NZL05,PRT85,PRT95,PRT05,SGP95,SVK95,SVK05,SVN05,SWE75,SWE85,SWE95,SWE05,USA85;
+                      AUS75,AUS85,AUS05,KAZ05,NOR75,NOR85,NOR95,NOR05,ROU05,RUS95;
+                      BLZ95,BWA95,GRC75,HKG95,HKG05,IRL75,JAM05,MDV05,MUS05,PAN95,SGP75,SGP85,SGP05,THA95,TUR95;
+                      BWA05,CHL95,IRN85,JAM95,MYS95,MYS05,TUN95,VEN75,VEN05,ZAF85
+2  gini*nat_re*INVST  ALB05,ARM05,KOR75,LKA95,MDA95,MDA05,PRT75; AUS95,AUT85,AUT95,AUT05,BEL05,BGR85,BGR05,CHE95,CHE05,CYP95,CYP05,CZE95,CZE05,DEU75,DEU85,DEU95,DNK75,ESP75,ESP95,ESP05,EST05,FIN75,FIN85,FIN95,FIN05,FRA75,GRC85,GRC95,GRC05,HKG85,HRV05,HUN95,HUN05,IRL05,ISL05,ISR95,JPN75,JPN85,JPN95,JPN05,KOR85,KOR95,KOR05,LTU05,LVA05,MUS95,NLD95,NZL75,NZL85,NZL05,PRT85,PRT95,PRT05,SGP95,SVK95,SVK05,SVN05,SWE75,SWE85,SWE95,SWE05,USA85
+--------------------------- 
+
+> ineg = read.csv(file = "QCA_10y.csv", row.names = "index")
+> library(QCA)
+> tt <- truthTable(ineg, outcome = "~g", conditions = c("gini", 
++ "gdp", "nat_re", "invst"), incl.cut1 = 0.6, sort.by = "n", 
++ show.cases = T)
+> tt
+
+  OUT: outcome value
+    n: number of cases in configuration
+ incl: sufficiency inclusion score
+
+    GINI GDP NAT_RE INVST OUT n  incl  PRI  
+ 6   0    1    0      1    0  62 0.323 0.323
+11   1    0    1      0    1  55 0.691 0.691
+ 5   0    1    0      0    0  29 0.517 0.517
+12   1    0    1      1    0  27 0.481 0.481
+ 3   0    0    1      0    0  22 0.591 0.591
+ 4   0    0    1      1    0  18 0.444 0.444
+13   1    1    0      0    1  16 0.625 0.625
+14   1    1    0      1    0  15 0.400 0.400
+15   1    1    1      0    0  14 0.429 0.429
+10   1    0    0      1    0  13 0.462 0.462
+ 9   1    0    0      0    1  12 0.833 0.833
+ 8   0    1    1      1    0  10 0.200 0.200
+16   1    1    1      1    0  10 0.300 0.300
+ 2   0    0    0      1    0   7 0.286 0.286
+ 7   0    1    1      0    1   6 0.667 0.667
+ 1   0    0    0      0    0   4 0.500 0.500
+    cases                                                                                                                                                                                                                                                                                                                                                                              
+ 6  AUS95,AUT85,AUT95,AUT05,BEL05,BGR85,BGR05,CHE95,CHE05,CYP95,CYP05,CZE95,CZE05,DEU75,DEU85,DEU95,DNK75,ESP75,ESP95,ESP05,EST05,FIN75,FIN85,FIN95,FIN05,FRA75,GRC85,GRC95,GRC05,HKG85,HRV05,HUN95,HUN05,IRL05,ISL05,ISR95,JPN75,JPN85,JPN95,JPN05,KOR85,KOR95,KOR05,LTU05,LVA05,MUS95,NLD95,NZL75,NZL85,NZL05,PRT85,PRT95,PRT05,SGP95,SVK95,SVK05,SVN05,SWE75,SWE85,SWE95,SWE05,USA85
+11  ARG75,BOL85,BOL95,BOL05,BRA85,CAF95,CAF05,CHL85,CIV85,CIV95,CIV05,CMR05,COL75,COL85,COL05,ECU95,EGY75,GTM95,IDN75,IND75,IND85,JAM75,JAM85,KEN75,KEN95,KEN05,KHM95,KHM05,MAR75,MEX75,MLI95,MLI05,MOZ05,MWI85,MWI95,MWI05,MYS75,NER95,NER05,PER95,PER05,PNG95,PNG05,PRY95,PRY05,RWA95,RWA05,SEN95,SLE95,SLE05,SWZ95,UGA85,UGA05,ZWE95,ZWE05                                          
+ 5  DEU05,DNK85,DNK95,DNK05,ESP85,FJI95,FRA85,FRA95,FRA05,GBR75,GBR95,GBR05,IRL85,IRL95,ISR85,ISR05,ITA85,ITA95,ITA05,LUX05,MLT05,NLD75,NLD05,NZL95,POL95,POL05,USA75,USA95,USA05                                                                                                                                                                                                      
+12  BGD05,BWA85,CHN05,ECU05,GHA05,GUY95,HND95,HND05,IND95,IND05,IRN75,IRN95,IRN05,KEN85,LSO95,MYS85,NIC95,NIC05,NPL95,NPL05,PER85,PHL75,THA05,TUN85,TUN05,TZA05,ZAF75                                                                                                                                                                                                                  
+ 3  BDI95,BDI05,BGD75,BGD85,EGY95,EGY05,GHA95,GUY05,KAZ95,KGZ05,MRT95,PAK75,PAK85,PAK95,PAK05,RWA85,SYR05,TGO05,UGA95,UKR05,YEM95,YEM05                                                                                                                                                                                                                                                
+ 4  CHN75,CHN85,CHN95,DZA95,DZA05,EGY85,IDN85,IDN95,IDN05,LAO05,MNG95,MNG05,MRT05,ROU95,TZA95,UKR95,VNM95,VNM05                                                                                                                                                                                                                                                                        
+13  ARG95,BRA95,BRB05,CRI95,CRI05,DOM95,DOM05,HKG75,ITA75,NAM95,PAN05,TUR05,URY85,URY95,URY05,ZAF95                                                                                                                                                                                                                                                                                    
+14  BLZ95,BWA95,GRC75,HKG95,HKG05,IRL75,JAM05,MDV05,MUS05,PAN95,SGP75,SGP85,SGP05,THA95,TUR95                                                                                                                                                                                                                                                                                          
+15  ARG85,ARG05,BRA05,CHL05,COL95,MEX85,MEX95,MEX05,RUS05,TTO95,TTO05,VEN85,VEN95,ZAF05                                                                                                                                                                                                                                                                                                
+10  HTI95,JOR85,JOR95,JOR05,LKA85,LKA05,MAR85,MAR95,MAR05,MUS85,PHL95,SEN05,THA85                                                                                                                                                                                                                                                                                                      
+ 9  CRI85,GMB95,GTM05,NAM05,PAN85,PHL85,PHL05,SLV95,SLV05,SWZ05,THA75,TUR85                                                                                                                                                                                                                                                                                                            
+ 8  AUS75,AUS85,AUS05,KAZ05,NOR75,NOR85,NOR95,NOR05,ROU05,RUS95                                                                                                                                                                                                                                                                                                                        
+16  BWA05,CHL95,IRN85,JAM95,MYS95,MYS05,TUN95,VEN75,VEN05,ZAF85                                                                                                                                                                                                                                                                                                                        
+ 2  ALB05,ARM05,KOR75,LKA95,MDA95,MDA05,PRT75                                                                                                                                                                                                                                                                                                                                          
+ 7  CAN75,CAN85,CAN95,CAN05,GBR85,NLD85                                                                                                                                                                                                                                                                                                                                                
+ 1  BGD95,BGR95,FJI05,TJK05                                                                                                                                                                                                                                                                                                                                                            
+
+> eqmcc(tt, details = T, show.cases = T)
+
+n OUT = 1/0/C: 89/231/0 
+  Total      : 320 
+
+Number of multiple-covered cases: 12 
+
+M1: GINI*gdp*invst + GINI*nat_re*invst + gini*GDP*NAT_RE*invst => g
+
+                          incl   PRI    cov.r  cov.u 
+---------------------------------------------------- 
+1  GINI*gdp*invst         0.716  0.716  0.304  0.241 
+2  GINI*nat_re*invst      0.714  0.714  0.127  0.063 
+3  gini*GDP*NAT_RE*invst  0.667  0.667  0.025  0.025 
+---------------------------------------------------- 
+   M1                     0.697  0.697  0.392 
+
+                          cases 
+------------------------------- 
+1  GINI*gdp*invst         CRI85,GMB95,GTM05,NAM05,PAN85,PHL85,PHL05,SLV95,SLV05,SWZ05,THA75,TUR85;
+                          ARG75,BOL85,BOL95,BOL05,BRA85,CAF95,CAF05,CHL85,CIV85,CIV95,CIV05,CMR05,COL75,COL85,COL05,ECU95,EGY75,GTM95,IDN75,IND75,IND85,JAM75,JAM85,KEN75,KEN95,KEN05,KHM95,KHM05,MAR75,MEX75,MLI95,MLI05,MOZ05,MWI85,MWI95,MWI05,MYS75,NER95,NER05,PER95,PER05,PNG95,PNG05,PRY95,PRY05,RWA95,RWA05,SEN95,SLE95,SLE05,SWZ95,UGA85,UGA05,ZWE95,ZWE05
+2  GINI*nat_re*invst      CRI85,GMB95,GTM05,NAM05,PAN85,PHL85,PHL05,SLV95,SLV05,SWZ05,THA75,TUR85;
+                          ARG95,BRA95,BRB05,CRI95,CRI05,DOM95,DOM05,HKG75,ITA75,NAM95,PAN05,TUR05,URY85,URY95,URY05,ZAF95
+3  gini*GDP*NAT_RE*invst  CAN75,CAN85,CAN95,CAN05,GBR85,NLD85
+------------------------------- 
+
+> ineg = read.csv(file = "QCA_10y.csv", row.names = "index")
+> library(QCA)
+> tt <- truthTable(ineg, outcome = "g", conditions = c("gini", 
++ "gdp", "schl", "invst"), incl.cut1 = 0.6, sort.by = "n", 
++ show.cases = T)
+> tt
+
+  OUT: outcome value
+    n: number of cases in configuration
+ incl: sufficiency inclusion score
+
+    GINI GDP SCHL INVST OUT n  incl  PRI  
+ 8   0    1   1     1    1  68 0.691 0.691
+ 9   1    0   0     0    0  59 0.271 0.271
+ 7   0    1   1     0    0  35 0.457 0.457
+10   1    0   0     1    0  33 0.485 0.485
+ 1   0    0   0     0    0  20 0.400 0.400
+ 2   0    0   0     1    1  16 0.625 0.625
+13   1    1   0     0    0  15 0.400 0.400
+15   1    1   1     0    0  15 0.533 0.533
+16   1    1   1     1    1  14 0.643 0.643
+14   1    1   0     1    1  11 0.636 0.636
+ 4   0    0   1     1    0   9 0.556 0.556
+11   1    0   1     0    0   8 0.375 0.375
+12   1    0   1     1    1   7 0.714 0.714
+ 3   0    0   1     0    0   6 0.500 0.500
+ 6   0    1   0     1    1   4 0.750 0.750
+    cases                                                                                                                                                                                                                                                                                                                                                                                                                  
+ 8  AUS75,AUS85,AUS95,AUS05,AUT85,AUT95,AUT05,BEL05,BGR85,BGR05,CHE95,CHE05,CYP95,CYP05,CZE95,CZE05,DEU75,DEU85,DEU95,DNK75,ESP75,ESP95,ESP05,EST05,FIN75,FIN85,FIN95,FIN05,FRA75,GRC85,GRC95,GRC05,HKG85,HRV05,HUN95,HUN05,IRL05,ISL05,ISR95,JPN75,JPN85,JPN95,JPN05,KAZ05,KOR85,KOR95,KOR05,LTU05,LVA05,NLD95,NOR75,NOR85,NOR95,NOR05,NZL75,NZL85,NZL05,ROU05,RUS95,SGP95,SVK95,SVK05,SVN05,SWE75,SWE85,SWE95,SWE05,USA85
+ 9  BOL85,BOL05,BRA85,CAF95,CAF05,CIV85,CIV95,CIV05,CMR05,COL75,COL85,COL05,ECU95,EGY75,GMB95,GTM95,GTM05,IDN75,IND75,IND85,JAM75,JAM85,KEN75,KEN95,KEN05,KHM95,KHM05,MAR75,MEX75,MLI95,MLI05,MOZ05,MWI85,MWI95,MWI05,MYS75,NAM05,NER95,NER05,PHL05,PNG95,PNG05,PRY95,PRY05,RWA95,RWA05,SEN95,SLE95,SLE05,SLV95,SLV05,SWZ95,SWZ05,THA75,TUR85,UGA85,UGA05,ZWE95,ZWE05                                                      
+ 7  CAN75,CAN85,CAN95,CAN05,DEU05,DNK85,DNK95,DNK05,ESP85,FJI95,FRA85,FRA95,FRA05,GBR75,GBR85,GBR95,GBR05,IRL85,IRL95,ISR85,ISR05,ITA85,ITA95,ITA05,LUX05,MLT05,NLD75,NLD85,NLD05,NZL95,POL95,POL05,USA75,USA95,USA05                                                                                                                                                                                                      
+10  BGD05,BWA85,CHN05,ECU05,GHA05,HND95,HND05,HTI95,IND95,IND05,IRN75,IRN95,IRN05,JOR85,KEN85,LSO95,MAR85,MAR95,MAR05,MUS85,MYS85,NIC95,NIC05,NPL95,NPL05,PHL75,SEN05,THA85,THA05,TUN85,TUN05,TZA05,ZAF75                                                                                                                                                                                                                  
+ 1  BDI95,BDI05,BGD75,BGD85,BGD95,EGY95,EGY05,GHA95,GUY05,MRT95,PAK75,PAK85,PAK95,PAK05,RWA85,SYR05,TGO05,UGA95,YEM95,YEM05                                                                                                                                                                                                                                                                                                
+ 2  CHN75,CHN85,CHN95,DZA95,DZA05,EGY85,IDN85,IDN95,IDN05,LAO05,MNG05,MRT05,PRT75,TZA95,VNM95,VNM05                                                                                                                                                                                                                                                                                                                        
+13  BRA95,BRA05,COL95,CRI95,CRI05,DOM95,DOM05,MEX85,MEX95,MEX05,NAM95,TUR05,URY05,VEN85,VEN95                                                                                                                                                                                                                                                                                                                              
+15  ARG85,ARG95,ARG05,BRB05,CHL05,HKG75,ITA75,PAN05,RUS05,TTO95,TTO05,URY85,URY95,ZAF95,ZAF05                                                                                                                                                                                                                                                                                                                              
+16  BLZ95,BWA95,BWA05,CHL95,GRC75,HKG95,HKG05,IRL75,JAM95,JAM05,MYS95,MYS05,PAN95,SGP05                                                                                                                                                                                                                                                                                                                                    
+14  IRN85,MDV05,MUS05,SGP75,SGP85,THA95,TUN95,TUR95,VEN75,VEN05,ZAF85                                                                                                                                                                                                                                                                                                                                                      
+ 4  ALB05,ARM05,KOR75,LKA95,MDA95,MDA05,MNG95,ROU95,UKR95                                                                                                                                                                                                                                                                                                                                                                  
+11  ARG75,BOL95,CHL85,CRI85,PAN85,PER95,PER05,PHL85                                                                                                                                                                                                                                                                                                                                                                        
+12  GUY95,JOR95,JOR05,LKA85,LKA05,PER85,PHL95                                                                                                                                                                                                                                                                                                                                                                              
+ 3  BGR95,FJI05,KAZ95,KGZ05,TJK05,UKR05                                                                                                                                                                                                                                                                                                                                                                                    
+ 6  MUS95,PRT85,PRT95,PRT05                                                                                                                                                                                                                                                                                                                                                                                                
+
+> eqmcc(tt, details = T, show.cases = T)
+
+n OUT = 1/0/C: 120/200/0 
+  Total      : 320 
+
+Number of multiple-covered cases: 18 
+
+M1: GDP*INVST + gini*schl*INVST + GINI*SCHL*INVST => G
+
+                    incl   PRI    cov.r  cov.u 
+---------------------------------------------- 
+1  GDP*INVST        0.680  0.680  0.407  0.333 
+2  gini*schl*INVST  0.650  0.650  0.080  0.062 
+3  GINI*SCHL*INVST  0.667  0.667  0.086  0.031 
+---------------------------------------------- 
+   M1               0.675  0.675  0.500 
+
+                    cases 
+------------------------- 
+1  GDP*INVST        MUS95,PRT85,PRT95,PRT05; AUS75,AUS85,AUS95,AUS05,AUT85,AUT95,AUT05,BEL05,BGR85,BGR05,CHE95,CHE05,CYP95,CYP05,CZE95,CZE05,DEU75,DEU85,DEU95,DNK75,ESP75,ESP95,ESP05,EST05,FIN75,FIN85,FIN95,FIN05,FRA75,GRC85,GRC95,GRC05,HKG85,HRV05,HUN95,HUN05,IRL05,ISL05,ISR95,JPN75,JPN85,JPN95,JPN05,KAZ05,KOR85,KOR95,KOR05,LTU05,LVA05,NLD95,NOR75,NOR85,NOR95,NOR05,NZL75,NZL85,NZL05,ROU05,RUS95,SGP95,SVK95,SVK05,SVN05,SWE75,SWE85,SWE95,SWE05,USA85;
+                    IRN85,MDV05,MUS05,SGP75,SGP85,THA95,TUN95,TUR95,VEN75,VEN05,ZAF85;
+                    BLZ95,BWA95,BWA05,CHL95,GRC75,HKG95,HKG05,IRL75,JAM95,JAM05,MYS95,MYS05,PAN95,SGP05
+2  gini*schl*INVST  CHN75,CHN85,CHN95,DZA95,DZA05,EGY85,IDN85,IDN95,IDN05,LAO05,MNG05,MRT05,PRT75,TZA95,VNM95,VNM05;
+                    MUS95,PRT85,PRT95,PRT05
+3  GINI*SCHL*INVST  GUY95,JOR95,JOR05,LKA85,LKA05,PER85,PHL95; BLZ95,BWA95,BWA05,CHL95,GRC75,HKG95,HKG05,IRL75,JAM95,JAM05,MYS95,MYS05,PAN95,SGP05
+------------------------- 
+
+> ineg = read.csv(file = "QCA_10y_3c.csv", row.names = "index")
+> library(QCA)
+> tt <- truthTable(ineg, outcome = "g1h", conditions = c("gini", 
++ "gdp", "schl", "invst"), incl.cut1 = 0.37, sort.by = "n", 
++ show.cases = T)
+> tt
+
+  OUT: outcome value
+    n: number of cases in configuration
+ incl: sufficiency inclusion score
+
+    GINI GDP SCHL INVST OUT n  incl  PRI  
+26   0    2   2     1    0  30 0.233 0.233
+27   0    2   2     2    1  28 0.500 0.500
+28   1    0   0     0    0  22 0.182 0.182
+55   2    0   0     0    0  19 0.053 0.053
+67   2    1   1     0    0  17 0.235 0.235
+68   2    1   1     1    0  12 0.167 0.167
+23   0    2   1     1    0  11 0.182 0.182
+69   2    1   1     2    1  11 0.455 0.455
+29   1    0   0     1    0  10 0.200 0.200
+41   1    1   1     1    1   8 0.500 0.500
+56   2    0   0     1    0   8 0.125 0.125
+57   2    0   0     2    1   8 0.625 0.625
+64   2    1   0     0    0   8 0.250 0.250
+25   0    2   2     0    1   7 0.429 0.429
+30   1    0   0     2    0   7 0.286 0.286
+58   2    0   1     0    0   7 0.143 0.143
+18   0    1   2     2    1   6 0.500 0.500
+42   1    1   1     2    1   6 0.667 0.667
+53   1    2   2     1    1   6 0.500 0.500
+ 1   0    0   0     0    0   5 0.200 0.200
+24   0    2   1     2    1   5 0.400 0.400
+39   1    1   0     2    1   5 0.400 0.400
+33   1    0   1     2    1   4 0.750 0.750
+40   1    1   1     0    0   4 0.250 0.250
+45   1    1   2     2    1   4 0.500 0.500
+51   1    2   1     2    1   4 0.500 0.500
+52   1    2   2     0    0   4 0.250 0.250
+66   2    1   0     2    0   4 0.250 0.250
+ 6   0    0   1     2    1   3 0.667 0.667
+12   0    1   0     2    0   3 0.333 0.333
+17   0    1   2     1    1   3 0.667 0.667
+54   1    2   2     2    1   3 1.000 1.000
+59   2    0   1     1    0   3 0.000 0.000
+65   2    1   0     1    0   3 0.333 0.333
+35   1    0   2     1    1   2 1.000 1.000
+36   1    0   2     2    1   2 1.000 1.000
+37   1    1   0     0    0   2 0.000 0.000
+43   1    1   2     0    0   2 0.000 0.000
+44   1    1   2     1    1   2 0.500 0.500
+49   1    2   1     0    1   2 1.000 1.000
+76   2    2   1     0    0   2 0.000 0.000
+ 3   0    0   0     2    0   1 0.000 0.000
+ 7   0    0   2     0    1   1 1.000 1.000
+ 9   0    0   2     2    0   1 0.000 0.000
+11   0    1   0     1    1   1 1.000 1.000
+15   0    1   1     2    1   1 1.000 1.000
+16   0    1   2     0    0   1 0.000 0.000
+22   0    2   1     0    0   1 0.000 0.000
+31   1    0   1     0    0   1 0.000 0.000
+32   1    0   1     1    1   1 1.000 1.000
+34   1    0   2     0    1   1 1.000 1.000
+38   1    1   0     1    0   1 0.000 0.000
+50   1    2   1     1    0   1 0.000 0.000
+60   2    0   1     2    0   1 0.000 0.000
+70   2    1   2     0    0   1 0.000 0.000
+71   2    1   2     1    0   1 0.000 0.000
+77   2    2   1     1    1   1 1.000 1.000
+80   2    2   2     1    0   1 0.000 0.000
+81   2    2   2     2    1   1 1.000 1.000
+    cases                                                                                                                                                                                                            
+26  AUT 85,BEL 05,CAN 75,CAN 85,CAN 95,CAN 05,DEU 95,DNK 75,DNK 95,DNK 05,FRA 05,GRC 95,HUN 95,IRL 95,JPN 05,LUX 05,NLD 75,NLD 85,NLD 95,NLD 05,NOR 95,NOR 05,NZL 75,NZL 85,NZL 95,NZL 05,POL 05,SWE 85,SWE 95,SWE 05
+27  AUS 75,AUS 85,AUS 95,AUS 05,AUT 95,CHE 95,CHE 05,CYP 95,CZE 95,CZE 05,DEU 75,EST 05,HRV 05,HUN 05,IRL 05,ISL 05,ISR 95,JPN 75,JPN 85,JPN 95,KOR 95,KOR 05,NOR 75,NOR 85,SVK 95,SVK 05,SVN 05,SWE 75              
+28  BDI 95,BDI 05,BGD 75,BGD 85,BGD 95,CIV 85,CIV 95,CMR 05,GMB 95,IDN 75,KEN 05,KHM 95,KHM 05,MLI 95,MWI 05,PAK 75,PAK 85,RWA 95,SYR 05,TGO 05,UGA 95,YEM 95                                                        
+55  CAF 95,CAF 05,CIV 05,COL 75,COL 85,EGY 75,IND 75,KEN 75,KEN 95,MAR 75,MWI 85,MWI 95,NER 95,NER 05,RWA 05,SEN 95,SLE 95,SLE 05,UGA 85                                                                             
+67  ARG 05,BRA 05,COL 95,COL 05,DOM 95,JAM 75,JAM 85,NAM 95,PAN 85,PAN 05,PER 95,PER 05,PRY 05,SLV 05,URY 05,ZAF 95,ZAF 05                                                                                           
+68  CHL 05,CRI 05,DOM 05,ECU 95,ECU 05,MEX 85,MEX 05,MYS 05,PHL 95,PRY 95,TUR 95,ZAF 85                                                                                                                              
+23  AUT 05,CYP 05,DEU 85,ESP 85,ESP 95,FIN 95,FIN 05,FRA 85,FRA 95,ITA 85,ITA 95                                                                                                                                     
+69  BWA 95,BWA 05,CHN 05,IRN 95,IRN 05,JAM 95,JAM 05,MYS 85,MYS 95,PAN 95,ZAF 75                                                                                                                                     
+29  GHA 05,LAO 05,MLI 05,MRT 95,NPL 95,SEN 05,TZA 95,TZA 05,UGA 05,VNM 95                                                                                                                                            
+41  ARG 75,ESP 75,HKG 75,ITA 75,MUS 85,MUS 05,VEN 95,VEN 05                                                                                                                                                          
+56  HTI 95,IND 85,IND 95,KEN 85,MOZ 05,NIC 95,PNG 05,THA 75                                                                                                                                                          
+57  BWA 85,HND 95,HND 05,IND 05,MAR 85,NIC 05,NPL 05,THA 85                                                                                                                                                          
+64  BRA 85,GTM 95,GTM 05,MEX 75,SLV 95,SWZ 95,SWZ 05,TUR 85                                                                                                                                                          
+25  DEU 05,DNK 85,GBR 75,GBR 85,GBR 95,ISR 85,MLT 05                                                                                                                                                                 
+30  BGD 05,EGY 85,IDN 85,IDN 05,MRT 05,TUN 85,VNM 05                                                                                                                                                                 
+58  BOL 85,BOL 95,BOL 05,MYS 75,PHL 05,ZWE 95,ZWE 05                                                                                                                                                                 
+18  BGR 85,BGR 05,KAZ 05,ROU 95,ROU 05,UKR 95                                                                                                                                                                        
+42  GRC 75,JOR 85,JOR 95,JOR 05,MUS 95,SGP 75                                                                                                                                                                        
+53  IRL 85,LTU 05,TTO 95,USA 85,USA 95,USA 05                                                                                                                                                                        
+ 1  EGY 05,PAK 95,PAK 05,RWA 85,YEM 05                                                                                                                                                                               
+24  ESP 05,FIN 75,FIN 85,GRC 05,PRT 95                                                                                                                                                                               
+39  DZA 05,MAR 95,MAR 05,THA 95,TUN 95                                                                                                                                                                               
+33  CHN 95,GUY 95,MDA 05,MNG 95                                                                                                                                                                                      
+40  CRI 85,CRI 95,FJI 05,URY 85                                                                                                                                                                                      
+45  ARM 05,GRC 85,KOR 85,RUS 95                                                                                                                                                                                      
+51  PRT 05,SGP 85,SGP 95,SGP 05                                                                                                                                                                                      
+52  GBR 05,ISR 05,TTO 05,USA 75                                                                                                                                                                                      
+66  IRN 75,IRN 85,THA 05,VEN 75                                                                                                                                                                                      
+ 6  CHN 75,CHN 85,MNG 05                                                                                                                                                                                             
+12  DZA 95,PRT 75,PRT 85                                                                                                                                                                                             
+17  KAZ 95,POL 95,UKR 05                                                                                                                                                                                             
+54  HKG 85,HKG 95,LVA 05                                                                                                                                                                                             
+59  PER 85,PHL 75,PHL 85                                                                                                                                                                                             
+65  MDV 05,NAM 05,PNG 95                                                                                                                                                                                             
+35  KOR 75,LKA 85                                                                                                                                                                                                    
+36  LKA 95,LKA 05                                                                                                                                                                                                    
+37  TUR 05,VEN 85                                                                                                                                                                                                    
+43  ARG 85,FJI 95                                                                                                                                                                                                    
+44  IRL 75,RUS 05                                                                                                                                                                                                    
+49  ARG 95,URY 95                                                                                                                                                                                                    
+76  BRA 95,BRB 05                                                                                                                                                                                                    
+ 3  IDN 95                                                                                                                                                                                                           
+ 7  TJK 05                                                                                                                                                                                                           
+ 9  MDA 95                                                                                                                                                                                                           
+11  EGY 95                                                                                                                                                                                                           
+15  ALB 05                                                                                                                                                                                                           
+16  BGR 95                                                                                                                                                                                                           
+22  ITA 05                                                                                                                                                                                                           
+31  GHA 95                                                                                                                                                                                                           
+32  GUY 05                                                                                                                                                                                                           
+34  KGZ 05                                                                                                                                                                                                           
+38  TUN 05                                                                                                                                                                                                           
+50  FRA 75                                                                                                                                                                                                           
+60  LSO 95                                                                                                                                                                                                           
+70  CHL 85                                                                                                                                                                                                           
+71  BLZ 95                                                                                                                                                                                                           
+77  MEX 95                                                                                                                                                                                                           
+80  HKG 05                                                                                                                                                                                                           
+81  CHL 95                                                                                                                                                                                                           
+
+> eqmcc(tt, details = T, show.cases = T)
+
+n OUT = 1/0/C: 126/194/0 
+  Total      : 320 
+
+Number of multiple-covered cases: 9 
+
+M1: GDP{1}*SCHL{1}*INVST{2} + GDP{2}*SCHL{2}*INVST{2} +
+    GINI{0}*SCHL{1}*INVST{2} + GINI{1}*GDP{0}*SCHL{2} + GINI{1}*GDP{1}*INVST{2} +
+    GINI{1}*SCHL{1}*INVST{2} + GINI{1}*SCHL{2}*INVST{1} +
+    GINI{0}*GDP{0}*SCHL{2}*INVST{0} + GINI{0}*GDP{1}*SCHL{0}*INVST{1} +
+    GINI{0}*GDP{1}*SCHL{2}*INVST{1} + GINI{0}*GDP{1}*SCHL{2}*INVST{2} +
+    GINI{0}*GDP{2}*SCHL{2}*INVST{0} + GINI{1}*GDP{0}*SCHL{1}*INVST{1} +
+    GINI{1}*GDP{1}*SCHL{1}*INVST{1} + GINI{1}*GDP{2}*SCHL{1}*INVST{0} +
+    GINI{2}*GDP{0}*SCHL{0}*INVST{2} + GINI{2}*GDP{2}*SCHL{1}*INVST{1} <=> G1H
+
+                                     incl   PRI    cov.r  cov.u 
+--------------------------------------------------------------- 
+ 1  GDP{1}*SCHL{1}*INVST{2}          0.556  0.556  0.093  0.047 
+ 2  GDP{2}*SCHL{2}*INVST{2}          0.562  0.562  0.168  0.168 
+ 3  GINI{0}*SCHL{1}*INVST{2}         0.556  0.556  0.047  0.037 
+ 4  GINI{1}*GDP{0}*SCHL{2}           1.000  1.000  0.047  0.028 
+ 5  GINI{1}*GDP{1}*INVST{2}          0.533  0.533  0.075  0.037 
+ 6  GINI{1}*SCHL{1}*INVST{2}         0.643  0.643  0.084  0.047 
+ 7  GINI{1}*SCHL{2}*INVST{1}         0.600  0.600  0.056  0.037 
+ 8  GINI{0}*GDP{0}*SCHL{2}*INVST{0}  1.000  1.000  0.009  0.009 
+ 9  GINI{0}*GDP{1}*SCHL{0}*INVST{1}  1.000  1.000  0.009  0.009 
+10  GINI{0}*GDP{1}*SCHL{2}*INVST{1}  0.667  0.667  0.019  0.019 
+11  GINI{0}*GDP{1}*SCHL{2}*INVST{2}  0.500  0.500  0.028  0.028 
+12  GINI{0}*GDP{2}*SCHL{2}*INVST{0}  0.429  0.429  0.028  0.028 
+13  GINI{1}*GDP{0}*SCHL{1}*INVST{1}  1.000  1.000  0.009  0.009 
+14  GINI{1}*GDP{1}*SCHL{1}*INVST{1}  0.500  0.500  0.037  0.037 
+15  GINI{1}*GDP{2}*SCHL{1}*INVST{0}  1.000  1.000  0.019  0.019 
+16  GINI{2}*GDP{0}*SCHL{0}*INVST{2}  0.625  0.625  0.047  0.047 
+17  GINI{2}*GDP{2}*SCHL{1}*INVST{1}  1.000  1.000  0.009  0.009 
+--------------------------------------------------------------- 
+    M1                               0.579  0.579  0.682 
+
+                                     cases 
+------------------------------------------ 
+ 1  GDP{1}*SCHL{1}*INVST{2}          ALB 05; GRC 75,JOR 85,JOR 95,JOR 05,MUS 95,SGP 75;
+                                     BWA 95,BWA 05,CHN 05,IRN 95,IRN 05,JAM 95,JAM 05,MYS 85,MYS 95,PAN 95,ZAF 75
+ 2  GDP{2}*SCHL{2}*INVST{2}          AUS 75,AUS 85,AUS 95,AUS 05,AUT 95,CHE 95,CHE 05,CYP 95,CZE 95,CZE 05,DEU 75,EST 05,HRV 05,HUN 05,IRL 05,ISL 05,ISR 95,JPN 75,JPN 85,JPN 95,KOR 95,KOR 05,NOR 75,NOR 85,SVK 95,SVK 05,SVN 05,SWE 75;
+                                     HKG 85,HKG 95,LVA 05; CHL 95
+ 3  GINI{0}*SCHL{1}*INVST{2}         CHN 75,CHN 85,MNG 05; ALB 05; ESP 05,FIN 75,FIN 85,GRC 05,PRT 95
+ 4  GINI{1}*GDP{0}*SCHL{2}           KGZ 05; KOR 75,LKA 85; LKA 95,LKA 05
+ 5  GINI{1}*GDP{1}*INVST{2}          DZA 05,MAR 95,MAR 05,THA 95,TUN 95; GRC 75,JOR 85,JOR 95,JOR 05,MUS 95,SGP 75;
+                                     ARM 05,GRC 85,KOR 85,RUS 95
+ 6  GINI{1}*SCHL{1}*INVST{2}         CHN 95,GUY 95,MDA 05,MNG 95; GRC 75,JOR 85,JOR 95,JOR 05,MUS 95,SGP 75;
+                                     PRT 05,SGP 85,SGP 95,SGP 05
+ 7  GINI{1}*SCHL{2}*INVST{1}         KOR 75,LKA 85; IRL 75,RUS 05; IRL 85,LTU 05,TTO 95,USA 85,USA 95,USA 05
+ 8  GINI{0}*GDP{0}*SCHL{2}*INVST{0}  TJK 05
+ 9  GINI{0}*GDP{1}*SCHL{0}*INVST{1}  EGY 95
+10  GINI{0}*GDP{1}*SCHL{2}*INVST{1}  KAZ 95,POL 95,UKR 05
+11  GINI{0}*GDP{1}*SCHL{2}*INVST{2}  BGR 85,BGR 05,KAZ 05,ROU 95,ROU 05,UKR 95
+12  GINI{0}*GDP{2}*SCHL{2}*INVST{0}  DEU 05,DNK 85,GBR 75,GBR 85,GBR 95,ISR 85,MLT 05
+13  GINI{1}*GDP{0}*SCHL{1}*INVST{1}  GUY 05
+14  GINI{1}*GDP{1}*SCHL{1}*INVST{1}  ARG 75,ESP 75,HKG 75,ITA 75,MUS 85,MUS 05,VEN 95,VEN 05
+15  GINI{1}*GDP{2}*SCHL{1}*INVST{0}  ARG 95,URY 95
+16  GINI{2}*GDP{0}*SCHL{0}*INVST{2}  BWA 85,HND 95,HND 05,IND 05,MAR 85,NIC 05,NPL 05,THA 85
+17  GINI{2}*GDP{2}*SCHL{1}*INVST{1}  MEX 95
+------------------------------------------ 
+
+> ineg = read.csv(file = "QCA_10y_3c.csv", row.names = "index")
+> library(QCA)

@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="1185.8125"
+   height="424.10855"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="quartilize.pdf">
+  <defs
+     id="defs4">
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend"
+       style="overflow:visible">
+      <path
+         id="path3774"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.49497475"
+     inkscape:cx="265.58301"
+     inkscape:cy="557.51002"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-width="1615"
+     inkscape:window-height="1026"
+     inkscape:window-x="65"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-44.84375,-175.71875)">
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot2985"
+       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       transform="translate(1.0101526,14.142136)"><flowRegion
+         id="flowRegion2987"><rect
+           id="rect2989"
+           width="305.06607"
+           height="200.01021"
+           x="23.233509"
+           y="181.61069"
+           style="fill:#000000;fill-opacity:1;stroke:none" /></flowRegion><flowPara
+         id="flowPara2991"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Phetsarath OT;-inkscape-font-specification:Phetsarath OT">Valeur </flowPara><flowPara
+         id="flowPara2993"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Phetsarath OT;-inkscape-font-specification:Phetsarath OT">variable</flowPara></flowRoot>    <rect
+       style="fill:none;stroke:#000000;stroke-width:1.20000005;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="rect3763"
+       width="268.70059"
+       height="119.198"
+       x="45.456863"
+       y="180.60054"
+       ry="13.571428"
+       rx="13.571428" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:2.25646687;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow1Lend)"
+       d="m 314.47817,240.19954 221.42028,0"
+       id="path3765"
+       inkscape:connector-curvature="0" />
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot2985-3"
+       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       transform="translate(503.12775,12.713567)"><flowRegion
+         id="flowRegion2987-1"><rect
+           id="rect2989-2"
+           width="703.06616"
+           height="169.70564"
+           x="23.233509"
+           y="181.61069"
+           style="fill:#000000;fill-opacity:1;stroke:none" /></flowRegion><flowPara
+         id="flowPara2991-4"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Phetsarath OT;-inkscape-font-specification:Phetsarath OT">0 si moitié la plus faible da la période</flowPara><flowPara
+         id="flowPara2993-4"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Phetsarath OT;-inkscape-font-specification:Phetsarath OT">1 si moitié la plus forte de la période </flowPara></flowRoot>    <rect
+       rx="13.571428"
+       style="fill:none;stroke:#000000;stroke-width:1.97363603;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="rect3763-4"
+       width="682.21265"
+       height="126.9958"
+       x="542.24701"
+       y="176.70164"
+       ry="13.571429" />
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot2985-3-4"
+       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       transform="translate(510.851,134.89545)"><flowRegion
+         id="flowRegion2987-1-8"><rect
+           id="rect2989-2-3"
+           width="703.06616"
+           height="169.70564"
+           x="23.233509"
+           y="181.61069"
+           style="fill:#000000;fill-opacity:1;stroke:none" /></flowRegion><flowPara
+         id="flowPara2993-4-4"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Phetsarath OT;-inkscape-font-specification:Phetsarath OT">ou</flowPara></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot2985-3-0"
+       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       transform="translate(508.34584,206.30477)"><flowRegion
+         id="flowRegion2987-1-5"><rect
+           id="rect2989-2-37"
+           width="703.06616"
+           height="169.70564"
+           x="23.233509"
+           y="181.61069"
+           style="fill:#000000;fill-opacity:1;stroke:none" /></flowRegion><flowPara
+         id="flowPara2991-4-1"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Phetsarath OT;-inkscape-font-specification:Phetsarath OT">0 si tiers la plus faible da la période</flowPara><flowPara
+         id="flowPara2993-4-8"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Phetsarath OT;-inkscape-font-specification:Phetsarath OT">1 si tiers median de la période</flowPara><flowPara
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Phetsarath OT;-inkscape-font-specification:Phetsarath OT"
+         id="flowPara4321">2 si tiers supérieur de la période </flowPara></flowRoot>    <rect
+       rx="13.571428"
+       style="fill:none;stroke:#000000;stroke-width:2.35488987;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="rect3763-4-9"
+       width="681.83142"
+       height="180.90025"
+       x="547.6557"
+       y="370.48346"
+       ry="13.571429" />
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot2985-3-4-5"
+       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       transform="translate(508.87277,384.22022)"><flowRegion
+         id="flowRegion2987-1-8-5"><rect
+           id="rect2989-2-3-1"
+           width="703.06616"
+           height="169.70564"
+           x="23.233509"
+           y="181.61069"
+           style="fill:#000000;fill-opacity:1;stroke:none" /></flowRegion><flowPara
+         id="flowPara2993-4-4-1"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Phetsarath OT;-inkscape-font-specification:Phetsarath OT">...</flowPara></flowRoot>  </g>
+</svg>

@@ -1,0 +1,822 @@
+Essayons de voir ce que la QCA dit des résultats de l'étude de l'OECD 2015. 
+On s'est rapproché au maximum des output de l'OCDE. La croissance est mesurée comme la 
+différence des log du PIB par habitant à t et à t + 5. On fit les croissance à t + 5 avec
+les variables à t comme dans OECD 2015. Utilisation de TRANCHES DE 5 ANNEES
+
+
+###########################################################################################
+################################## Gini, PIB ##############################################
+###########################################################################################
+
+Sur le tableau recap, la première colonne fait référence à une régression sur de la 
+croissance du PIB par habitant en fonction du Gini et du PIB. Les auteurs trouvent deux 
+corrélations négatives pour chacune de ces variables. Voyons ce que disent nos méthodes. 
+L'OCDE trouve toujours un coefficient négatif pour le Gini (+ inégalitaire = moins de 
+croissance) et très significatif et un coefficient négatif pour le PIB/hab 
+(+ riche = moins de croissance) mais non significatif. 
+
+### Pays de plus fortes croissances
+
+Output = 1 lorsque le pays.decade a sa croissance dans le QUART le plus FORT de la décennie 
+Var1 = Gini , Var 2 =  gdp Output = growth
+                    0           1       all
+gini gdp                                   
+0    mean  0.47222***  0.11956***   0.21875
+     size          36          92       128
+1    mean  0.39130***    0.14285*   0.31343
+     size          92          42       134
+all  mean  0.41406***  0.12686***  0.267176
+     size         128         134       262 
+
+***L'effet d'une augmentation du Gini sur la croissance est globalemnt négatif. 
+On voit qu'il faut se méfier des effets globaux : une part importante de la diminution de 
+la croissance avec le gini est due au fait que les pays de fort gini sont globalement 
+plus pauvres. 
+
+Output = 1 lorsque le pays.decade a sa croissance dans le QUART le plus FORT de la décennie 
+Var1 = Gini , Var 2 =  gdp Output = growth
+                    0        1           2       all
+gini gdp                                            
+0    mean  0.63636***    0.175  0.10606***   0.21875
+     size          22       40          66       128
+1    mean  0.42424***  0.27906      0.08**   0.31343
+     size          66       43          25       134
+all  mean  0.47727***  0.22891  0.09890***  0.267176
+     size          88       83          91       262 
+
+On observe le même phénomène ici. La dépendance globale du gini est en désaccord avec toutes
+les dépendances locale. L'effet du Gini semble important uniquement chez les pays pauvres. 
+
+Output = 1 lorsque le pays.decade a sa croissance dans le QUART le plus FORT de la décennie 
+Var1 = Gini , Var 2 =  gdp Output = growth
+                    0           1       all
+gini gdp                                   
+0    mean       0.5**   0.13235**   0.21590
+     size          20          68        88
+1    mean      0.5***   0.11111**   0.28915
+     size          38          45        83
+2    mean     0.34285     0.14285   0.29670
+     size          70          21        91
+all  mean  0.41406***  0.12686***  0.267176
+     size         128         134       262 
+
+Les résultats sont globalement les même lorsque l'on diminue la granularité pour le Gini. 
+L'impact du PIB est nettement plus fort que celui du Gini. On remarque aussi que l'impact
+du Gini se focalise essentiellement sur les pays les plus pauvres de l'OECD. 
+Apparition d'un maximum de croissance pour gini=1 et pays pauvre correspondant 
+à un minimum pour les pays riches... 
+
+
+### Pays de plus faibles croissances
+
+Output = 1 lorsque le pays.décade a sa croissance dans le QUART le plus FAIBLE de la décennie 
+Var1 = Gini , Var 2 =  gdp Output = growth
+                 0        1       all
+gini gdp                             
+0    mean  0.19444  0.28260   0.25781
+     size       36       92       128
+1    mean  0.20652  0.35714   0.25373
+     size       92       42       134
+all  mean  0.20312  0.30597  0.255725
+     size      128      134       262
+
+Aucun coefficient significatif. Les signes de coefficients semblent les mêmes que dans 
+l'étude. 
+
+Output = 1 lorsque le pays.décade a sa croissance dans le QUART le plus FAIBLE de la décennie 
+Var1 = Gini , Var 2 =  gdp Output = growth
+                 0         1       all
+gini gdp                              
+0    mean     0.15   0.22058   0.20454
+     size       20        68        88
+1    mean  0.18421  0.37777*   0.28915
+     size       38        45        83
+2    mean  0.22857  0.42857*   0.27472
+     size       70        21        91
+all  mean  0.20312   0.30597  0.255725
+     size      128       134       262 
+
+Idem. 
+
+###########################################################################################
+###########################################################################################
+###########################################################################################
+
+
+
+###########################################################################################
+#################################### Gini, Investments ####################################
+###########################################################################################
+
+Regardons maintenant l'effet des investissements physique. La variables investements est 
+l'ensemble des dépenses faites pour augmenter le capital physique du pays : amenagement 
+du territoire, achat de nouvelles machines, contruction de batiments public, ... 
+L'étude prévoit un coefficient positif et non significatif. 
+
+
+### Pays de plus fortes croissances
+
+Output = 1 lorsque le pays.decade a sa croissance dans le QUART le plus FORT de la décennie 
+Var1 = Gini , Var 2 =  invst Output = growth
+                  0          1        2       all
+gini invst                                       
+0    mean   0.19047  0.06896**  0.38235   0.22619
+     size        21         29       34        84
+1    mean   0.31818        0.2  0.27272    0.2625
+     size        22         25       33        80
+2    mean   0.36585    0.19230  0.38095   0.31818
+     size        41         26       21        88
+all  mean   0.30952     0.15**  0.34090  0.269841
+     size        84         80       88       252 
+
+Seulement 6% des fortes croissance dans le sous-groupe gini=0, invst=1. 
+
+### Pays de plus faibles croissances
+
+Output = 1 lorsque le pays.decade a sa croissance dans le QUART le plus FAIBLE de la décennie 
+Var1 = Gini , Var 2 =  invst Output = growth
+                   0        1        2       all
+gini invst                                      
+0    mean    0.19047  0.20689  0.20588   0.20238
+     size         21       29       34        84
+1    mean    0.36363     0.28  0.24242    0.2875
+     size         22       25       33        80
+2    mean   0.36585*  0.19230  0.19047   0.27272
+     size         41       26       21        88
+all  mean    0.32142    0.225  0.21590  0.253968
+     size         84       80       88       252 
+
+Effet global du Gini est dû à la prévalence des faibles investissements chez les forts Gini. 
+
+
+###########################################################################################
+###########################################################################################
+###########################################################################################
+
+
+###########################################################################################
+####################################### QCA with R ########################################
+###########################################################################################
+Maintenant on souhaite mettre toutes les variables ensemble et former des groupes de 
+variables aussi discriminants que possible. Notre objectif pour cette étude est de réussir à 
+choisir des variables et des granularités telles que les croissances les plus fortes se 
+retrouvent ensemble idem pour les croissance les plus faible. 
+
+On a commencé par utiliser des granularités élevées pour mais on s'est vite rendu compte
+que des pays très différents se retrouvaient ensemble. Puis j'ai compris qu'il ne fallait
+pas avoir peur d'avoir des groupes de petites tailles dans QCA, eqmcc étant là pour retrouver 
+les conditions suffisantes à une croissance fortes même si la truth table contient beaucoup
+de lignes. L'angle d'attaque étant de partir d'une granularité très faible, de repérer
+quelles les variables qui conduisent à une croissance importante puis d'augmenter la 
+granularité petit à petit sur les variables moins discriminantes afin de tester la robustesse
+de nos hypothèse. 
+
+Output = 1 lorsque le pays.decade a sa croissance dans le QUART le plus FORT de la décennie 
+    GINI GDP INVST OUT n  incl  PRI  
+25   2    0    0    1  23 0.478 0.478
+10   0    2    1    0  15 0.000 0.000
+11   0    2    2    0  15 0.067 0.067
+19   1    1    2    0  13 0.308 0.308
+28   2    0    3    1  13 0.462 0.462
+ 4   0    0    3    1  12 0.583 0.583
+ 9   0    2    0    0  12 0.333 0.333
+12   0    2    3    0  10 0.200 0.200
+24   1    2    3    0  10 0.000 0.000
+27   2    0    2    0   9 0.333 0.333
+29   2    1    0    1   9 0.444 0.444
+16   1    0    3    1   8 0.750 0.750
+17   1    1    0    0   8 0.125 0.125
+18   1    1    1    0   8 0.125 0.125
+26   2    0    1    0   8 0.125 0.125
+30   2    1    1    0   8 0.125 0.125
+ 8   0    1    3    1   7 0.429 0.429
+23   1    2    2    0   7 0.143 0.143
+31   2    1    2    0   7 0.143 0.143
+20   1    1    3    0   6 0.000 0.000
+ 6   0    1    1    0   5 0.000 0.000
+ 7   0    1    2    1   5 0.400 0.400
+21   1    2    0    0   5 0.200 0.200
+22   1    2    1    0   5 0.000 0.000
+34   2    2    1    0   5 0.000 0.000
+13   1    0    0    1   4 0.750 0.750
+14   1    0    1    1   4 0.500 0.500
+35   2    2    2    0   3 0.000 0.000
+ 5   0    1    0    0   2 0.000 0.000
+15   1    0    2    1   2 1.000 1.000
+32   2    1    3    1   2 0.500 0.500
+ 3   0    0    2    0   1 0.000 0.000
+33   2    2    0    0   1 0.000 0.000
+    cases                                                                                                                                    
+25  CHL67,CHL82,CHL87,CHL02,CHL07,GRC67,IRL87,ISR87,KOR72,MEX72,MEX77,MEX87,MEX92,MEX97,MEX02,RUS97,RUS02,RUS07,TUR77,TUR82,TUR87,TUR02,TUR07
+10  BEL97,CAN67,DNK77,DNK87,DNK02,DNK07,ISL97,LUX92,LUX02,NLD82,NLD02,NLD07,NOR92,NOR07,SWE02                                                
+11  BEL77,BEL07,DNK67,DNK72,FIN92,FIN02,FIN07,ISL02,NLD97,NOR97,SWE72,SWE77,SWE82,SWE92,SWE07                                                
+19  AUS77,AUS97,AUT82,BEL72,CAN07,DEU82,ISR92,ISR97,NLD72,NZL77,NZL82,NZL87,NZL07                                                            
+28  CHL97,EST97,EST02,EST07,GRC72,GRC77,GRC82,KOR77,KOR82,KOR87,PRT77,PRT97,PRT02                                                            
+ 4  CZE92,CZE97,CZE02,CZE07,JPN62,SVK92,SVK97,SVK02,SVK07,SVN97,SVN02,SVN07                                                                  
+ 9  DNK82,DNK92,DNK97,ISL92,LUX72,LUX82,LUX87,LUX97,LUX07,NLD77,NOR02,SWE97                                                                  
+12  AUT92,AUT97,FIN82,FIN87,ISL07,NOR72,NOR77,NOR82,NOR87,SWE87                                                                              
+24  AUS67,AUS72,AUS82,CHE92,DEU92,IRL02,IRL07,JPN87,JPN92,JPN97                                                                              
+27  CHL92,ESP72,GRC87,GRC92,IRL77,IRL82,RUS92,TUR92,TUR97                                                                                    
+29  GBR92,GBR97,GBR07,IRL92,ISR02,ISR07,ITA97,ITA07,NZL92                                                                                    
+16  JPN67,KOR92,KOR97,KOR02,KOR07,PRT82,PRT87,PRT92                                                                                          
+17  CAN92,CAN97,CAN02,DEU07,FRA97,GBR67,GBR77,GBR82                                                                                          
+18  DEU77,DEU02,FRA92,FRA02,FRA07,GBR87,IRL97,JPN07                                                                                          
+26  ESP77,IRL72,ISR82,ITA72,KOR67,MEX82,MEX07,PRT07                                                                                          
+30  FRA72,FRA82,GRC97,ITA77,ITA87,ITA92,ITA02,NZL97                                                                                          
+ 8  FIN67,FIN72,FIN77,JPN72,JPN77,JPN82,NOR67                                                                                                
+23  AUT07,CHE97,CHE02,CHE07,DEU97,JPN02,SWE67                                                                                                
+31  ESP92,ESP97,GRC02,GRC07,ITA67,ITA82,NZL02                                                                                                
+20  AUS87,AUS92,AUS02,DEU72,ESP02,ESP07                                                                                                      
+ 6  BEL92,BEL02,FIN97,NLD92,NZL72                                                                                                            
+ 7  AUT87,AUT02,DEU87,NLD87,NOR62                                                                                                            
+21  CAN62,CAN72,CAN77,USA72,USA77                                                                                                            
+22  CAN82,CAN87,FRA77,FRA87,USA82                                                                                                            
+34  USA62,USA67,USA92,USA97,USA07                                                                                                            
+13  GBR62,POL92,POL02,POL07                                                                                                                  
+14  ESP87,GBR72,HUN92,POL97                                                                                                                  
+35  SWE62,USA87,USA02                                                                                                                        
+ 5  BEL82,BEL87                                                                                                                              
+15  HUN97,HUN02                                                                                                                              
+32  AUS62,AUS07                                                                                                                              
+ 3  HUN07                                                                                                                                    
+33  GBR02                                                                                                                                    
+
+
+n OUT = 1/0/C: 89/163/0 
+  Total      : 252 
+
+Number of multiple-covered cases: 8 
+
+M1: GDP{0}*INVST{3} + GINI{1}*GDP{0} + GINI{0}*GDP{1}*INVST{2} +
+    GINI{0}*GDP{1}*INVST{3} + GINI{2}*GDP{0}*INVST{0} + GINI{2}*GDP{1}*INVST{0} +
+    GINI{2}*GDP{1}*INVST{3} <=> G
+
+                            incl   PRI    cov.r  cov.u 
+------------------------------------------------------ 
+1  GDP{0}*INVST{3}          0.576  0.576  0.279  0.191 
+2  GINI{1}*GDP{0}           0.722  0.722  0.191  0.103 
+3  GINI{0}*GDP{1}*INVST{2}  0.400  0.400  0.029  0.029 
+4  GINI{0}*GDP{1}*INVST{3}  0.429  0.429  0.044  0.044 
+5  GINI{2}*GDP{0}*INVST{0}  0.478  0.478  0.162  0.162 
+6  GINI{2}*GDP{1}*INVST{0}  0.444  0.444  0.059  0.059 
+7  GINI{2}*GDP{1}*INVST{3}  0.500  0.500  0.015  0.015 
+------------------------------------------------------ 
+   M1                       0.528  0.528  0.691 
+
+                            cases 
+--------------------------------- 
+1  GDP{0}*INVST{3}          CZE92,CZE97,CZE02,CZE07,JPN62,SVK92,SVK97,SVK02,SVK07,SVN97,SVN02,SVN07;
+                            JPN67,KOR92,KOR97,KOR02,KOR07,PRT82,PRT87,PRT92; CHL97,EST97,EST02,EST07,GRC72,GRC77,GRC82,KOR77,KOR82,KOR87,PRT77,PRT97,PRT02
+2  GINI{1}*GDP{0}           GBR62,POL92,POL02,POL07; ESP87,GBR72,HUN92,POL97; HUN97,HUN02;
+                            JPN67,KOR92,KOR97,KOR02,KOR07,PRT82,PRT87,PRT92
+3  GINI{0}*GDP{1}*INVST{2}  AUT87,AUT02,DEU87,NLD87,NOR62
+4  GINI{0}*GDP{1}*INVST{3}  FIN67,FIN72,FIN77,JPN72,JPN77,JPN82,NOR67
+5  GINI{2}*GDP{0}*INVST{0}  CHL67,CHL82,CHL87,CHL02,CHL07,GRC67,IRL87,ISR87,KOR72,MEX72,MEX77,MEX87,MEX92,MEX97,MEX02,RUS97,RUS02,RUS07,TUR77,TUR82,TUR87,TUR02,TUR07
+6  GINI{2}*GDP{1}*INVST{0}  GBR92,GBR97,GBR07,IRL92,ISR02,ISR07,ITA97,ITA07,NZL92
+7  GINI{2}*GDP{1}*INVST{3}  AUS62,AUS07
+--------------------------------- 
+
+On voit des disparités importantes dans le premier groupe de la QCA (ci-dessous), 
+on voit que les variables correspondent soit à des des croissances très fortes soit à 
+des croissances très faibles (g=0 ou 3). On ajoute donc une variable shocks correspondant
+aux grands chocs pétrolier pour tenter de discriminer 
+
+       gini  gdp  invst  shocks  g
+index                             
+CHL67     2    0      0       0  0
+CHL82     2    0      0       1  0
+CHL87     2    0      0       0  3
+CHL02     2    0      0       0  3
+CHL07     2    0      0       1  3
+GRC67     2    0      0       0  3
+IRL87     2    0      0       0  2
+ISR87     2    0      0       0  1
+KOR72     2    0      0       1  3
+MEX72     2    0      0       1  0
+MEX77     2    0      0       1  3
+MEX87     2    0      0       0  3
+MEX92     2    0      0       1  0
+MEX97     2    0      0       0  3
+MEX02     2    0      0       0  0
+RUS97     2    0      0       0  2
+RUS02     2    0      0       0  3
+RUS07     2    0      0       1  3
+TUR77     2    0      0       1  0
+TUR82     2    0      0       1  0
+TUR87     2    0      0       0  2
+TUR02     2    0      0       0  3
+TUR07     2    0      0       1  2
+
+On a réussi à diviser le groupe en 2 sous-groupes (23 -> 49 et 50) et 
+à augmenter la densité des output=1 dans le groupe 49. Cependant 
+la discrimination n'est pas excellente.
+
+
+    GINI GDP INVST SHOCKS OUT n  incl  PRI  
+49   2    0    0     0     1  13 0.538 0.538
+22   0    2    2     1     0  10 0.000 0.000
+38   1    1    2     1     1  10 0.400 0.400
+50   2    0    0     1     1  10 0.400 0.400
+19   0    2    1     0     0   8 0.000 0.000
+ 7   0    0    3     0     1   7 0.714 0.714
+18   0    2    0     1     0   7 0.286 0.286
+20   0    2    1     1     0   7 0.000 0.000
+52   2    0    1     1     0   7 0.000 0.000
+54   2    0    2     1     1   7 0.429 0.429
+56   2    0    3     1     1   7 0.429 0.429
+24   0    2    3     1     0   6 0.333 0.333
+48   1    2    3     1     0   6 0.000 0.000
+55   2    0    3     0     1   6 0.500 0.500
+58   2    1    0     1     1   6 0.500 0.500
+ 8   0    0    3     1     1   5 0.400 0.400
+13   0    1    2     0     1   5 0.400 0.400
+16   0    1    3     1     1   5 0.400 0.400
+17   0    2    0     0     1   5 0.400 0.400
+21   0    2    2     0     0   5 0.200 0.200
+45   1    2    2     0     0   5 0.000 0.000
+23   0    2    3     0     0   4 0.000 0.000
+31   1    0    3     0     1   4 0.500 0.500
+32   1    0    3     1     1   4 1.000 1.000
+33   1    1    0     0     0   4 0.000 0.000
+34   1    1    0     1     0   4 0.250 0.250
+35   1    1    1     0     0   4 0.250 0.250
+36   1    1    1     1     0   4 0.000 0.000
+42   1    2    0     1     0   4 0.250 0.250
+47   1    2    3     0     0   4 0.000 0.000
+59   2    1    1     0     0   4 0.000 0.000
+60   2    1    1     1     0   4 0.250 0.250
+61   2    1    2     0     0   4 0.000 0.000
+12   0    1    1     1     0   3 0.000 0.000
+37   1    1    2     0     0   3 0.000 0.000
+39   1    1    3     0     0   3 0.000 0.000
+40   1    1    3     1     0   3 0.000 0.000
+44   1    2    1     1     0   3 0.000 0.000
+57   2    1    0     0     0   3 0.333 0.333
+62   2    1    2     1     0   3 0.333 0.333
+67   2    2    1     0     0   3 0.000 0.000
+69   2    2    2     0     0   3 0.000 0.000
+11   0    1    1     0     0   2 0.000 0.000
+15   0    1    3     0     1   2 0.500 0.500
+25   1    0    0     0     1   2 0.500 0.500
+26   1    0    0     1     1   2 1.000 1.000
+27   1    0    1     0     1   2 1.000 1.000
+28   1    0    1     1     0   2 0.000 0.000
+29   1    0    2     0     1   2 1.000 1.000
+43   1    2    1     0     0   2 0.000 0.000
+46   1    2    2     1     1   2 0.500 0.500
+53   2    0    2     0     0   2 0.000 0.000
+68   2    2    1     1     0   2 0.000 0.000
+ 6   0    0    2     1     0   1 0.000 0.000
+ 9   0    1    0     0     0   1 0.000 0.000
+10   0    1    0     1     0   1 0.000 0.000
+41   1    2    0     0     0   1 0.000 0.000
+51   2    0    1     0     1   1 1.000 1.000
+63   2    1    3     0     0   1 0.000 0.000
+64   2    1    3     1     1   1 1.000 1.000
+65   2    2    0     0     0   1 0.000 0.000
+    cases                                                                        
+49  CHL67,CHL87,CHL02,GRC67,IRL87,ISR87,MEX87,MEX97,MEX02,RUS97,RUS02,TUR87,TUR02
+22  BEL77,BEL07,DNK72,FIN92,FIN07,SWE72,SWE77,SWE82,SWE92,SWE07                  
+38  AUS77,AUT82,BEL72,CAN07,DEU82,ISR92,NLD72,NZL77,NZL82,NZL07                  
+50  CHL82,CHL07,KOR72,MEX72,MEX77,MEX92,RUS07,TUR77,TUR82,TUR07                  
+19  BEL97,CAN67,DNK87,DNK02,ISL97,LUX02,NLD02,SWE02                              
+ 7  CZE97,CZE02,JPN62,SVK97,SVK02,SVN97,SVN02                                    
+18  DNK82,DNK92,ISL92,LUX72,LUX82,LUX07,NLD77                                    
+20  DNK77,DNK07,LUX92,NLD82,NLD07,NOR92,NOR07                                    
+52  ESP77,IRL72,ISR82,ITA72,MEX82,MEX07,PRT07                                    
+54  CHL92,ESP72,GRC92,IRL77,IRL82,RUS92,TUR92                                    
+56  EST07,GRC72,GRC77,GRC82,KOR77,KOR82,PRT77                                    
+24  AUT92,FIN82,ISL07,NOR72,NOR77,NOR82                                          
+48  AUS72,AUS82,CHE92,DEU92,IRL07,JPN92                                          
+55  CHL97,EST97,EST02,KOR87,PRT97,PRT02                                          
+58  GBR92,GBR07,IRL92,ISR07,ITA07,NZL92                                          
+ 8  CZE92,CZE07,SVK92,SVK07,SVN07                                                
+13  AUT87,AUT02,DEU87,NLD87,NOR62                                                
+16  FIN72,FIN77,JPN72,JPN77,JPN82                                                
+17  DNK97,LUX87,LUX97,NOR02,SWE97                                                
+21  DNK67,FIN02,ISL02,NLD97,NOR97                                                
+45  CHE97,CHE02,DEU97,JPN02,SWE67                                                
+23  AUT97,FIN87,NOR87,SWE87                                                      
+31  JPN67,KOR97,KOR02,PRT87                                                      
+32  KOR92,KOR07,PRT82,PRT92                                                      
+33  CAN97,CAN02,FRA97,GBR67                                                      
+34  CAN92,DEU07,GBR77,GBR82                                                      
+35  DEU02,FRA02,GBR87,IRL97                                                      
+36  DEU77,FRA92,FRA07,JPN07                                                      
+42  CAN72,CAN77,USA72,USA77                                                      
+47  AUS67,IRL02,JPN87,JPN97                                                      
+59  GRC97,ITA87,ITA02,NZL97                                                      
+60  FRA72,FRA82,ITA77,ITA92                                                      
+61  ESP97,GRC02,ITA67,NZL02                                                      
+12  BEL92,NLD92,NZL72                                                            
+37  AUS97,ISR97,NZL87                                                            
+39  AUS87,AUS02,ESP02                                                            
+40  AUS92,DEU72,ESP07                                                            
+44  CAN82,FRA77,USA82                                                            
+57  GBR97,ISR02,ITA97                                                            
+62  ESP92,GRC07,ITA82                                                            
+67  USA62,USA67,USA97                                                            
+69  SWE62,USA87,USA02                                                            
+11  BEL02,FIN97                                                                  
+15  FIN67,NOR67                                                                  
+25  GBR62,POL02                                                                  
+26  POL92,POL07                                                                  
+27  ESP87,POL97                                                                  
+28  GBR72,HUN92                                                                  
+29  HUN97,HUN02                                                                  
+43  CAN87,FRA87                                                                  
+46  AUT07,CHE07                                                                  
+53  GRC87,TUR97                                                                  
+68  USA92,USA07                                                                  
+ 6  HUN07                                                                        
+ 9  BEL87                                                                        
+10  BEL82                                                                        
+41  CAN62                                                                        
+51  KOR67                                                                        
+63  AUS62                                                                        
+64  AUS07                                                                        
+65  GBR02                                                                        
+
+Essayons d'ajouter la variables ressource naturelle pour voir si l'on peut mieux discriminer
+les pays sensibles à ces fluctuations du marché. 
+
+
+
+  OUT: outcome value
+    n: number of cases in configuration
+ incl: sufficiency inclusion score
+
+     GINI GDP INVST SHOCKS NAT_RESS OUT n  incl  PRI  
+100   2    0    0     1       1      0  9  0.333 0.333
+ 98   2    0    0     0       1      1  8  0.625 0.625
+ 38   0    2    1     0       1      0  6  0.000 0.000
+ 43   0    2    2     1       0      0  5  0.000 0.000
+ 47   0    2    3     1       0      0  5  0.200 0.200
+ 68   1    1    0     1       1      1  5  0.400 0.400
+107   2    0    2     1       0      1  5  0.400 0.400
+119   2    1    1     1       0      1  5  0.400 0.400
+ 40   0    2    1     1       1      0  4  0.000 0.000
+ 44   0    2    2     1       1      0  4  0.000 0.000
+ 45   0    2    3     0       0      0  4  0.000 0.000
+ 63   1    0    3     1       0      1  4  1.000 1.000
+ 71   1    1    1     1       0      0  4  0.250 0.250
+ 13   0    0    3     0       0      0  3  0.333 0.333
+ 14   0    0    3     0       1      1  3  1.000 1.000
+ 31   0    1    3     1       0      1  3  0.667 0.667
+ 34   0    2    0     0       1      0  3  0.333 0.333
+ 35   0    2    0     1       0      0  3  0.333 0.333
+ 48   0    2    3     1       1      0  3  0.333 0.333
+ 69   1    1    1     0       0      0  3  0.333 0.333
+ 76   1    1    2     1       1      0  3  0.333 0.333
+ 84   1    2    0     1       1      0  3  0.333 0.333
+ 88   1    2    1     1       1      0  3  0.000 0.000
+108   2    0    2     1       1      0  3  0.333 0.333
+111   2    0    3     1       0      0  3  0.333 0.333
+112   2    0    3     1       1      1  3  0.667 0.667
+113   2    1    0     0       0      0  3  0.000 0.000
+115   2    1    0     1       0      1  3  0.667 0.667
+ 16   0    0    3     1       1      0  2  0.000 0.000
+ 21   0    1    1     0       0      1  2  0.500 0.500
+ 25   0    1    2     0       0      0  2  0.000 0.000
+ 28   0    1    2     1       1      0  2  0.000 0.000
+ 32   0    1    3     1       1      0  2  0.000 0.000
+ 36   0    2    0     1       1      0  2  0.000 0.000
+ 37   0    2    1     0       0      0  2  0.000 0.000
+ 41   0    2    2     0       0      0  2  0.000 0.000
+ 42   0    2    2     0       1      1  2  0.500 0.500
+ 56   1    0    1     1       1      0  2  0.000 0.000
+ 58   1    0    2     0       1      1  2  1.000 1.000
+ 61   1    0    3     0       0      0  2  0.000 0.000
+ 66   1    1    0     0       1      0  2  0.000 0.000
+ 70   1    1    1     0       1      0  2  0.000 0.000
+ 74   1    1    2     0       1      0  2  0.000 0.000
+ 75   1    1    2     1       0      0  2  0.000 0.000
+ 78   1    1    3     0       1      0  2  0.000 0.000
+ 87   1    2    1     1       0      0  2  0.000 0.000
+ 89   1    2    2     0       0      0  2  0.000 0.000
+ 91   1    2    2     1       0      1  2  0.500 0.500
+ 93   1    2    3     0       0      0  2  0.000 0.000
+ 95   1    2    3     1       0      0  2  0.000 0.000
+ 96   1    2    3     1       1      0  2  0.000 0.000
+103   2    0    1     1       0      0  2  0.000 0.000
+104   2    0    1     1       1      0  2  0.000 0.000
+105   2    0    2     0       0      0  2  0.000 0.000
+109   2    0    3     0       0      1  2  0.500 0.500
+110   2    0    3     0       1      1  2  1.000 1.000
+114   2    1    0     0       1      0  2  0.000 0.000
+116   2    1    0     1       1      0  2  0.000 0.000
+117   2    1    1     0       0      0  2  0.000 0.000
+121   2    1    2     0       0      0  2  0.000 0.000
+123   2    1    2     1       0      0  2  0.000 0.000
+136   2    2    1     1       1      0  2  0.000 0.000
+138   2    2    2     0       1      0  2  0.000 0.000
+  4   0    0    0     1       1      1  1  1.000 1.000
+ 12   0    0    2     1       1      0  1  0.000 0.000
+ 15   0    0    3     1       0      0  1  0.000 0.000
+ 23   0    1    1     1       0      0  1  0.000 0.000
+ 24   0    1    1     1       1      0  1  0.000 0.000
+ 26   0    1    2     0       1      0  1  0.000 0.000
+ 27   0    1    2     1       0      0  1  0.000 0.000
+ 39   0    2    1     1       0      0  1  0.000 0.000
+ 46   0    2    3     0       1      0  1  0.000 0.000
+ 49   1    0    0     0       0      0  1  0.000 0.000
+ 50   1    0    0     0       1      1  1  1.000 1.000
+ 51   1    0    0     1       0      1  1  1.000 1.000
+ 52   1    0    0     1       1      1  1  1.000 1.000
+ 53   1    0    1     0       0      1  1  1.000 1.000
+ 54   1    0    1     0       1      1  1  1.000 1.000
+ 57   1    0    2     0       0      1  1  1.000 1.000
+ 59   1    0    2     1       0      0  1  0.000 0.000
+ 67   1    1    0     1       0      0  1  0.000 0.000
+ 73   1    1    2     0       0      0  1  0.000 0.000
+ 77   1    1    3     0       0      0  1  0.000 0.000
+ 79   1    1    3     1       0      0  1  0.000 0.000
+ 80   1    1    3     1       1      0  1  0.000 0.000
+ 81   1    2    0     0       0      0  1  0.000 0.000
+ 85   1    2    1     0       0      0  1  0.000 0.000
+ 86   1    2    1     0       1      0  1  0.000 0.000
+ 92   1    2    2     1       1      1  1  1.000 1.000
+ 97   2    0    0     0       0      1  1  1.000 1.000
+ 99   2    0    0     1       0      0  1  0.000 0.000
+106   2    0    2     0       1      0  1  0.000 0.000
+122   2    1    2     0       1      0  1  0.000 0.000
+125   2    1    3     0       0      0  1  0.000 0.000
+128   2    1    3     1       1      1  1  1.000 1.000
+130   2    2    0     0       1      0  1  0.000 0.000
+133   2    2    1     0       0      0  1  0.000 0.000
+     cases                                                
+100  CHL82,CHL07,MEX72,MEX77,MEX82,MEX92,RUS07,TUR77,TUR82
+ 98  CHL87,CHL02,MEX87,MEX97,MEX02,RUS97,RUS02,TUR87      
+ 38  DNK87,DNK02,FIN97,NLD97,NLD02,SWE02                  
+ 43  BEL07,DNK72,SWE72,SWE77,SWE82                        
+ 47  AUT92,DEU92,FIN82,ISL07,JPN92                        
+ 68  CAN92,GBR72,GBR77,GBR82,NZL92                        
+107  ESP72,GRC82,GRC92,IRL77,TUR92                        
+119  FRA72,FRA82,ITA77,ITA82,ITA92                        
+ 40  DNK07,NLD07,NOR92,NOR07                              
+ 44  FIN92,FIN07,SWE92,SWE07                              
+ 45  AUT97,FIN87,JPN87,SWE87                              
+ 63  KOR92,KOR07,PRT82,PRT92                              
+ 71  DEU77,FRA07,ISR92,JPN07                              
+ 13  CZE97,SVN97,SVN02                                    
+ 14  CZE02,SVK97,SVK02                                    
+ 31  JPN72,JPN77,JPN82                                    
+ 34  DNK97,NOR02,SWE97                                    
+ 35  DNK82,DNK92,LUX07                                    
+ 48  NOR72,NOR77,NOR82                                    
+ 69  DEU02,FRA02,IRL97                                    
+ 76  AUS77,CAN07,NZL07                                    
+ 84  CAN72,USA72,USA77                                    
+ 88  CAN77,CAN82,USA82                                    
+108  CHL92,IRL82,RUS92                                    
+111  GRC77,KOR82,PRT77                                    
+112  EST07,GRC72,KOR77                                    
+113  ISR02,ITA87,ITA97                                    
+115  IRL92,ISR07,ITA07                                    
+ 16  CZE07,SVK07                                          
+ 21  BEL02,DEU87                                          
+ 25  AUT87,AUT02                                          
+ 28  NZL77,NZL82                                          
+ 32  FIN72,FIN77                                          
+ 36  NLD77,NLD82                                          
+ 37  DEU97,LUX02                                          
+ 41  CHE97,ISL02                                          
+ 42  FIN02,NOR97                                          
+ 56  HUN92,ISR82                                          
+ 58  HUN97,HUN02                                          
+ 61  KOR97,KOR02                                          
+ 66  CAN97,CAN02                                          
+ 70  GBR87,NZL97                                          
+ 74  AUS97,NZL87                                          
+ 75  AUT82,DEU72                                          
+ 78  AUS87,AUS02                                          
+ 87  FRA77,FRA92                                          
+ 89  CHE02,JPN02                                          
+ 91  AUT07,CHE07                                          
+ 93  IRL02,JPN97                                          
+ 95  CHE92,IRL07                                          
+ 96  AUS72,AUS82                                          
+103  ITA72,PRT07                                          
+104  IRL72,MEX07                                          
+105  GRC87,TUR97                                          
+109  KOR87,PRT02                                          
+110  EST97,EST02                                          
+114  GBR97,IRL87                                          
+116  GBR92,GBR07                                          
+117  GRC97,ITA02                                          
+121  ESP97,GRC02                                          
+123  ESP92,GRC07                                          
+136  USA92,USA07                                          
+138  USA87,USA02                                          
+  4  POL92                                                
+ 12  HUN07                                                
+ 15  SVN07                                                
+ 23  NZL72                                                
+ 24  NLD92                                                
+ 26  NLD87                                                
+ 27  DEU82                                                
+ 39  DNK77                                                
+ 46  NOR87                                                
+ 49  ISR87                                                
+ 50  POL02                                                
+ 51  KOR72                                                
+ 52  POL07                                                
+ 53  ESP87                                                
+ 54  POL97                                                
+ 57  PRT87                                                
+ 59  ESP77                                                
+ 67  DEU07                                                
+ 73  ISR97                                                
+ 77  ESP02                                                
+ 79  ESP07                                                
+ 80  AUS92                                                
+ 81  FRA97                                                
+ 85  FRA87                                                
+ 86  CAN87                                                
+ 92  NLD72                                                
+ 97  TUR02                                                
+ 99  TUR07                                                
+106  CHL97                                                
+122  NZL02                                                
+125  PRT97                                                
+128  AUS07                                                
+130  GBR02                                                
+133  USA97                                                
+
+On arrive effectivement à obtenir des groupes mieux discriminé mais les groupes résultants
+sont assez petits... 
+
+
+
+Output = 1 lorsque le pays.decade a sa croissance dans le QUART le plus FAIBLE de la décennie 
+    GINI GDP SCHL INVST OUT n  incl  PRI  
+33   2    0   0     0    0  23 0.348 0.348
+24   1    1   1     1    0  14 0.214 0.214
+13   0    3   0     0    0  13 0.077 0.077
+10   0    2   0     1    0  12 0.083 0.083
+16   0    3   1     1    1  12 0.417 0.417
+15   0    3   1     0    0  11 0.273 0.273
+32   1    3   1     1    1  10 0.500 0.500
+34   2    0   0     1    0  10 0.200 0.200
+38   2    1   0     1    0  10 0.200 0.200
+ 4   0    0   1     1    0   9 0.111 0.111
+25   1    2   0     0    1   8 0.500 0.500
+27   1    2   1     0    0   8 0.250 0.250
+39   2    1   1     0    0   8 0.125 0.125
+41   2    2   0     0    1   8 0.375 0.375
+17   1    0   0     0    0   7 0.143 0.143
+28   1    2   1     1    0   7 0.000 0.000
+36   2    0   1     1    0   7 0.143 0.143
+11   0    2   1     0    0   6 0.167 0.167
+37   2    1   0     0    0   6 0.333 0.333
+ 8   0    1   1     1    0   5 0.200 0.200
+14   0    3   0     1    1   5 0.400 0.400
+23   1    1   1     0    1   5 0.400 0.400
+31   1    3   1     0    1   5 0.400 0.400
+47   2    3   1     0    0   5 0.200 0.200
+12   0    2   1     1    0   4 0.000 0.000
+22   1    1   0     1    0   4 0.250 0.250
+30   1    3   0     1    1   4 0.750 0.750
+ 9   0    2   0     0    0   3 0.333 0.333
+26   1    2   0     1    0   3 0.000 0.000
+35   2    0   1     0    0   3 0.000 0.000
+48   2    3   1     1    1   3 0.667 0.667
+ 6   0    1   0     1    0   2 0.000 0.000
+18   1    0   0     1    0   2 0.000 0.000
+20   1    0   1     1    0   2 0.000 0.000
+40   2    1   1     1    0   2 0.000 0.000
+44   2    2   1     1    1   2 0.500 0.500
+ 2   0    0   0     1    0   1 0.000 0.000
+ 7   0    1   1     0    1   1 1.000 1.000
+21   1    1   0     0    0   1 0.000 0.000
+43   2    2   1     0    1   1 1.000 1.000
+    cases                                                                                                                                    
+33  CHL67,CHL82,CHL87,CHL02,CHL07,ESP77,GRC67,KOR67,KOR72,MEX72,MEX77,MEX82,MEX87,MEX92,MEX97,MEX02,MEX07,RUS07,TUR77,TUR82,TUR87,TUR02,TUR07
+24  AUS87,AUS92,AUS02,ISR92,ISR97,JPN67,KOR92,KOR97,KOR02,KOR07,NZL77,NZL82,NZL87,NZL07                                                      
+13  DNK77,DNK82,DNK07,ISL92,ISL97,LUX72,LUX82,LUX87,LUX92,LUX97,LUX02,LUX07,NLD07                                                            
+10  AUT87,AUT92,AUT97,AUT02,BEL07,DEU87,FIN67,FIN77,FIN82,FIN92,FIN02,FIN07                                                                  
+16  BEL77,NOR72,NOR77,NOR82,NOR87,NOR97,SWE72,SWE77,SWE82,SWE87,SWE92,SWE07                                                                  
+15  CAN67,DNK87,DNK92,DNK97,DNK02,NLD77,NOR92,NOR02,NOR07,SWE97,SWE02                                                                        
+32  AUS82,CHE92,CHE07,IRL02,IRL07,JPN87,JPN92,JPN97,JPN02,SWE67                                                                              
+34  CHL92,CHL97,ESP72,GRC72,GRC82,GRC87,KOR77,PRT77,TUR92,TUR97                                                                              
+38  ESP92,ESP97,GRC77,GRC92,GRC02,GRC07,ITA67,ITA82,PRT97,PRT02                                                                              
+ 4  CZE92,CZE97,CZE02,CZE07,HUN07,SVK92,SVK97,SVK02,SVK07                                                                                    
+25  DEU77,DEU02,FRA77,FRA87,FRA92,FRA97,FRA02,FRA07                                                                                          
+27  CAN62,CAN77,CAN87,CAN92,CAN02,DEU07,IRL97,JPN07                                                                                          
+39  IRL87,IRL92,ISR82,ISR87,ISR02,ISR07,NZL92,NZL97                                                                                          
+41  FRA72,FRA82,GBR92,GBR97,GBR02,ITA92,ITA97,ITA02                                                                                          
+17  ESP87,GBR62,HUN92,POL92,POL97,POL02,POL07                                                                                                
+28  AUS67,AUS72,AUS77,AUS97,BEL72,CAN07,NLD72                                                                                                
+36  EST97,EST02,EST07,IRL77,KOR82,KOR87,RUS92                                                                                                
+11  BEL82,BEL87,BEL92,NLD82,NLD92,NLD02                                                                                                      
+37  GRC97,ITA72,ITA77,ITA87,ITA07,PRT07                                                                                                      
+ 8  JPN72,JPN77,SVN97,SVN02,SVN07                                                                                                            
+14  DNK67,DNK72,FIN87,ISL02,ISL07                                                                                                            
+23  CAN97,GBR67,GBR72,GBR77,GBR82                                                                                                            
+31  CAN72,CAN82,USA72,USA77,USA82                                                                                                            
+47  USA62,USA67,USA92,USA97,USA07                                                                                                            
+12  JPN82,NLD87,NLD97,NOR67                                                                                                                  
+22  AUT82,ESP02,ESP07,PRT92                                                                                                                  
+30  CHE97,CHE02,DEU92,DEU97                                                                                                                  
+ 9  BEL97,BEL02,FIN97                                                                                                                        
+26  AUT07,DEU72,DEU82                                                                                                                        
+35  IRL72,RUS97,RUS02                                                                                                                        
+48  SWE62,USA87,USA02                                                                                                                        
+ 6  FIN72,NOR62                                                                                                                              
+18  PRT82,PRT87                                                                                                                              
+20  HUN97,HUN02                                                                                                                              
+40  IRL82,NZL02                                                                                                                              
+44  AUS62,AUS07                                                                                                                              
+ 2  JPN62                                                                                                                                    
+ 7  NZL72                                                                                                                                    
+21  GBR87                                                                                                                                    
+43  GBR07                                                                                                                                    
+
+
+n OUT = 1/0/C: 64/188/0 
+  Total      : 252 
+
+Number of multiple-covered cases: 23 
+
+M1: GDP{3}*SCHL{1}*INVST{1} + GINI{0}*GDP{3}*INVST{1} + GINI{1}*GDP{3}*INVST{1} +
+    GINI{1}*GDP{3}*SCHL{1} + GINI{2}*GDP{2}*INVST{0} + GINI{2}*GDP{2}*SCHL{1} +
+    GINI{0}*GDP{1}*SCHL{1}*INVST{0} + GINI{1}*GDP{1}*SCHL{1}*INVST{0} +
+    GINI{1}*GDP{2}*SCHL{0}*INVST{0} <=> G
+
+                                    incl   PRI    cov.r  cov.u 
+-------------------------------------------------------------- 
+1  GDP{3}*SCHL{1}*INVST{1}          0.480  0.480  0.188  0.031 
+2  GINI{0}*GDP{3}*INVST{1}          0.412  0.412  0.109  0.031 
+3  GINI{1}*GDP{3}*INVST{1}          0.571  0.571  0.125  0.047 
+4  GINI{1}*GDP{3}*SCHL{1}           0.467  0.467  0.109  0.031 
+5  GINI{2}*GDP{2}*INVST{0}          0.444  0.444  0.062  0.047 
+6  GINI{2}*GDP{2}*SCHL{1}           0.667  0.667  0.031  0.016 
+7  GINI{0}*GDP{1}*SCHL{1}*INVST{0}  1.000  1.000  0.016  0.016 
+8  GINI{1}*GDP{1}*SCHL{1}*INVST{0}  0.400  0.400  0.031  0.031 
+9  GINI{1}*GDP{2}*SCHL{0}*INVST{0}  0.500  0.500  0.062  0.062 
+-------------------------------------------------------------- 
+   M1                               0.484  0.484  0.484 
+
+                                    cases 
+----------------------------------------- 
+1  GDP{3}*SCHL{1}*INVST{1}          BEL77,NOR72,NOR77,NOR82,NOR87,NOR97,SWE72,SWE77,SWE82,SWE87,SWE92,SWE07;
+                                    AUS82,CHE92,CHE07,IRL02,IRL07,JPN87,JPN92,JPN97,JPN02,SWE67;
+                                    SWE62,USA87,USA02
+2  GINI{0}*GDP{3}*INVST{1}          DNK67,DNK72,FIN87,ISL02,ISL07; BEL77,NOR72,NOR77,NOR82,NOR87,NOR97,SWE72,SWE77,SWE82,SWE87,SWE92,SWE07
+3  GINI{1}*GDP{3}*INVST{1}          CHE97,CHE02,DEU92,DEU97; AUS82,CHE92,CHE07,IRL02,IRL07,JPN87,JPN92,JPN97,JPN02,SWE67
+4  GINI{1}*GDP{3}*SCHL{1}           CAN72,CAN82,USA72,USA77,USA82; AUS82,CHE92,CHE07,IRL02,IRL07,JPN87,JPN92,JPN97,JPN02,SWE67
+5  GINI{2}*GDP{2}*INVST{0}          FRA72,FRA82,GBR92,GBR97,GBR02,ITA92,ITA97,ITA02;
+                                    GBR07
+6  GINI{2}*GDP{2}*SCHL{1}           GBR07; AUS62,AUS07
+7  GINI{0}*GDP{1}*SCHL{1}*INVST{0}  NZL72
+8  GINI{1}*GDP{1}*SCHL{1}*INVST{0}  CAN97,GBR67,GBR72,GBR77,GBR82
+9  GINI{1}*GDP{2}*SCHL{0}*INVST{0}  DEU77,DEU02,FRA77,FRA87,FRA92,FRA97,FRA02,FRA07
+----------------------------------------- 
+
+
+###########################################################################################
+###########################################################################################
+###########################################################################################
+
+
+
+###########################################################################################
+################################## Gini, Investments, GDP #################################
+###########################################################################################
+Régression à 4 variables maintenant. 
+
+Output = 1 lorsque le pays.decade a sa croissance dans le QUART le plus FORT de la décennie 
+                         0           1       all
+gini invst gdp                                   
+0    0     mean    0.57142*  0.09302***     0.16*
+           size           7          43        50
+     1     mean      0.48**     0.17021   0.27777
+           size          25          47        72
+     all   mean      0.5***  0.13333***  0.229508
+           size          32          90       122
+1    0     mean    0.38297*       0.12*   0.29166
+           size          47          25        72
+     1     mean    0.39534*     0.13333   0.32758
+           size          43          15        58
+     all   mean   0.38888**     0.125**  0.307692
+           size          90          40       130
+all  0     mean   0.40740**  0.10294***   0.23770
+           size          54          68       122
+     1     mean  0.42647***    0.16129*       0.3
+           size          68          62       130
+     all   mean  0.41803***  0.13076***  0.269841
+           size         122         130       252
+
+On retrouve bien que l'influence du PIB est nettement plus marquée que celle des autres
+variables. 
+Plus finement, l'influence du du Gini et des investissements est beaucoup plus fort chez
+les pays pauvres que chez les pays riches (qui ont déjà une croissance très faible). 
+
+
+###########################################################################################
+###########################################################################################
+###########################################################################################
+
+
+
+

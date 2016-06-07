@@ -1,0 +1,251 @@
+\documentclass[11pt,a4paper]{article}
+
+% Modèle de rapport de stage et conseils de rédaction, mise en page...
+% L. Bellon, avril 2010
+
+% définition des marges du document
+\setlength{\topmargin}{0cm}
+\setlength{\headheight}{0.4cm}
+\setlength{\headsep}{0.8cm}
+\setlength{\footskip}{1cm}
+\setlength{\textwidth}{17cm}
+\setlength{\textheight}{25cm}
+\setlength{\voffset}{-1.5cm}
+\setlength{\hoffset}{-0.5cm}
+\setlength{\oddsidemargin}{0cm}
+\setlength{\evensidemargin}{0cm}
+
+% quelques package utiles
+\usepackage{graphicx} % inclusion des figures
+
+\usepackage{amsmath} % collection de symboles mathématiques
+\usepackage{amssymb} % collection de symboles mathématiques
+\usepackage[utf8]{inputenc}       % utilisation directe des caractères accentués sur pc
+\usepackage[T1]{fontenc} % codage moderne des caractères sous Latex
+\usepackage{breqn}
+
+\usepackage[francais]{babel}           % style français
+
+\usepackage{tabularx} % gestion avancée des tableaux
+
+
+\usepackage{psfrag} % remplacement du texte d'une figure ps par du texte latex
+%\usepackage{sistyle} % mise en forme des unités
+
+\usepackage{eurosym} % symbole €
+\usepackage{epstopdf} 
+\def\€{\euro{}}
+
+\usepackage{color} % gestion de différentes couleurs
+
+\definecolor{linkcolor}{rgb}{0,0,0.6} % définition de la couleur des liens pdf
+\usepackage[ pdftex,colorlinks=true,
+pdfstartview=FitV,
+linkcolor= linkcolor,
+citecolor= linkcolor,
+urlcolor= linkcolor,
+hyperindex=true,
+hyperfigures=false]
+{hyperref} % fichiers pdf 'intelligents', avec des liens entre les références, etc.
+
+\usepackage{fancyhdr} % entêtes et pieds de pages personnalisés
+
+% définition de l'entête et du pied de page
+\pagestyle{fancy}
+\fancyhead[L]{\scriptsize \textsc{Le Ressaut Hydraulique Ondulaire}}
+\fancyhead[R]{\scriptsize \textsc{Clément Henin}}
+\fancyfoot[C]{ \thepage}
+
+% commande d'annulation du correcteur typographique du package [francais]{babel} qui force l'espace avant ':' (parfois utile pour la bibliographie)
+\makeatletter
+\@ifpackageloaded{babel}%
+        {\newcommand{\nospace}[1]{{\NoAutoSpaceBeforeFDP{}#1}}}%  % !! double {{}} pour cantonner l'effet à l'argument #1 !!
+        {\newcommand{\nospace}[1]{#1}}
+\makeatother
+
+% commande de déplacement d'un objet
+\newcommand{\drawat}[3]{\makebox[0pt][l]{\raisebox{#2}{\hspace*{#1}#3}}}
+
+\begin{document}
+
+% Pour faciliter la mise en forme de la page du titre, on supprime l'indentation automatique en début de paragraphe
+\setlength{\parindent}{0pt}
+
+% Pas d'en-tête ni de pied pour la première page
+\thispagestyle{empty}
+
+\includegraphics[height=2cm]{logoens.pdf} \hfill \includegraphics[height=2.5cm]{logo-IXXI.pdf} 
+
+\vspace{0.5cm}
+
+\begin{tabularx}{\textwidth}{@{} l X l @{} }
+{\sc Master systèmes complexes} & & Stage 2015--2016 \\
+{\it École Normale Supérieure de Lyon} & & Clément Henin \\
+{\it Université Claude Bernard Lyon I} & & M2 Sciences de la matière
+\end{tabularx}
+
+\begin{center}
+
+\vspace{1.5cm}
+
+\rule[11pt]{5cm}{0.5pt}
+
+\textbf{\huge Liens entre la croissance et les inégalités}
+
+\rule{5cm}{0.5pt}
+
+\vspace{1.5cm}
+
+\end{center}
+
+\parbox{15cm}{\small
+\textbf{Résumé} : \it La première partie de ce rapport présente la dérivation du modèle de Green-Naghdi. C'est un modèle des ondes longues dispersives de grande amplitude. On peut éventuellement ajouter à ce modèle les effets de viscosités, de la traînée sur les bords ainsi que l'inclinaison. La deuxième partie de ce rapport regroupe les résultats de deux expériences. La première est une comparaison simple d'un profil de ressaut avec les solutions des équations de Green-Naghdi. La deuxième met en avant l'importance du développement de la couche limite dans la forme du ressaut. Ces derniers résultats sont inédits et montrent que les modèles actuels de ressaut hydraulique sont insuffisant pour décrire complètement ce phénomène puisque aucun de ces modèles ne prend en compte le développement de la couche limite dans la structure du ressaut.
+
+} %fin de la commande \parbox du résumé
+
+
+\vspace{0.5cm}
+
+\parbox{15cm}{
+\textbf{Mots clefs} : \it ondular hydraulic jump, Green-Naghdi, experimental hydraulic jump
+} %fin de la commande \parbox des mots clefs
+
+\tableofcontents
+
+%#############################################################################
+%#############################################################################
+\section{Revue de littérature}
+
+Cette première partie constitue un tour d'horizon de la littérature économique sur les liens entre inégalités et croissance. Notre attention s'est portée sur les modèles purement économique, les méthodes de la complexité étant très peu présentes dans ce domaine. 
+La première partie concerne les modèles théoriques notamment le modèle de Kuznets très cité dans la littérature. La seconde partie se focalise sur les modèles empiriques qui concerne pour la plupart en la recherche de relations linéaires entre la croissance et les inégalités. 
+
+%#############################################################################
+\subsection{Les modèles théoriques}
+
+\noindent 
+\textbf{La courbe de Kuznets}\\
+Ces travaux de Kuznets tentent de répondre à la question \og qui profite du développement ? \fg{}. Le modèle de Kuznets décrit le transfert de l'agriculture vers l'industrialisation et l'urbanisation. Le point de départ est une population divisée en deux : une partie agricole, aux faibles revenus ; une partie urbaine/industrielle, aux revenus plus forts. Lors du transfert des populations vers des métiers industriels on observe mécaniquement une augmentation des différences de revenus dans la population totale. Cette dernière reflète les différences entre les deux groupes. A mesure du développement les inégalités augmentent donc, tout du moins dans un premier temps. Ensuite, lorsque la population urbaine/industrielle devient majoritaire, les différences entre les deux groupes prennent moins d'importance dans les inégalités globales que les inégalités intra-groupes (plus faible par hypothèse). Alors les inégalités globales diminuent. En mettant bout-à-bout on obtient la courbe en \og U-inversé \fg{} devenue célèbre. 
+Ce modèle théorique paraît simpliste et n'est d'ailleurs pas confirmé empiriquement \footnote{Nous ne considérons pas ici que la méthode de Barro \cite{barro} qui consiste à regarder la courbe suffisamment longtemps pour voir apparaître le U inversé soit satisfaisante pour valider la courbe.}. François Bourguignon note en particulier ses incohérences face à la récente monté des inégalités dans les pays développés \cite{bourguignon2015}. Robinson \cite{robinson} élargi le modèle en prenant en compte une certaine variance dans les revenus des deux groupes de la population. Une variance plus élevée et en augmentation dans le groupe industrialisé/urbain permettrait de décrire la hausse récente des inégalités dans les pays développés. Le modèle ne fournit cependant pas d'explication sur cette d'augmentation de la variance et n'a donc aucun pouvoir prédictif. \\
+
+\noindent
+\textbf{D'autres modèles }(issus de \cite{bourguignon2015} majoritairement) :  \\
+
+\begin{tabular}{| c | c | c |}
+\hline
+Nom & Effet &  Description \\
+  \hline			
+Mécanismes & inégalités moteur &  Les riches épargnent plus donc investissent \\
+Kaldorien &  de la croissance &   plus ce qui génère de la croissance \\
+  \hline			
+  
+Redistribution & inégalités frein  &  La population vote plus de redistribution si inégalités  \\
+Endogène & de la croissance & trop grandes or redistributions = baisse croissance  \\
+ &  & (aussi, inégalités = instabilité sociale = baisse croissance) \\
+
+  \hline			
+Distorsions  & inégalités frein & Dans un marché imparfait, les prêts ne sont accordés qu'aux \\
+de marché & de la croissance &  plus riches, il y a donc perte d'investissements profitables.  \\
+  \hline			
+
+Inégalités  & inégalités frein & Ici, ce sont les inégalités d'accès à l'éducation qui \\
+d'opportunités & de la croissance &  diminuent la croissance.   \\
+  \hline			
+
+Le côté  & inégalités frein & Les plus pauvres consomment moins de biens, limitent la \\
+demande & de la croissance & consommation, contradictoire avec Kaldor.  \\
+  \hline	
+\end{tabular}
+
+\bigskip
+
+Les modèles sont très nombreux et vont souvent dans des sens opposés. Nous avons pris le parti de ne pas privilégier un modèle plutôt qu'un autre dans notre analyse des données. Nous abordons donc les données de la manière la plus objective possible et nous nous servons éventuellement des modèles pour expliquer des régularités qui apparaissent dans les données. C'est un choix que faisons et qui ne correspond pas nécessairement à ce que font d'habitude les économistes qui préfèrent bien souvent partir d'un modèle puis en vérifier expérimentalement la validité. 
+
+%#############################################################################
+\subsection{Les modèles empiriques}
+
+%La grande majorité des modèles trouvés dans la littérature de concentrent sur l'existence de relations linéaires entre la croissance est une mesure des inégalités de revenus, le Gini. L'idée de cette littérature empirique est de trouver quelle est l'influence des inégalités sur la croissance une fois les influences d'autres facteurs plus évidents pris en compte. \\
+
+
+Parmi les études les plus récentes ou les plus citées, nous retrouvons OCDE \cite{OECD}, Ostry (FMI) \cite{ostry} ou encore Forbes \cite{forbes}. Elles reflètent bien la pensée générale de cette littérature. Dans ces trois études le but est d'évaluer les coefficients de l'équation linéaire :
+
+\begin{dmath}
+Growth_{i,t} = \alpha Inequality_{i,t - 1} + \beta X_{i,t - 1} + \alpha_i + \eta_t + u_{i,t}.
+\end{dmath}
+
+Où l'indice $i$ fait référence à un pays, l'indice $t$ à une période de temps et avec : $Growth_{i,t}$ la croissance de $i$ pendant $t$, $Inequality$ le coefficient de Gini, $X_{i, t - 1}$ un ensemble de variables utilisées traditionnellement pour expliquer la croissance des pays, $\alpha_i$ une coefficient constant pour chaque pays, $\eta_t$ un coefficient constant pour chaque période et $u_{i, t}$ le terme d'erreur. Un algorithme est ensuite utilisé pour estimer les coefficients $\alpha$ et $\beta$. Le résultat de l'étude est donné par le signe du coefficient $\alpha$ impact positif des inégalités pour $\alpha > 0$ et négatif pour $\alpha < 0$. \\
+
+Cette approche donne accès à l'influence moyenne du Gini sur la croissance à toutes les époques et dans tous les pays. D'un côté, cela permet d'utiliser au maximum les données disponible mais, d'un autre côté, donne une image simpliste de l'influence des inégalités de revenus. Le but étant de répondre à la question, quel est l'influence des inégalités sur la croissance une fois enlevé d'autres déterminants plus évidant de la croissance des pays (contenus dans la variable $X$). \\
+
+De nombreux choix d'approche sont possibles pour aborder ce problème empirique : 
+
+\begin{itemize}
+\item longueur de la période de temps (1 an, 5 ans, 10 ans, ...), 
+\item influence des facteurs sur la croissance présente ou sur la croissance future, 
+\item choix du modèle d'estimation des coefficients, 
+\item facteurs autres que le Gini à prendre en compte, 
+\item différentes sources de données. 
+\end{itemize}
+
+Il n'y a pas de véritable consensus dans la littérature empirique même l'hypothèse d'un effet négatif des inégalités sur la croissance semble l'emporter légèrement. Les résultats des études que nous avons sélectionnées s'opposent d'ailleurs : le FMI et l'OCDE trouvent un impact négatif des inégalités alors que Forbes trouve un impact positif. Ces différences s'expliquent par les choix faits par les auteurs. En particulier, il semblerait que la qualité des données utilisées par Forbes en 2000 explique beaucoup des différences avec les études plus récentes. \\
+
+Les trois études se retrouvent cependant sur la méthode utilisées pour estimer les coefficients. Il s'agit de la méthode d'Arellano et Bond, elle est issue de la méthode des moments généralisées à laquelle on ajoute des contraintes de variables instrumentales. 
+
+%#############################################################################
+\subsection{Regard critique de la littérature}
+
+Cette frange de la littérature empirique est loin de faire l'unanimité au sein des économistes. Bourguignon 2015 \cite{bourguinon2015} fait par exemple parti des critiques de cette littérature. En plus de déplorer des données de mauvaises qualités, souvent biaisées par construction, il met en lumière l'absence de preuve des liens de causalité. Il donne l'exemple de l'éducation : supposons une relation de causalité entre le niveau d'éducation de la population et la croissance du pays et que l'accès à l'éducation est impossible pour les personnes les plus pauvres, on peut tout de même mesurer une corrélation forte entre l'égalité des revenus et les croissance des pays en l'absence de relation causale entre ces deux grandeurs. 
+
+Nous porterons nous aussi un regard critique sur les avec lesquels sont abordées ce problème économique. \\
+
+\textbf{Choix de l'équation :} \\
+Comme nous l'avons vu précédemment, la méthode précédente ne permet d'accéder qu'à la valeur moyenne de la dépendance en les inégalités de la croissance. Grâce aux outils de la complexité, il nous semble possible et souhaitable de chercher des liens plus fins entre ces deux grandeurs. Il semble en effet peu probable que quelque soit l'époque, le niveau de développement du pays ou le modèle économique les inégalités aient la même influence sur la croissance. Une critique similaire avait déjà été très bien formulée par Banerjee et Duflo (2003) \cite{banerjee}. 
+
+
+\textbf{Choix de la méthode d'estimation des coefficients :} \\
+Il semble que la méthode d'estimation des coefficients d'Arellano et Bond est trop obscure pour être utile pour ce problème. Nous ne remettons pas en question la fiabilité de cette méthode, que nous avons peu étudiée, mais plutôt la possibilité que l'économiste peut avoir à en comprendre les moindres rouages et nous préférons utiliser des approches plus directes dont chaque étape de production est parfaitement connue. 
+Par ailleurs, nous avons pu trouver des critiques de cette méthode \og boite noire \fg{} notamment lorsqu'il y a peu de données \cite{roodman}. 
+
+
+
+%#############################################################################
+%#############################################################################
+\section{Des liens plus complexes ?}
+
+%#############################################################################
+\subsection{QCA}
+
+%#############################################################################
+\subsection{Arbres de décision}
+
+\begin{thebibliography}{20}
+
+\bibitem{bourguignon2015}
+François Bourguignon, ``Revisiting the Debate on Inequality and Economic Development'', {\it Conférence présidentielle}, (2015).
+
+\bibitem{robinson}
+Sherman Robinson, ``A note on the U hypothesis Relating Income Inequality and Economic Development'', {\it The American Economic Review}, 337-340 (1976).
+
+\bibitem{barro}
+Robert J. Barro, ``Inequality and Growth in a Panel of Countries'', {\it Journal of Economic Growth}, 5-32 (2000).
+
+\bibitem{OECD}
+OECD (2015), In It Together: \textit{Why Less Inequality Benefits All}, OECD Publishing, Paris.
+http://dx.doi.org/10.1787/9789264235120-en
+
+\bibitem{ostry}
+Ostry, J., A. Berg and C. Tsangarides (2014), “Redistribution, Inequality, and Growth”,
+\textit{IMF Staff Discussion Note}, February.
+
+\bibitem{forbes}
+	Forbes Kristin J., 2000., \emph{A Reassessment of the Relationship between Inequality and Growth.} American Economic Review, 90(4): 869-887.
+
+\bibitem{banerjee}
+Abhijit V. Banerjee and Esther Duflo, ``Inequality and Growth: What the Data Say?'', Journal of Economic Growth, 2003, v8(3,Sep), 267-299.
+
+\bibitem{roodman}
+Roodman D.,\textit{A Note on the Theme of Too Many Instruments}, Working Paper Number 125 August 2007, revised May 2008, Center For Global Development. 
+
+\end{thebibliography}
+
+
+\end{document}

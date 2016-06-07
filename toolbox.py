@@ -26,7 +26,7 @@ def plot_correlations(data, min_match=20, size_tuple=(15, 15)):
     plt.colorbar()
 
 
-def rolling_mean(df, variable, nbr_yrs, threshold, how='centered'):
+def rolling_mean(df, variable, nbr_yrs, threshold, how='centered', sum=False):
     """Compute the mean value of a range of time for a time varying range.
     For exemple if variable if growth, the value in 1980 will be the average
     of the growth between 1980 and 1980 + nbr_yrs. Threshlod corresponds to
@@ -52,7 +52,10 @@ def rolling_mean(df, variable, nbr_yrs, threshold, how='centered'):
                 window = sel.loc[(idx[0], ), variable
                                  ].loc[[idx[1] + i for i in range(-(nbr_yrs / 2), nbr_yrs / 2 + 1)]]
             if window.notnull().sum() >= threshold:
-                val = window.mean()
+                if sum==True:
+                    val = window.sum()
+                else:
+                    val = window.mean()
             else:
                 val = float('nan')
             sel.loc[idx, 'roll_mean'] = val
@@ -60,7 +63,7 @@ def rolling_mean(df, variable, nbr_yrs, threshold, how='centered'):
     return new_frame['roll_mean']
 
 
-def resample(df, period):
+def resample(df, period, threshold):
     """Resample the frame df to period (in year)
 
     Input :
@@ -74,10 +77,16 @@ def resample(df, period):
     tuples = zip(df_copy['code'],
                  (((df_copy['year'].values) // period) * period) + period / 2.)
     df_copy.index = pd.MultiIndex.from_tuples(tuples)
-    df_copy = df_copy.groupby(level=[0, 1]).mean().dropna(how='all')
-    del df_copy['year']
+    df_copy = df_copy.groupby(level=[0,1]).agg(['count', 'mean'])
+    for var in df_copy.keys().levels[0]:
+        df_copy.loc[:, (var, 'values')] = np.NaN
+        df_copy.loc[df_copy[var]['count'] >= threshold, (var, 'values')
+                    ] = df_copy[var]['mean']
     df_copy.index.names = ['code', 'year']
-    return df_copy.sort_index().dropna(how='all')
+    output_df = pd.DataFrame()
+    for var in df.keys():
+        output_df[var] = df_copy[var]['values']
+    return output_df.sort_index().dropna(how='all')
 
 
 def growth(df, variable, as_rate=False, how='past'):
@@ -101,46 +110,52 @@ def growth(df, variable, as_rate=False, how='past'):
             if how == 'past':
                 sel['growth'] = (sel - sel.shift(1))
                 sel['growth'] /= years - np.insert(years[:-1], 0, float('nan'))
+                if as_rate == True:
+                    sel['growth'] /= sel.shift(1)[variable]
             elif how == 'futur':
                 sel['growth'] = (sel.shift(-1) - sel)
                 sel['growth'] /= np.append(years[1:], float('nan')) - years
-            if as_rate == True:
-                sel['growth'] /= sel[variable]
+                if as_rate == True:
+                    sel['growth'] /= sel[variable]
             new_frame = pd.concat([new_frame, sel])
     return new_frame['growth']
 
 
 def quartilize_periodwise(data, n_quartiles):
-    # pdb.set_trace()
+    if type(n_quartiles) == int:
+        n_quartiles = [n_quartiles for i in range(len(data.keys()))]
     copy = data.copy().reset_index()
     copy.set_index('year', inplace=True)
     var_names = copy.keys()
-    quartiles_thresholds = np.linspace(0, 100, n_quartiles + 1)[:: -1]
     for var in copy.keys():
         copy["qu_" + var] = 0
     for year in set(copy.index):
-        for var in [item for item in var_names if item != "code"]:
-            try:
-                for i in range(n_quartiles):
-                    upper_limit = np.percentile(
-                        copy.loc[year, var], quartiles_thresholds[i])
-                    lower_limit = np.percentile(
-                        copy.loc[year, var], quartiles_thresholds[i + 1])
-                    if i == 0:
-                        ith_qu_bool = copy.loc[year, var].apply(lambda x: x <= upper_limit
-                                                                and x >= lower_limit)
+        for k, var in enumerate([item for item in var_names if item != "code"]):
+            if n_quartiles[k] == -1:
+                copy.loc[:, "qu_" + var] = copy[var]
+            else:
+                quartiles_thresholds = np.linspace(0, 100, n_quartiles[k] + 1)[:: -1]
+                try:
+                    for i in range(n_quartiles[k]):
+                        upper_limit = np.percentile(
+                            copy.loc[year, var], quartiles_thresholds[i])
+                        lower_limit = np.percentile(
+                            copy.loc[year, var], quartiles_thresholds[i + 1])
+                        if i == 0:
+                            ith_qu_bool = copy.loc[year, var].apply(lambda x: x <= upper_limit
+                                                                    and x >= lower_limit)
+                        else:
+                            ith_qu_bool = copy.loc[year, var].apply(lambda x: x < upper_limit
+                                                                    and x >= lower_limit)
+                        copy.loc[
+                            (year,), "qu_" + var] += ith_qu_bool * (n_quartiles[k] - (i + 1))
+                except AttributeError:
+                    if type(copy.loc[year, var]) in [np.float64, float]:
+                        copy.loc[(year, ), var] = 0
                     else:
-                        ith_qu_bool = copy.loc[year, var].apply(lambda x: x < upper_limit
-                                                                and x >= lower_limit)
-                    copy.loc[
-                        (year,), "qu_" + var] += ith_qu_bool * (n_quartiles - (i + 1))
-            except AttributeError:
-                if type(copy.loc[year, var]) in [np.float64, float]:
-                    copy.loc[(year, ), var] = 0
-                else:
-                    raise("Unexpected Error")
-            copy.loc[
-                (year, ), "qu_" + var] = copy.loc[(year, ), "qu_" + var].astype(int)
+                        raise("Unexpected Error")
+                copy.loc[
+                    (year, ), "qu_" + var] = copy.loc[(year, ), "qu_" + var].astype(int)
     copy.reset_index(inplace=True)
     copy['year'] = copy['year'].astype(int)
     copy.set_index(['code', 'year'], inplace=True)

@@ -200,6 +200,7 @@ data.columns = ['code', 'year', 'infant_mortality_OECD']
 data["code"] = data["code"].astype(str)
 data["year"] = data["year"].astype(int)
 data["infant_mortality_OECD"] = data["infant_mortality_OECD"].astype(float)
+data['OECD_dummy'] = 1
 
 data = remove_duplicates_visibly(data, "infant_mortality_rate_OECD")
 
@@ -208,7 +209,65 @@ data_frame = pd.merge(data_frame, data, how='outer', on=['code', 'year'])
 del data
 
 data_frame = remove_unknown_country(data_frame, "infant_mortality_rate_OECD.csv")
-# to test
+
+
+"""Adding the rate of homicide from UN
+"""
+data = pd.read_csv("homicide_rate_UN.csv",
+usecols=['Country or Area', 'Year', 'Rate'])
+
+data.columns = ['country', 'year', 'homicide_rate']
+
+data["country"] = data["country"].astype(str)
+data["year"] = data["year"].astype(int)
+data["homicide_rate"] = data["homicide_rate"].astype(float)
+
+
+
+data = data.replace("Bolivia (Plurinational State of)", 'Bolivia')
+data = data.replace("British Virgin Islands", 'Virgin Islands')
+data = data.replace("Cape Verde", 'Cabo Verde')
+data = data.replace("Cote d'Ivoire", 'Ivory Coast')
+data = data.replace("Hong Kong Special Administrative Region of China", 'Hong Kong')
+data = data.replace("Libyan Arab Jamahiriya", 'Libya')
+data = data.replace("Democratic People's Republic of Korea", 'North Korea')
+data = data.replace('Democratic Republic of the Congo', 'Congo')
+data = data.replace("Iran (Islamic Republic of)", 'Iran')
+data = data.replace("Lao People's Democratic Republic", 'Laos')
+data = data.replace("Republic of Korea", 'South Korea')
+
+data = data.query("country != 'Micronesia (Federated States of)'")
+data = data.query("country != 'Occupied Palestinian Territory'")
+
+
+data = data.replace("The former Yugoslav republic of Macedonia", 'Macedonia')
+data = data.replace("United Kingdom of Great Britain and Northern Ireland", 'United Kingdom')
+data = data.replace("United Republic of Tanzania", 'Tanzania')
+data = data.replace("Venezuela (Bolivarian Republic of)", 'Venezuela')
+data = data.replace("Viet Nam", 'Socialist Republic of Vietnam')
+data = data.replace("Yemen", 'Republic of Yemen')
+data = data.replace("Macao Special Administrative Region of China", 'Macao')
+data = data.replace("The former Yugoslav Republic of Macedonia", 'Macedonia')
+data = data.replace("United States Virgin Islands", 'Virgin Islands')
+data = data.replace("Bolivia", 'Bolivia')
+data = data.replace("Bolivia", 'Bolivia')
+data = data.replace("Bolivia", 'Bolivia')
+data = data.replace("Bolivia", 'Bolivia')
+
+
+
+data['code'] = data['country'].apply(
+    lambda x: code_country_dict.loc[x]['code'])
+
+del data['country']
+
+data = remove_duplicates_visibly(data, "homicide_rate_UN")
+
+data_frame = pd.merge(data_frame, data, how='outer', on=['code', 'year'])
+
+del data
+
+data_frame = remove_unknown_country(data_frame, "homicide_rate_UN.csv")
 
 data_frame.sort_values(by=['code', 'year']).to_csv(
     "wilkinson_database.csv", index=False)
